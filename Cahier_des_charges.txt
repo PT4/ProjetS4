@@ -24,7 +24,7 @@ I] Objectifs
 	Points de vie
 	Chaque batiment possède un prix en bois qu'il faut débourser pour créer le nouveau batiment.
 	Un batiment possède deux états : normal (ne fait rien) et création (forme de nouvelles unités). Le dernier 
-	état n'est pas valable pour les entrepôts.
+		état n'est pas valable pour les entrepôts.
 	Le joueur ne peut créer un batiment que s'il possède les ressources nécessaires.
 
 	# Unités
