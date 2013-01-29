@@ -7,19 +7,19 @@ I] Objectifs
 	# Gérer deux joueurs en temps réels
 
 	# Une arène de jeu ( 4 ou 5 maps différentes )
-		- Différents sites de départs possible
+		- Différents sites de départs possibles
 		- Différents sites de ressources
 		- Obstacles
-		- taille de m'arène plus grande que la fenêtre de jeu
+		- Taille de l'arène plus grande que la fenêtre de jeu
 
-	# Ressource
+	# Ressources
 		- Miel (pour les unités)
 		- Bois (pour les batiments)
 
-	# Bâtimens
-		- Base : créer des récolteur
-		- Entrepôt : amasse des ressources
-		- Caserne : creer des soldats
+	# Bâtiments
+		- Base : créer des récolteurs
+		- Entrepôt : amasser des ressources
+		- Caserne : créer des soldats
 	Clic de sélection sur les batiments
 	Points de vie
 	Un batiment possède deux états : normal (ne fait rien) et création (forme de nouvelles unités). Le dernier état n'est pas valable
