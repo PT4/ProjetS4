@@ -4,7 +4,7 @@ Cahier des charges
 
 I] Objectifs
   
-	# Gérer deux joueurs en temps réels
+	# Gérer un joueur et une IA en temps réels.
 
 	# Une arène de jeu ( 4 ou 5 maps différentes )
 		- Différents sites de départs possibles
@@ -22,17 +22,21 @@ I] Objectifs
 		- Caserne : créer des soldats
 	Clic de sélection sur les batiments
 	Points de vie
-	Un batiment possède deux états : normal (ne fait rien) et création (forme de nouvelles unités). Le dernier état n'est pas valable
-	pour les entrepôts.
+	Un batiment possède deux états : normal (ne fait rien) et création (forme de nouvelles unités). Le dernier 
+	état n'est pas valable pour les entrepôts.
+	Le joueur ne peut créer un batiment que s'il possède les ressources nécessaires.
 
 	# Unités
 		- Récolteurs
 		- Soldats
 	Clic de sélections sur les unités
 	Points de vie
+	Vitesse de déplacement
 	Les récolteurs possèdent trois états : déplacement (objectif sur la carte), collecte (aller-retour) et attaque.
 	Les soldats possèdent deux états : déplacement et attaque
 	L'état déplacement nécessite un objectif sur l'arène de jeu cliqué par le joueur.
+	Lorsqu'une unité se déplace, si elle rencontre un ennemi, elle passe en mode attaque. Si l'unité ennemi est tuée
+	alors l'unité repend son chemin.
 
 	
 		
