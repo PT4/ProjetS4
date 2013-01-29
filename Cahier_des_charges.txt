@@ -46,5 +46,11 @@ I] Objectifs
 		alors l'unité repend son chemin.
 	La zone d'attque des soldats est plus grande que celle des récolteurs.
 
+II] Constantes
+
+	Deux joueurs
+	Nombre de sources de miels et de bois pour chaque emplacement de départ
+	Limite de population
+	
 	
 		
