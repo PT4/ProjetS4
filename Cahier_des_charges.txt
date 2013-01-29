@@ -36,10 +36,11 @@ I] Objectifs
 	Chaque unité possède un prix en miel qu'il faut débourser pour créer la nouvelle unité.
 	Les récolteurs possèdent trois états : déplacement (objectif sur la carte), collecte (aller-retour) et attaque.
 	Les soldats possèdent deux états : déplacement et attaque
+	[OL: les récolteurs et les soldats peuvent être aussi immobiles]
 	L'état déplacement nécessite un objectif sur l'arène de jeu cliqué par le joueur.
 	Lorsqu'une unité se déplace, si elle rencontre un ennemi, elle passe en mode attaque. Si l'unité ennemi est tuée
 		alors l'unité repend son chemin.
-	La zone d'attque des soldats est plus grande que celle des récolteurs.
+	La zone d'attque des soldats est plus grande que celle des récolteurs. [OL: la zone d'attaque peut être paramétrée par son rayon]
 
 	
 		
