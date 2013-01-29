@@ -6,6 +6,11 @@ I] Objectifs
   
 	# Gérer un joueur et une IA en temps réels.
 
+	# Joueurs
+		- quantité de miel récolté
+		- quantité de bois récolté
+		- quantité de population (ne dois pas dépasser la limite fixée)
+
 	# Une arène de jeu ( 4 ou 5 maps différentes )
 		- Différents sites de départs possibles
 		- Différents sites de ressources
