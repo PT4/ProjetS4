@@ -1,0 +1,38 @@
+PT4 – Projet
+
+Cahier des charges
+
+I] Objectifs
+  
+	# Gérer deux joueurs en temps réels
+
+	# Une arène de jeu ( 4 ou 5 maps différentes )
+		- Différents sites de départs possible
+		- Différents sites de ressources
+		- Obstacles
+		- taille de m'arène plus grande que la fenêtre de jeu
+
+	# Ressource
+		- Miel (pour les unités)
+		- Bois (pour les batiments)
+
+	# Bâtimens
+		- Base : créer des récolteur
+		- Entrepôt : amasse des ressources
+		- Caserne : creer des soldats
+	Clic de sélection sur les batiments
+	Points de vie
+	Un batiment possède deux états : normal (ne fait rien) et création (forme de nouvelles unités). Le dernier état n'est pas valable
+	pour les entrepôts.
+
+	# Unités
+		- Récolteurs
+		- Soldats
+	Clic de sélections sur les unités
+	Points de vie
+	Les récolteurs possèdent trois états : déplacement (objectif sur la carte), collecte (aller-retour) et attaque.
+	Les soldats possèdent deux états : déplacement et attaque
+	L'état déplacement nécessite un objectif sur l'arène de jeu cliqué par le joueur.
+
+	
+		
