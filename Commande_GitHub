@@ -11,3 +11,6 @@ git remote add origin https://github.com/PT4/ProjetS4.git
 
 // pour envoyer les modifs
 git push -u origin master
+/* si erreur ! [rejected]
+git fetch origin
+git merge origin/master
