@@ -1,5 +1,8 @@
 #include <iostream>
 #include <cstdlib>
+#include "GameModel.h"
+#include "GameView.h"
+#include "Constantes.h"
 
 using namespace std;
 using namespace sf;
@@ -14,8 +17,8 @@ int main()
 	view->setModel(model);
 	
 	while(view->treatEvents()){
-		if (!view->getMenu(view))
-			model->nextStep();
+		/*if (!view->getMenu(view))
+			model->nextStep();*/
 		view->draw();
 		usleep(11000);
 	}
