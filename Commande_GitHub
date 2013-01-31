@@ -1,0 +1,16 @@
+git init
+// pour ajouter un fichier
+git add README.md
+// pour commit
+git commit -m "first commit"
+
+// Pour le dossier fork (code, modifs perso...)
+git remote add origin https://github.com/ASilverio/ProjetS4.git
+// Pour le dossier projet (modifs stables, fichiers textes, images,...)
+git remote add origin https://github.com/PT4/ProjetS4.git
+
+// pour envoyer les modifs
+git push -u origin master
+/* si erreur ! [rejected]
+git fetch origin
+git merge origin/master
