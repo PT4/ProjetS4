@@ -45,5 +45,9 @@ void Unite::seDeplacer() {
 }
 
 void Unite::attaquer(Entite& cible) {
+<<<<<<< HEAD
 	cible.setPointsVie(cible.getPointsVie()-m_degat);
+=======
+	cible.setPointsVie(getDegat());
+>>>>>>> origin/master
 }

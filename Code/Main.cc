@@ -5,8 +5,11 @@
 #include "GameView.h"
 #include "Constantes.h"
 
+<<<<<<< HEAD
 #include "Soldat.h"
 #include "Entrepot.h"
+=======
+>>>>>>> origin/master
 
 using namespace std;
 using namespace sf;
@@ -19,6 +22,7 @@ int main()
 	GameView * view = new GameView(LARGEUR_FENETRE, HAUTEUR_FENETRE);
 	view->setModel(model);
 	
+<<<<<<< HEAD
 	Soldat s1, s2;
 	
 	cout << " Avant attaque " << endl;
@@ -33,6 +37,11 @@ int main()
 	while(view->treatEvents()){
 		/*if (!view->getMenu(view))
 			model->nextStep();*/
+=======
+	while(view->treatEvents())
+	{
+		model->nextStep();
+>>>>>>> origin/master
 		view->draw();
 		usleep(11000);
 	}
