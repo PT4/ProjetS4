@@ -4,6 +4,7 @@
 #include "GameView.h"
 #include "Constantes.h"
 
+
 using namespace std;
 using namespace sf;
 
@@ -15,12 +16,11 @@ int main()
 	GameView * view = new GameView(LARGEUR_FENETRE, HAUTEUR_FENETRE);
 	view->setModel(model);
 	
-	
-	while(view->treatEvents()){
-		/*if (!view->getMenu(view))
-			model->nextStep();*/
+	while(view->treatEvents())
+	{
+		model->nextStep();
 		view->draw();
-		//usleep(11000);
+		usleep(11000);
 	}
 	
 	return EXIT_SUCCESS;

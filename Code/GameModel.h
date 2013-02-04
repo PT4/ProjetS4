@@ -3,6 +3,7 @@
 
 #include <SFML/System.hpp>
 
+
 class GameModel {
 	private:
 		int m_width, m_height;
@@ -12,5 +13,6 @@ class GameModel {
 		GameModel();
 		GameModel(int width, int height);
 		~GameModel();
+		void nextStep();
 };
 #endif

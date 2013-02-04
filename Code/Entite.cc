@@ -27,5 +27,5 @@ string Entite::getNom() const {
 
 //Accesseurs en écriture
 void Entite::setPointsVie(int pointsVie) {
-	m_pointsVie=pointsVie;
+	m_pointsVie-=pointsVie;
 }

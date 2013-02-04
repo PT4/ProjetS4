@@ -26,6 +26,10 @@ bool Unite::getAttaque() const {
 	return m_attaque;
 }
 
+/**/ int Unite::getDegat() const {
+	return m_degat;
+}
+
 //Accesseur en écriture
 void Unite::setDeplacement(bool seDeplace) {
 	m_seDeplace=seDeplace;
@@ -40,6 +44,6 @@ void Unite::seDeplacer() {
 
 }
 
-void Unite::attaquer(Entite cible) {
-	cible.setPointsVie(cible.getPointsVie()-m_degat);
+void Unite::attaquer(Entite& cible) {
+	cible.setPointsVie(getDegat());
 }
