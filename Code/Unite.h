@@ -21,10 +21,11 @@ class Unite: public Entite {
 		~Unite();
 		bool getDeplacement() const;
 		bool getAttaque() const;
+		/**/int getDegat() const;
 		void setDeplacement(bool seDeplace);
 		void setAttaque(bool attaque);
 		void seDeplacer();
-		void attaquer(Entite cible);
+		void attaquer(Entite& cible);
 };
 
 #endif

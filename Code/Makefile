@@ -1,5 +1,5 @@
 CC=g++ -lsfml-graphics -lsfml-window -lsfml-system
-OBJECTS=GameModel.o GameView.o Main.o Partie.o Joueur.o Entite.o Unite.o Recolteur.o Soldat.o Batiment.o Base.o Caserne.o Entrepot.o
+OBJECTS=GameModel.o GameView.o Main.o Partie.o Joueur.o Entite.o Unite.o Recolteur.o Soldat.o Batiment.o Base.o Caserne.o Entrepot.o Carte.o
 TARGET=AnimalsCraft
 
 
@@ -17,6 +17,9 @@ Main.o : Main.cc
 
 Partie.o : Partie.cc Partie.h
 	$(CC) -c Partie.cc
+	
+Carte.o : Carte.cc Carte.h
+	$(CC) -c Carte.cc
 	
 Joueur.o : Joueur.cc Joueur.h
 	$(CC) -c Joueur.cc

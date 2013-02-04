@@ -2,13 +2,16 @@
 #define _CONSTANTES_H_
 
 //Initialisation de la fenêtre
-const int LARGEUR_FENETRE=1040;
-const int HAUTEUR_FENETRE=1040;
+const int LARGEUR_FENETRE=800;
+const int HAUTEUR_FENETRE=600;
 
 //Initialisation des propriétés du joueurs
 const int NB_RECOLTEUR_DEPART=4;
 const int QUANTITE_MIEL_DEPART=0;
 const int QUANTITE_BOIS_DEPART=0;
+
+//Initialisation de la carte
+const int TAILLE_MAP=50;
 
 /******UNITES*******/
 //Initialisation des propriétés des récolteurs
