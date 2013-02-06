@@ -32,7 +32,7 @@ void Carte::chargementFichier(string mon_fichier)
 	
 	//Traitement (remplacer "maitreDeLaColline.txt par mon_fichier)
 	
-	ifstream fichier("sdfsd.txt", ios::in);
+	ifstream fichier(mon_fichier.c_str(), ios::in);
 	if(fichier)
 	{
 		cout << "Ouverture de la map" << endl;
