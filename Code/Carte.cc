@@ -26,13 +26,13 @@ void Carte::chargementFichier(string mon_fichier)
 	int tab[TAILLE_MAP][TAILLE_MAP];
 	int i=0, j=0, val=0;
 	
-	//initialisation (dans la cas ou on travaille avec une matrice)
+	//initialisation
 	for (int i=0; i<TAILLE_MAP; i++)
 		for (int j=0; j<TAILLE_MAP; j++)
 			tab[i][j]=4;
 	
 	//Traitement (remplacer "maitreDeLaColline.txt par mon_fichier)
-	ifstream fichier("MaitreDeLaColline.txt", ios::in);
+	ifstream fichier(mon_fichier, ios::in);
 	if(fichier)
 	{
 		cout << "Ouverture de la map" << endl;
