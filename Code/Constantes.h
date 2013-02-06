@@ -3,7 +3,7 @@
 
 //Initialisation de la fenêtre
 const int LARGEUR_FENETRE=800;
-const int HAUTEUR_FENETRE=600;
+const int HAUTEUR_FENETRE=800;
 
 //Initialisation des propriétés du joueurs
 const int NB_RECOLTEUR_DEPART=4;

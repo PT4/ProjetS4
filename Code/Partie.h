@@ -14,6 +14,7 @@ class Partie {
 		Partie();
 		Partie(std::string nomMap);
 		~Partie();
+		Carte* getCarte() const;
 };
 
 #endif

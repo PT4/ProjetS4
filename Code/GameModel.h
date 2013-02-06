@@ -17,5 +17,6 @@ class GameModel {
 		GameModel(int width, int height);
 		~GameModel();
 		void nextStep();
+		Partie* getPartie() const;
 };
 #endif

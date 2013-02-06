@@ -42,3 +42,8 @@ void GameModel::nextStep()
 	cout << " Après attaque " << endl;
 	cout << "Soldat1 : " << "Vie " << s2.getPointsVie() << endl;
 }
+
+Partie* GameModel::getPartie() const
+{
+	return m_partie;
+}

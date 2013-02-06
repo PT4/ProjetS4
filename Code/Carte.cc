@@ -52,3 +52,8 @@ void Carte::chargementFichier(string mon_fichier)
 		cout << endl;
 	}
 }
+
+int Carte::getCaseMatrice(int i, int j) const
+{
+	return m_matrice[i][j];
+}

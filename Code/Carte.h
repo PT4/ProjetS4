@@ -15,6 +15,7 @@ class Carte {
 		Carte(std::string mon_fichier);
 		~Carte();
 		void chargementFichier(std::string mon_fichier);
+		int getCaseMatrice(int i, int j) const;
 };
 
 #endif

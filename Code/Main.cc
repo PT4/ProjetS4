@@ -25,6 +25,5 @@ int main()
 		view->draw();
 		usleep(11000);
 	}
-	
 	return EXIT_SUCCESS;
 }
