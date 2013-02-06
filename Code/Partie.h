@@ -12,6 +12,7 @@ class Partie {
 		Carte* m_carte;
 	public:
 		Partie();
+		Partie(std::string nomMap);
 		~Partie();
 };
 
