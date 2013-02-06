@@ -28,7 +28,7 @@ void Carte::chargementFichier(string mon_fichier)
 	//initialisation
 	for (int i=0; i<TAILLE_MAP; i++)
 		for (int j=0; j<TAILLE_MAP; j++)
-			tab[i][j]=4;
+			m_matrice[i][j]=4;
 	
 	//Traitement (remplacer "maitreDeLaColline.txt par mon_fichier)
 	ifstream fichier(mon_fichier.c_str(), ios::in);
@@ -38,9 +38,17 @@ void Carte::chargementFichier(string mon_fichier)
 		while (!fichier.eof())
 		{
 			fichier >> i >> j >> val;
+			m_matrice[i-1][j-1]=val;
 		}
 		fichier.close();
 	}
 	else
 		cerr << "Impossible d'ouvrir la map !" << endl;
+	
+	for (int i=0; i<TAILLE_MAP; i++)
+	{
+		for (int j=0; j<TAILLE_MAP; j++)
+			cout << m_matrice[i][j];
+		cout << endl;
+	}
 }

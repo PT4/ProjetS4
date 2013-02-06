@@ -1,12 +1,14 @@
 #ifndef _CARTE_H_
 #define _CARTE_H_
 
+#include "Constantes.h"
+
 #include <string>
 
 class Carte {
 	
 	private:
-		int nb_point_depart;
+		int m_matrice[TAILLE_MAP][TAILLE_MAP];
 		
 	public:
 		Carte();
