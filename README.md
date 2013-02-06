@@ -17,3 +17,5 @@ Commande pour compiler/lancer le jeu:
   - Se rendre dans le dossier contenant le jeu
   - exécuté la commande "make" pour compiler le jeu
   - exécuté la commande "./BearCraft" pour exécuter le jeu
+
+Enjoy :)
