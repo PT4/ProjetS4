@@ -1,6 +1,10 @@
 CC=g++ -lsfml-graphics -lsfml-window -lsfml-system
 OBJECTS=GameModel.o GameView.o Main.o Partie.o Joueur.o Entite.o Unite.o Recolteur.o Soldat.o Batiment.o Base.o Caserne.o Entrepot.o Carte.o
+<<<<<<< HEAD
 TARGET=BearCraft
+=======
+TARGET=AnimalsCraft
+>>>>>>> projet/master
 
 
 $(TARGET) : $(OBJECTS)

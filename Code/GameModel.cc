@@ -13,21 +13,16 @@ using namespace sf;
 // Constructeurs
 GameModel::GameModel() : m_width(LARGEUR_FENETRE), m_height(HAUTEUR_FENETRE)
 {
-	m_partie=new Partie();
 }
 
 GameModel::GameModel(int width, int height): m_width(width), m_height(height)
 {
-	m_partie=new Partie();
 }
 
 
 // Destructeurs
 GameModel::~GameModel()
-{
-	if (m_partie!=NULL)
-		delete m_partie;
-}
+{}
 
 void GameModel::nextStep()
 {

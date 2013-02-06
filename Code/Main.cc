@@ -22,11 +22,6 @@ int main()
 	while(view->treatEvents()){
 		/*if (!view->getMenu(view))
 			model->nextStep();*/
-	}
-
-	while(view->treatEvents())
-	{
-		model->nextStep();
 		view->draw();
 		usleep(11000);
 	}
