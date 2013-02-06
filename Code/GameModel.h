@@ -3,10 +3,13 @@
 
 #include <SFML/System.hpp>
 
+#include "Partie.h"
+
 
 class GameModel {
 	private:
 		int m_width, m_height;
+		Partie* m_partie;
 
 	public:
 		
