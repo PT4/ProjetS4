@@ -14,8 +14,10 @@ class Carte {
 		Carte();
 		Carte(std::string mon_fichier);
 		~Carte();
-		void chargementFichier(std::string mon_fichier);
 		int getCaseMatrice(int i, int j) const;
+		void setCaseMatrice(int i, int j, int val);
+		void chargementFichier(std::string mon_fichier);
+		void choisirEmplacementDepartJoueur();
 };
 
 #endif

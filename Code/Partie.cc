@@ -5,7 +5,7 @@
 using namespace std;
 
 //Constructeurs
-Partie::Partie():m_monFichier("maps/LesDeuxPasses.txt")
+Partie::Partie():m_monFichier("maps/MaitreDeLaColline.txt")
 {
 	m_carte=new Carte(m_monFichier);
 }

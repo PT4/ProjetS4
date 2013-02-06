@@ -20,6 +20,18 @@ Carte::Carte(string mon_fichier)
 Carte::~Carte()
 {}
 
+//Accesseurs en lecture
+int Carte::getCaseMatrice(int i, int j) const
+{
+	return m_matrice[i][j];
+}
+
+//Accesseur en écriture
+void Carte::setCaseMatrice(int i, int j, int val) 
+{
+	m_matrice[i][j]=val;
+}
+
 //Méthodes	
 void Carte::chargementFichier(string mon_fichier) 
 {
@@ -44,16 +56,7 @@ void Carte::chargementFichier(string mon_fichier)
 	}
 	else
 		cerr << "Impossible d'ouvrir la map !" << endl;
-	
-	for (int i=0; i<TAILLE_MAP; i++)
-	{
-		for (int j=0; j<TAILLE_MAP; j++)
-			cout << m_matrice[i][j];
-		cout << endl;
-	}
 }
 
-int Carte::getCaseMatrice(int i, int j) const
-{
-	return m_matrice[i][j];
-}
+void Carte::choisirEmplacementDepartJoueur()
+ {}
