@@ -12,6 +12,7 @@ const int QUANTITE_BOIS_DEPART=0;
 
 //Initialisation de la carte
 const int TAILLE_MAP=50;
+const int STOCK_DEPART=100;
 
 /******UNITES*******/
 //Initialisation des propriétés des récolteurs

@@ -4,23 +4,27 @@
 
 #include <cstdlib>
 #include <vector>
-#include <iostream>
+
 using namespace std;
 
 //Constructeurs
 Joueur::Joueur()
 {
-	cout << "Defaut : Joueur créé" << endl;
 	for (int i=0; i<NB_RECOLTEUR_DEPART; i++)
-		m_listeEntites.push_back(new Recolteur());
+		m_listeUnites.push_back(new Recolteur());
 }
 
 //Destructeur
 Joueur::~Joueur()
 {
-	for (int i=0; i<m_listeEntites.size(); i++)
+	for (int i=0; i<m_listeUnites.size(); i++)
 	{
-		delete m_listeEntites[i];
-		m_listeEntites[i]=0;
+		delete m_listeUnites[i];
+		m_listeUnites[i]=0;
+	}
+	for (int i=0; i<m_listeBatiments.size(); i++)
+	{
+		delete m_listeBatiments[i];
+		m_listeBatiments[i]=0;
 	}
 }

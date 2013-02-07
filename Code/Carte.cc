@@ -11,14 +11,31 @@ using namespace std;
 Carte::Carte()
 {}
 
-Carte::Carte(string mon_fichier) 
+Carte::Carte(string mon_fichier, vector<Joueur*> listeJoueurs): m_listeJoueurs(listeJoueurs)
 {
 	chargementFichier(mon_fichier);
+	choisirEmplacementDepartJoueur();
 }
 
 //Destructeur
 Carte::~Carte()
-{}
+{
+	for (int i=0; i<m_listeObstacles.size() ; i++)
+	{
+		delete m_listeObstacles[i];
+		m_listeObstacles[i] = 0;
+	}
+	for (int i=0; i<m_listeRessources.size() ; i++)
+	{
+		delete m_listeRessources[i];
+		m_listeRessources[i] = 0;
+	}
+	for (int i=0; i<m_listeEmplacementsDeparts.size() ; i++)
+	{
+		delete m_listeEmplacementsDeparts[i];
+		m_listeEmplacementsDeparts[i] = 0;
+	}
+}
 
 //Accesseurs en lecture
 int Carte::getCaseMatrice(int i, int j) const
@@ -46,11 +63,18 @@ void Carte::chargementFichier(string mon_fichier)
 	ifstream fichier(mon_fichier.c_str(), ios::in);
 	if(fichier)
 	{
-		cout << "Ouverture de la map" << endl;
 		while (!fichier.eof())
 		{
 			fichier >> i >> j >> val;
 			m_matrice[i-1][j-1]=val;
+			switch(val)
+			{
+				case 0: m_listeObstacles.push_back(new Obstacle(i-1, j-1)); break;
+				case 1: m_listeRessources.push_back(new Ressource(i-1, j-1, "Bois")); break;
+				case 2: m_listeRessources.push_back(new Ressource(i-1, j-1, "Miel")); break;
+				case 3: m_listeEmplacementsDeparts.push_back(new EmplacementDepart(i-1, j-1)); break;
+				default: break;
+			}
 		}
 		fichier.close();
 	}
@@ -59,4 +83,13 @@ void Carte::chargementFichier(string mon_fichier)
 }
 
 void Carte::choisirEmplacementDepartJoueur()
- {}
+{
+	for (int i=0; i<m_listeJoueurs.size(); i++)
+	{
+		int emplacement=0;
+		cout << m_listeJoueurs.size() << endl;
+		emplacement=(rand()%3)+1;
+		
+	}
+	 
+}

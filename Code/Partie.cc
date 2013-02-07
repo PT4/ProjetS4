@@ -1,26 +1,43 @@
 #include "Partie.h"
 
 #include <cstdlib>
+#include <iostream>
 
 using namespace std;
 
 //Constructeurs
-Partie::Partie():m_monFichier("maps/MaitreDeLaColline.txt")
-{
-	m_carte=new Carte(m_monFichier);
-}
+Partie::Partie()
+{}
 
-Partie::Partie(string nomMap):m_monFichier(nomMap)
+Partie::Partie(string nomMap, int nbJoueurs):m_monFichier(nomMap)
 {
-	m_carte=new Carte(m_monFichier);
+	m_carte=new Carte(m_monFichier, m_listeDeJoueurs);
+	for (int i=0;i<nbJoueurs;i++)
+		m_listeDeJoueurs.push_back(new Joueur());
 }
 
 //Destructeur
 Partie::~Partie()
-{}
+{
+	for (int i=0; i<m_listeDeJoueurs.size(); i++)
+	{
+		delete m_listeDeJoueurs[i];
+		m_listeDeJoueurs[i]=0;
+	}
+	if (m_carte!=NULL)
+	{
+		delete m_carte;
+		m_carte=0;
+	}
+}
 
 // Accesseurs en lecture
 Carte* Partie::getCarte() const
 {
 	return m_carte;
+}
+
+vector<Joueur*> Partie:: getListeJoueurs() const
+{
+	return m_listeDeJoueurs;
 }

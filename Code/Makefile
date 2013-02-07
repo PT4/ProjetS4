@@ -1,5 +1,5 @@
 CC=g++ -lsfml-graphics -lsfml-window -lsfml-system
-OBJECTS=GameModel.o GameView.o Main.o Partie.o Joueur.o Entite.o Unite.o Recolteur.o Soldat.o Batiment.o Base.o Caserne.o Entrepot.o Carte.o
+OBJECTS=GameModel.o GameView.o Main.o Partie.o Joueur.o Entite.o Unite.o Recolteur.o Soldat.o Batiment.o Base.o Caserne.o Entrepot.o Carte.o Objet.o Obstacle.o Ressource.o EmplacementDepart.o
 TARGET=BearCraft
 
 
@@ -24,6 +24,9 @@ Carte.o : Carte.cc Carte.h
 Joueur.o : Joueur.cc Joueur.h
 	$(CC) -c Joueur.cc
 	
+Objet.o : Objet.cc Objet.h
+	$(CC) -c Objet.cc
+	
 Entite.o : Entite.cc Entite.h
 	$(CC) -c Entite.cc
 	
@@ -47,6 +50,15 @@ Caserne.o : Caserne.cc Caserne.h
 
 Entrepot.o : Entrepot.cc Entrepot.h
 	$(CC) -c Entrepot.cc
+
+Obstacle.o : Obstacle.cc Obstacle.h
+	$(CC) -c Obstacle.cc
+	
+EmplacementDepart.o : EmplacementDepart.cc EmplacementDepart.h
+	$(CC) -c EmplacementDepart.cc
+
+Ressource.o : Ressource.cc Ressource.h
+	$(CC) -c Ressource.cc
 
 clean :
 	rm -rf *.o $(TARGET)

@@ -1,7 +1,8 @@
 #ifndef _JOUEUR_H_
 #define _JOUEUR_H_
 
-#include "Entite.h"
+#include "Unite.h"
+#include "Batiment.h"
 
 #include <string>
 #include <vector>
@@ -13,7 +14,8 @@ class Joueur {
 		int m_quantiteMiel;
 		int m_quantiteBois;
 		int m_population;
-		std::vector<Entite*> m_listeEntites;
+		std::vector<Unite*> m_listeUnites;
+		std::vector<Batiment*> m_listeBatiments;
 		
 	public:
 		Joueur();

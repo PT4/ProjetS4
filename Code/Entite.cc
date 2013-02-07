@@ -2,15 +2,15 @@
 
 #include <string>
 #include <cstdlib>
-#include <iostream>
+
 using namespace std;
 
 //Contructeurs
-Entite::Entite()
-{cout << "Defaut : Entite créée" << endl;}
+Entite::Entite():Objet()
+{}
 
 Entite::Entite(string nom, int pointsVie): m_nom(nom), m_pointsVie(pointsVie)
-{cout << "Parametré : Entité créée" << endl;}
+{}
 
 //Destructeur
 Entite::~Entite()
