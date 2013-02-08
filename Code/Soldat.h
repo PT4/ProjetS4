@@ -12,6 +12,7 @@ class Soldat: public Unite {
 		
 	public:
 		Soldat();
+		Soldat(int i, int j);
 		~Soldat();
 		int getArmure() const;
 		void setArmure(int armure);

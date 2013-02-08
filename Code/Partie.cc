@@ -11,9 +11,11 @@ Partie::Partie()
 
 Partie::Partie(string nomMap, int nbJoueurs):m_monFichier(nomMap)
 {
-	m_carte=new Carte(m_monFichier, m_listeDeJoueurs);
+	m_carte=new Carte(m_monFichier);
+	//Ne pas oublier de faire un test sur le nombre maximal de joueur.
 	for (int i=0;i<nbJoueurs;i++)
 		m_listeDeJoueurs.push_back(new Joueur());
+	m_carte->choisirEmplacementDepartJoueur(m_listeDeJoueurs);
 }
 
 //Destructeur

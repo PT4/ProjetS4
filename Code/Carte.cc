@@ -4,17 +4,18 @@
 #include <iostream>
 #include <cstdlib>
 #include <fstream>
+#include <SFML/System.hpp>
 
 using namespace std;
+using namespace sf;
 
 //Constructeurs
 Carte::Carte()
 {}
 
-Carte::Carte(string mon_fichier, vector<Joueur*> listeJoueurs): m_listeJoueurs(listeJoueurs)
+Carte::Carte(string mon_fichier)
 {
 	chargementFichier(mon_fichier);
-	choisirEmplacementDepartJoueur();
 }
 
 //Destructeur
@@ -82,14 +83,21 @@ void Carte::chargementFichier(string mon_fichier)
 		cerr << "Impossible d'ouvrir la map !" << endl;
 }
 
-void Carte::choisirEmplacementDepartJoueur()
+void Carte::choisirEmplacementDepartJoueur(vector<Joueur*> listeJoueurs)
 {
-	for (int i=0; i<m_listeJoueurs.size(); i++)
+	for (int i=0; i<listeJoueurs.size(); i++)
 	{
-		int emplacement=0;
-		cout << m_listeJoueurs.size() << endl;
-		emplacement=(rand()%3)+1;
-		
+		int emplacement=Randomizer::Random(1,NB_EMPLACEMENTS_DEPARTS_MAX);
+		while(m_listeEmplacementsDeparts[emplacement-1]->getOccupation())
+			emplacement=Randomizer::Random(1,NB_EMPLACEMENTS_DEPARTS_MAX);
+	
+		m_listeEmplacementsDeparts[emplacement-1]->setOccupation(1);
+		listeJoueurs[i]->ajouterBatiment(1, m_listeEmplacementsDeparts[emplacement-1]->getI(), m_listeEmplacementsDeparts[emplacement-1]->getJ());
 	}
+	for(int i=0; i<m_listeEmplacementsDeparts.size(); i++)
+		if(!m_listeEmplacementsDeparts[i]->getOccupation())
+		{
+			setCaseMatrice(m_listeEmplacementsDeparts[i]->getI(), m_listeEmplacementsDeparts[i]->getJ(), 4);
+		}
 	 
 }

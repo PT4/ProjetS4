@@ -28,3 +28,36 @@ Joueur::~Joueur()
 		m_listeBatiments[i]=0;
 	}
 }
+
+//Accesseurs en lecture
+vector<Batiment*> Joueur::getListeBatiments() const
+{
+	return m_listeBatiments;
+}
+
+vector<Unite*> Joueur::getListeUnites() const
+{
+	return m_listeUnites;
+}
+
+//Methodes
+void Joueur::ajouterBatiment(int type, int i, int j)
+{
+	switch(type)
+	{
+		case 1: m_listeBatiments.push_back(new Base(i, j));
+		case 2: m_listeBatiments.push_back(new Caserne(i, j));
+		case 3: m_listeBatiments.push_back(new Entrepot(i, j));
+		default: break;
+	}
+}
+
+void Joueur::ajouterUnite(int type, int i, int j)
+{
+	switch(type)
+	{
+		case 1: m_listeUnites.push_back(new Recolteur(i, j));
+		case 2: m_listeUnites.push_back(new Soldat(i, j));
+		default: break;
+	}
+}

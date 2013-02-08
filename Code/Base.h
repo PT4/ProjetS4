@@ -7,6 +7,7 @@ class Base: public Batiment {
 	
 	public:
 		Base();
+		Base(int i, int j);
 		~Base();
 		void creerRecolteur();
 };

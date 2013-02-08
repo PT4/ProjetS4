@@ -1,8 +1,11 @@
 #ifndef _JOUEUR_H_
 #define _JOUEUR_H_
 
-#include "Unite.h"
-#include "Batiment.h"
+#include "Recolteur.h"
+#include "Soldat.h"
+#include "Base.h"
+#include "Entrepot.h"
+#include "Caserne.h"
 
 #include <string>
 #include <vector>
@@ -20,6 +23,10 @@ class Joueur {
 	public:
 		Joueur();
 		~Joueur();
+		std::vector<Batiment*> getListeBatiments() const;
+		std::vector<Unite*> getListeUnites() const;
+		void ajouterBatiment(int type, int i, int j);
+		void ajouterUnite(int type, int i, int j);
 };
 
 #endif

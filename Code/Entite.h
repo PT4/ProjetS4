@@ -14,6 +14,7 @@ class Entite : public Objet {
 	public:
 		Entite();
 		Entite(std::string nom, int pointsVie);
+		Entite(int i, int j, bool estFranchissable, std::string nom, int pointsVie);
 		~Entite();
 		int getPointsVie() const;
 		std::string getNom() const;

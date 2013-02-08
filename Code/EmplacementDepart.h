@@ -5,10 +5,14 @@
 
 class EmplacementDepart : public Objet {
 	
+	private:
+		bool m_estOccuper;
 	public:
 		EmplacementDepart();
 		EmplacementDepart(int i, int j);
 		~EmplacementDepart();
+		bool getOccupation() const;
+		void setOccupation(bool estOccuper);
 };
 
 #endif

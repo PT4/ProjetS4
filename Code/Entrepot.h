@@ -8,6 +8,7 @@ class Entrepot: public Batiment {
 	
 	public:
 		Entrepot();
+		Entrepot(int i, int j);
 		~Entrepot();
 		void stocker();
 };

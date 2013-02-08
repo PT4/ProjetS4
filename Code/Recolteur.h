@@ -11,6 +11,7 @@ class Recolteur: public Unite {
 		
 	public:
 		Recolteur();
+		Recolteur(int i, int j);
 		~Recolteur();
 		int getPoids() const;
 		void setPoids(int poids);

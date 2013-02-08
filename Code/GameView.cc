@@ -93,18 +93,39 @@ void GameView::affichageCarte()
 					m_window->Draw(m_sprite_miel);
 					break;
 				case 3 :
-					m_sprite_base_joueur1.Resize(16,16);
-					m_sprite_base_joueur1.SetPosition(i*16,j*16);
-					m_window->Draw(m_sprite_base_joueur1);
+					affichageBaseJoueur(i,j);
 					break;
 				case 4 :
 					m_sprite_herbe.Resize(16,16);
 					m_sprite_herbe.SetPosition(i*16,j*16);
 					m_window->Draw(m_sprite_herbe);
 					break;
+				default: break;
 			}
 	}
 		
+}
+
+void GameView::affichageBaseJoueur(int i, int j)
+{
+	for (int k=0; k<m_model->getPartie()->getListeJoueurs().size(); k++)
+	{
+		for (int l=0; l<m_model->getPartie()->getListeJoueurs()[k]->getListeBatiments().size(); l++)
+		{
+			if(k==0 && j==m_model->getPartie()->getListeJoueurs()[k]->getListeBatiments()[l]->getI() && i==m_model->getPartie()->getListeJoueurs()[k]->getListeBatiments()[l]->getJ())
+			{
+				m_sprite_base_joueur1.Resize(16,16);
+				m_sprite_base_joueur1.SetPosition(i*16,j*16);
+				m_window->Draw(m_sprite_base_joueur1);
+			}
+			else if(k==1 && j==m_model->getPartie()->getListeJoueurs()[k]->getListeBatiments()[l]->getI() && i==m_model->getPartie()->getListeJoueurs()[k]->getListeBatiments()[l]->getJ())
+			{
+				m_sprite_base_joueur2.Resize(16,16);
+				m_sprite_base_joueur2.SetPosition(i*16,j*16);
+				m_window->Draw(m_sprite_base_joueur2);
+			}
+		}
+	}
 }
 
 // Boucle d'affichage

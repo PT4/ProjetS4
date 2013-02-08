@@ -9,6 +9,9 @@ using namespace std;
 Base::Base(): Batiment("Base", POINTS_VIE_BASE, PRIX_BOIS_BASE, 0)
 {}
 
+Base::Base(int i, int j): Batiment(i, j,"Base", POINTS_VIE_BASE, PRIX_BOIS_BASE, 0)
+{}
+
 //Destructeur
 Base::~Base()
 {}

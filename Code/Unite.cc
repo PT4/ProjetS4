@@ -13,6 +13,10 @@ Unite::Unite(string nom, int pointsVie, int prixMiel, int vitesse, int degat, in
 				m_prixMiel(prixMiel), m_vitesse(vitesse), m_degat(degat), m_rayonAttaque(rayonAttaque), m_seDeplace(0), m_attaque(0)
 {}
 
+Unite::Unite(int i, int j, string nom, int pointsVie, int prixMiel, int vitesse, int degat, int rayonAttaque): Entite(i, j, true, nom, pointsVie), 
+				m_prixMiel(prixMiel), m_vitesse(vitesse), m_degat(degat), m_rayonAttaque(rayonAttaque), m_seDeplace(0), m_attaque(0)
+{}
+
 //Destructeur
 Unite::~Unite()
 {}
@@ -26,7 +30,8 @@ bool Unite::getAttaque() const {
 	return m_attaque;
 }
 
-/**/ int Unite::getDegat() const {
+int Unite::getDegat() const
+{
 	return m_degat;
 }
 

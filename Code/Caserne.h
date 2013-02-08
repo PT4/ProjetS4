@@ -7,6 +7,7 @@ class Caserne: public Batiment {
 	
 	public:
 		Caserne();
+		Caserne(int i, int j);
 		~Caserne();
 		void creerSoldat();
 };

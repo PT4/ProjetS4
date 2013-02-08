@@ -18,10 +18,11 @@ class Unite: public Entite {
 	public:
 		Unite();
 		Unite(std::string nom, int pointsVie, int prixMiel, int vitesse, int degat, int rayonAttaque);
+		Unite(int i, int j, std::string nom, int pointsVie, int prixMiel, int vitesse, int degat, int rayonAttaque);
 		~Unite();
 		bool getDeplacement() const;
 		bool getAttaque() const;
-		/**/int getDegat() const;
+		int getDegat() const;
 		void setDeplacement(bool seDeplace);
 		void setAttaque(bool attaque);
 		void seDeplacer();

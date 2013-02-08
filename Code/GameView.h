@@ -57,5 +57,6 @@ class GameView {
 		bool treatEvents();
 		void declarationImages();
 		void affichageCarte();
+		void affichageBaseJoueur(int i, int j);
 };
 #endif

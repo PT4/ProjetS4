@@ -6,12 +6,14 @@ const int LARGEUR_FENETRE=800;
 const int HAUTEUR_FENETRE=800;
 
 //Initialisation des propriétés du joueurs
+const int NB_JOUEURS_MAX=2;
 const int NB_RECOLTEUR_DEPART=4;
 const int QUANTITE_MIEL_DEPART=0;
 const int QUANTITE_BOIS_DEPART=0;
 
 //Initialisation de la carte
 const int TAILLE_MAP=50;
+const int NB_EMPLACEMENTS_DEPARTS_MAX=4;
 const int STOCK_DEPART=100;
 
 /******UNITES*******/

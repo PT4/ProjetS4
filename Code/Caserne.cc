@@ -9,6 +9,9 @@ using namespace std;
 Caserne::Caserne(): Batiment("Caserne", POINTS_VIE_CASERNE, PRIX_BOIS_CASERNE, 0)
 {}
 
+Caserne::Caserne(int i, int j): Batiment(i, j, "Caserne", POINTS_VIE_CASERNE, PRIX_BOIS_CASERNE, 0)
+{}
+
 //Destructeur
 Caserne::~Caserne()
 {}

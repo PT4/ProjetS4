@@ -6,7 +6,7 @@ using namespace std;
 Obstacle::Obstacle():Objet()
 {}
 
-Obstacle::Obstacle(int i, int j):Objet(i, j, 0)
+Obstacle::Obstacle(int i, int j):Objet(i, j, false)
 {}
 
 //Destructeur
