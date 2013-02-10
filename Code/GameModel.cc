@@ -14,11 +14,13 @@ using namespace sf;
 GameModel::GameModel() : m_width(LARGEUR_FENETRE), m_height(HAUTEUR_FENETRE)
 {
 	m_partie=new Partie("maps/LesDeuxPasses.txt", 2);
+	thread =false;
 }
 
 GameModel::GameModel(int width, int height): m_width(width), m_height(height)
 {
 	m_partie=new Partie("maps/LesDeuxPasses.txt", 2);
+	thread =false;
 }
 
 
@@ -31,19 +33,28 @@ GameModel::~GameModel()
 
 void GameModel::nextStep()
 {
-	Soldat s1,s2;
-	
-	cout << " Avant attaque " << endl;
-	cout << "Soldat1 : " << "Vie " << s1.getPointsVie()  << " " << "Armure " << s1.getArmure() << " " << "Degat " << s1.getDegat() << endl;
-	cout << "Soldat2 : " << "Vie " << s2.getPointsVie() << endl;
-	
-	s1.attaquer(s2);
-	
-	cout << " Après attaque " << endl;
-	cout << "Soldat1 : " << "Vie " << s2.getPointsVie() << endl;
+    setThread();
+    setThread();
 }
 
 Partie* GameModel::getPartie() const
 {
 	return m_partie;
+}
+
+bool GameModel::setThread ()
+{
+    if (thread == true)
+        thread = false;
+    else
+        thread = true;
+}
+bool GameModel::getThread() const
+{
+    return thread;
+}
+
+void GameModel::Run()
+{
+    nextStep();
 }

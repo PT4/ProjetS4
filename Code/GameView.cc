@@ -13,13 +13,13 @@ using namespace sf;
 GameView::GameView(int width, int height): m_width(width), m_height(height)
 {
 	m_window = new RenderWindow(sf::VideoMode(width, height, 32), "BearCraft", sf::Style::Close);
-	
+
 	// chargement des images
 	if (!m_image_base_joueur1.LoadFromFile("images/BaseJoueur1.png") ||
 		 !m_image_base_joueur2.LoadFromFile("images/BaseJoueur2.png") ||
 		 !m_image_caserne_joueur1.LoadFromFile("images/CaserneJoueur1.png") ||
 		 !m_image_caserne_joueur2.LoadFromFile("images/CaserneJoueur2.png") ||
-		 !m_image_entrepot_joueur1.LoadFromFile("images/EntrepotJoueur1.png") || 
+		 !m_image_entrepot_joueur1.LoadFromFile("images/EntrepotJoueur1.png") ||
 		 !m_image_entrepot_joueur2.LoadFromFile("images/EntrepotJoueur2.png") ||
 		 !m_image_recolteur_joueur1.LoadFromFile("images/RecolteurJoueur1.png") ||
 		 !m_image_recolteur_joueur2.LoadFromFile("images/RecolteurJoueur2.png") ||
@@ -46,7 +46,7 @@ void GameView::setModel(GameModel * model)
 }
 
 // Déclaration des objets graphiques
-void GameView::declarationImages() 
+void GameView::declarationImages()
 {
 		// Sprites
 		m_sprite_base_joueur1 = Sprite(m_image_base_joueur1);
@@ -63,7 +63,7 @@ void GameView::declarationImages()
 		m_sprite_herbe = Sprite(m_image_herbe);
 		m_sprite_miel = Sprite(m_image_miel);
 		m_sprite_rocher = Sprite(m_image_rocher);
-		
+
 		// Titre
 		m_titre.SetText(L"      BouboursTown \n Par Gaëtan Roudeau \n Emile Rey \n et Anthony Silverio");
 		m_titre.SetSize(60);
@@ -103,7 +103,7 @@ void GameView::affichageCarte()
 				default: break;
 			}
 	}
-		
+
 }
 
 void GameView::affichageBaseJoueur(int i, int j)
@@ -137,24 +137,24 @@ void GameView::draw()
 	//m_window->Draw(m_titre);
 	//m_sprite_herbe.SetPosition(600,400);
 	//m_window->Draw(m_sprite_herbe);
-	
+
 	m_window->Display();
 }
 
-bool GameView::treatEvents() 
+bool GameView::treatEvents()
 {
 	bool result = false;
 	const sf::Input& input = m_window->GetInput();
-	
+
 	if(m_window->IsOpened()){
 		result = true;
 		sf::Event event;
-		while (m_window->GetEvent(event)) 
+		while (m_window->GetEvent(event))
 		{
 			int mouse_x = input.GetMouseX();
 			int mouse_y = input.GetMouseY();
 			if ((event.Type == sf::Event::Closed) ||
-				((event.Type == sf::Event::KeyPressed) && (event.Key.Code == sf::Key::Escape))) 
+				((event.Type == sf::Event::KeyPressed) && (event.Key.Code == sf::Key::Escape)))
 			{
 				m_window->Close();
 				result = false;
