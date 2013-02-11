@@ -4,7 +4,7 @@
 
 
 
-Bearcraft est un STR réalisé dans le cadre d'un projet informatique de l'IUT de l'Université Bordeaux 1.
+BearCraft est un STR réalisé dans le cadre d'un projet informatique de l'IUT de l'Université Bordeaux 1.
 
 
 Table des matières
@@ -101,15 +101,42 @@ IV] Règles du jeu
 
 Le but de Bearcraft est de récolter des ressources et créer une armée afin de détruire vos adversaires.
 
-##### Lancer une nouvelle partie #####
+### Lancer une nouvelle partie ###
 
     1. Cliquez sur le bouton "Nouvelle partie"
     2. Sélectionnez vos option de partie (nombre de joueurs, carte)
     3 Lorsque vous etes pret, cliquez sur "Commencer"
     
-##### Vos premier pas #####
+### Vos premiers pas ###
 
-Bienvenue dans une nouvelle partie de Bearcraft !
+Bienvenue dans une nouvelle partie de BearCraft !
 
 Vous allez pouvoir vous lancer dans une nouvelle aventure. Mais patience, lisez d'abord ces quelques conseils afin de vous assurer la vitoire.
-Votre écran de jeu
+
+Chaque joueur démarre une partie avec une base et trois récolteurs.
+
+##### Ressources #####
+
+Il existe deux types de ressources dans BearCraft : le miel et le bois. Le miel vous permez de créer de nouvelles unités et le bois de nouveaux batiments.
+
+##### Créer une nouvelle unités #####
+
+    1. Sélectionnez votre base/caserne avec le clic droit.
+    2. Cliquez sur le bouton "créer un récolteur" dans le menu de votre batiment situé au bas de votre écran.
+    3. Une fois prete, votre nouvelle unité apparait.
+    
+##### Affecter une tache à une unité #####
+
+    * Tache de déplacement
+        1. Sélectionnez une unité (récolteur ou soldat) avec le clic droit.
+        2. Cliquez avec le clic gauche sur l'endroit ou vous voulez que votre unité se déplace.
+    * Tache de récolte
+        1. Sélectionnez un récolteur avec le clic droit.
+        2. Cliquez avec le clic gauche sur la ressource (bois ou miel).
+        3. Votre récolteur commence alors à amasser la ressource.
+    * Tache d'attaque
+        1. Sélectionnez un soldat avec le clic droit.
+        2. Cliquez avec le clic gauche sur une cible ennemie.
+        3 Votre soldat va alors attquer la cible jusqu'à ce qu'elle soit tuée ou qu'il ne lui reste plus de points de vie.
+
+
