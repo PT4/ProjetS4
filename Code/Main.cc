@@ -20,8 +20,9 @@ int main()
 	view->setModel(model);
 	
 	while(view->treatEvents()){
-		/*if (!view->getMenu(view))
-			model->nextStep();*/
+		//if (!view->getMenu(view))
+       if (model -> getThread() == false)
+            model->DoSomething();
 		view->draw();
 		usleep(11000);
 	}
