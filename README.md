@@ -1,4 +1,5 @@
-# PT4 - ROUDEAU & REY & SILVERIO #
+PT4 - ROUDEAU & REY & SILVERIO
+==============================
 
 BearCraft est un Jeu développé grâce à la bibliothèque SFML.
 Pour compiler le jeu, il faut donc installer cette bibliothèque.
@@ -6,10 +7,10 @@ Pour compiler le jeu, il faut donc installer cette bibliothèque.
 Table des matières
 ------------------
 
-      ### I] Compilation/Exécution
-      ### II] Cahier des charges
-      ### III] Diagramme des classes
-      ### IV] Règles du jeu
+      I] Compilation/Exécution
+      II] Cahier des charges
+      III] Diagramme des classes
+      IV] Règles du jeu
 
 
 ### Commande pour installer la SFML sous Linux: ##
