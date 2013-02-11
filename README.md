@@ -90,3 +90,6 @@ III] Diagramme des classes
 --------------------------
 
 ![alt text](class\ diagram.jpeg "diagram")
+
+IV] Règles du jeu
+-----------------
