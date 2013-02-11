@@ -80,7 +80,7 @@ L'état déplacement nécessite un objectif sur l'arène de jeu cliqué par le j
 Lorsqu'une unité se déplace, si elle rencontre un ennemi, elle passe en mode attaque. Si l'unité ennemi est tuée alors l'unité repend son chemin.
 La zone d'attque des soldats est plus grande que celle des récolteurs. La zone d'attaque peut être paramétrée par son rayon.
 
-### 2)Constantes ###
+### 2) Constantes ###
 
 Deux joueurs.
 Nombre de sources de miels et de bois pour chaque emplacement de départ.
