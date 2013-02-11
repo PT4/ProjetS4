@@ -5,7 +5,7 @@ BearCraft est un Jeu développé grâce à la bibliothèque SFML.
 Pour compiler le jeu, il faut donc installer cette bibliothèque.
 
 Table des matières
-------------------
+
 
       I] Compilation/Exécution
       II] Cahier des charges
