@@ -89,4 +89,4 @@ Limite de population.
 III] Diagramme des classes
 --------------------------
 
-![alt text](/path/class\ diagram.jpeg "diagram")
+![alt text](class\ diagram.jpeg "diagram")
