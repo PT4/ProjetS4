@@ -1,6 +1,5 @@
-![alt text](Code/images/RecolteurJoueur2.png "Ours") # PT4 - ROUDEAU & REY & SILVERIO ![alt text](Code/images/RecolteurJoueur1.png "Ours")
- 
-
+![alt text](Code/images/RecolteurJoueur2.png "Ours") PT4 - ROUDEAU & REY & SILVERIO ![alt text](Code/images/RecolteurJoueur1.png "Ours")
+================================================
 
 Bearcraft est un STR réalisé dans le cadre d'un projet informatique de l'IUT de l'Université Bordeaux 1.
 
