@@ -7,13 +7,13 @@ Pour compiler le jeu, il faut donc installer cette bibliothèque.
 Table des matières
 ------------------
 
-###I] Compilation/Exécution ###
+###### I] Compilation/Exécution ######
 
-### II] Cahier des charges ###
+###### II] Cahier des charges ######
 
-### III] Diagramme des classes ###
+###### III] Diagramme des classes ######
 
-### IV] Règles du jeu ###
+###### IV] Règles du jeu ######
 
 
 
