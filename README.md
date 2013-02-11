@@ -119,24 +119,34 @@ Chaque joueur démarre une partie avec une base et trois récolteurs.
 
 Il existe deux types de ressources dans BearCraft : le miel et le bois. Le miel vous permez de créer de nouvelles unités et le bois de nouveaux batiments.
 
+##### Vision #####
+
+Au départ, votre vision de la carte est limitée. Pour augmenter votre vision, vous devrez déplacer vos unités sur la carte.
+
 ##### Créer une nouvelle unités #####
 
     1. Sélectionnez votre base/caserne avec le clic droit.
     2. Cliquez sur le bouton "créer un récolteur" dans le menu de votre batiment situé au bas de votre écran.
     3. Une fois prete, votre nouvelle unité apparait.
-    
+
+##### Créer un nouveau batiment #####
+    1. Sélectionner un réolcteur avec le clic droit.
+    2. Cliquez sur le bouton de création d'un batiment dans le menu en bas de votre écran.
+    3 Votre récolteur va alors construire le batiment.
+
 ##### Affecter une tache à une unité #####
 
-    * Tache de déplacement
+    - Tache de déplacement
         1. Sélectionnez une unité (récolteur ou soldat) avec le clic droit.
         2. Cliquez avec le clic gauche sur l'endroit ou vous voulez que votre unité se déplace.
-    * Tache de récolte
+    - Tache de récolte
         1. Sélectionnez un récolteur avec le clic droit.
         2. Cliquez avec le clic gauche sur la ressource (bois ou miel).
         3. Votre récolteur commence alors à amasser la ressource.
-    * Tache d'attaque
+    - Tache d'attaque
         1. Sélectionnez un soldat avec le clic droit.
-        2. Cliquez avec le clic gauche sur une cible ennemie.
+        2. Cliquez avec le clic gauche sur une cible ennemie (unité ou batiment).
         3 Votre soldat va alors attquer la cible jusqu'à ce qu'elle soit tuée ou qu'il ne lui reste plus de points de vie.
 
-
+##### Gain de la partie #####
+Vous gagnez la partie lorsque vous avez détruit toutes les unités et batiments adverses.
