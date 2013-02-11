@@ -6,11 +6,13 @@
 #include "Partie.h"
 
 
-class GameModel {
+class GameModel : private sf::Thread{
 	private:
 		int m_width, m_height;
 		Partie* m_partie;
-
+		bool m_thread;
+		
+        virtual void Run();
 	public:
 		
 		GameModel();
@@ -18,5 +20,8 @@ class GameModel {
 		~GameModel();
 		void nextStep();
 		Partie* getPartie() const;
+		void DoSomething();
+		bool getThread() const;
+        bool setThread ();
 };
 #endif
