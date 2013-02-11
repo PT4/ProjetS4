@@ -1,4 +1,4 @@
-PT4 - ROUDEAU & REY & SILVERIO
+![alt text](Code/images/RecolteurJoueur1.png "Ours") PT4 - ROUDEAU & REY & SILVERIO
 ==============================
 
 BearCraft est un Jeu développé grâce à la bibliothèque SFML.
