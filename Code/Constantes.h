@@ -7,7 +7,7 @@ const int HAUTEUR_FENETRE=800;
 
 //Initialisation des propriétés du joueurs
 const int NB_JOUEURS_MAX=2;
-const int NB_RECOLTEUR_DEPART=4;
+const int NB_RECOLTEUR_DEPART=3;
 const int QUANTITE_MIEL_DEPART=0;
 const int QUANTITE_BOIS_DEPART=0;
 

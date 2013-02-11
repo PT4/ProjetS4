@@ -4,7 +4,7 @@
 
 #include <cstdlib>
 #include <vector>
-
+#include <iostream>
 using namespace std;
 
 //Constructeurs
@@ -45,9 +45,9 @@ void Joueur::ajouterBatiment(int type, int i, int j)
 {
 	switch(type)
 	{
-		case 1: m_listeBatiments.push_back(new Base(i, j));
-		case 2: m_listeBatiments.push_back(new Caserne(i, j));
-		case 3: m_listeBatiments.push_back(new Entrepot(i, j));
+		case 1: m_listeBatiments.push_back(new Base(i, j)); break;
+		case 2: m_listeBatiments.push_back(new Caserne(i, j)); break;
+		case 3: m_listeBatiments.push_back(new Entrepot(i, j)); break;
 		default: break;
 	}
 }
@@ -56,8 +56,8 @@ void Joueur::ajouterUnite(int type, int i, int j)
 {
 	switch(type)
 	{
-		case 1: m_listeUnites.push_back(new Recolteur(i, j));
-		case 2: m_listeUnites.push_back(new Soldat(i, j));
+		case 1: m_listeUnites.push_back(new Recolteur(i, j)); break;
+		case 2: m_listeUnites.push_back(new Soldat(i, j)); break;
 		default: break;
 	}
 }

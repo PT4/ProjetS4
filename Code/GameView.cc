@@ -100,7 +100,6 @@ void GameView::affichageCarte()
 					m_sprite_herbe.SetPosition(i*16,j*16);
 					m_window->Draw(m_sprite_herbe);
 					break;
-				default: break;
 			}
 	}
 		
@@ -128,12 +127,32 @@ void GameView::affichageBaseJoueur(int i, int j)
 	}
 }
 
+void GameView::affichageUnitesJoueur()
+{
+	for (int k=0; k<m_model->getPartie()->getListeJoueurs().size(); k++)
+		for (int l=0; l<m_model->getPartie()->getListeJoueurs()[k]->getListeUnites().size(); l++)
+			switch(k)
+			{
+				case 0:
+					m_sprite_recolteur_joueur1.Resize(16,16);
+					m_sprite_recolteur_joueur1.SetPosition(m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getJ()*16,m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getI()*16);
+					m_window->Draw(m_sprite_recolteur_joueur1);
+					break;
+				case 1:
+					m_sprite_recolteur_joueur2.Resize(16,16);
+					m_sprite_recolteur_joueur2.SetPosition(m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getJ()*16,m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getI()*16);
+					m_window->Draw(m_sprite_recolteur_joueur2);
+					break;
+			}
+}
+
 // Boucle d'affichage
 void GameView::draw()
 {
 	m_window->Clear(sf::Color(37,38,35));
 	this->declarationImages();
 	this->affichageCarte();
+	this->affichageUnitesJoueur();
 	//m_window->Draw(m_titre);
 	//m_sprite_herbe.SetPosition(600,400);
 	//m_window->Draw(m_sprite_herbe);

@@ -59,8 +59,7 @@ void Carte::chargementFichier(string mon_fichier)
 	for (int i=0; i<TAILLE_MAP; i++)
 		for (int j=0; j<TAILLE_MAP; j++)
 			m_matrice[i][j]=4;
-	
-	//Traitement (remplacer "maitreDeLaColline.txt par mon_fichier)
+	//Traitement
 	ifstream fichier(mon_fichier.c_str(), ios::in);
 	if(fichier)
 	{
@@ -85,19 +84,30 @@ void Carte::chargementFichier(string mon_fichier)
 
 void Carte::choisirEmplacementDepartJoueur(vector<Joueur*> listeJoueurs)
 {
-	for (int i=0; i<listeJoueurs.size(); i++)
+	for (int k=0; k<listeJoueurs.size(); k++)
 	{
+		//Selection aléatoire de l'emplacement
 		int emplacement=Randomizer::Random(1,NB_EMPLACEMENTS_DEPARTS_MAX);
 		while(m_listeEmplacementsDeparts[emplacement-1]->getOccupation())
 			emplacement=Randomizer::Random(1,NB_EMPLACEMENTS_DEPARTS_MAX);
-	
+		//Création de la base et coordonnées
 		m_listeEmplacementsDeparts[emplacement-1]->setOccupation(1);
-		listeJoueurs[i]->ajouterBatiment(1, m_listeEmplacementsDeparts[emplacement-1]->getI(), m_listeEmplacementsDeparts[emplacement-1]->getJ());
+		listeJoueurs[k]->ajouterBatiment(1, m_listeEmplacementsDeparts[emplacement-1]->getI(), m_listeEmplacementsDeparts[emplacement-1]->getJ());
+		//Affectation des coordonnées aux récolteurs
+		if(emplacement<=2)
+			for (int l=0; l<listeJoueurs[k]->getListeUnites().size(); l++)
+			{
+				listeJoueurs[k]->getListeUnites()[l]->setJ(listeJoueurs[k]->getListeBatiments()[0]->getJ()-1+l);
+				listeJoueurs[k]->getListeUnites()[l]->setI(listeJoueurs[k]->getListeBatiments()[0]->getI()-1);
+			}
+		else 
+			for (int l=0; l<listeJoueurs[k]->getListeUnites().size(); l++)
+			{
+				listeJoueurs[k]->getListeUnites()[l]->setJ(listeJoueurs[k]->getListeBatiments()[0]->getJ()-1+l);
+				listeJoueurs[k]->getListeUnites()[l]->setI(listeJoueurs[k]->getListeBatiments()[0]->getI()+1);
+			}
 	}
-	for(int i=0; i<m_listeEmplacementsDeparts.size(); i++)
-		if(!m_listeEmplacementsDeparts[i]->getOccupation())
-		{
-			setCaseMatrice(m_listeEmplacementsDeparts[i]->getI(), m_listeEmplacementsDeparts[i]->getJ(), 4);
-		}
-	 
+	for(int k=0; k<m_listeEmplacementsDeparts.size(); k++)
+		if(!m_listeEmplacementsDeparts[k]->getOccupation())
+			setCaseMatrice(m_listeEmplacementsDeparts[k]->getI(), m_listeEmplacementsDeparts[k]->getJ(), 4);
 }

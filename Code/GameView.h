@@ -58,5 +58,6 @@ class GameView {
 		void declarationImages();
 		void affichageCarte();
 		void affichageBaseJoueur(int i, int j);
+		void affichageUnitesJoueur();
 };
 #endif
