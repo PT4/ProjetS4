@@ -7,7 +7,7 @@ Pour compiler le jeu, il faut donc installer cette bibliothèque.
 Table des matières
 ------------------
 
-###### I] Compilation/Exécution ######
+###### I] Instalation et Compilation/Exécution ######
 
 ###### II] Cahier des charges ######
 
@@ -15,19 +15,19 @@ Table des matières
 
 ###### IV] Règles du jeu ######
 
-
+## I] Instalation et Compilation/Exécution
 
 ### Commande pour installer la SFML sous Linux: ###
-  - [link text][O] Ouvrir un Terminal/Console
-  - exécuter la commande suivante :
-      - sudo apt-get install libcsfml-dev
+    - Ouvrir un Terminal/Console
+    - exécuter la commande suivante :
+        - sudo apt-get install libcsfml-dev
 
 
 La SFML est maintenant installée.
 
 
 ### Commande pour compiler/lancer le jeu: ###
-  - Ouvrir un Terminal/Console
-  - Se rendre dans le dossier contenant le jeu
-  - exécuter la commande "make" pour compiler le jeu
-  - exécuter la commande "./BearCraft" pour exécuter le jeu
+    - Ouvrir un Terminal/Console
+    - Se rendre dans le dossier contenant le jeu
+    - exécuter la commande "make" pour compiler le jeu
+    - exécuter la commande "./BearCraft" pour exécuter le jeu
