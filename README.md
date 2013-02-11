@@ -87,9 +87,9 @@ La zone d'attque des soldats est plus grande que celle des récolteurs. La zone 
 
 ### 2) Constantes ###
 
-Deux joueurs.
-Nombre de sources de miels et de bois pour chaque emplacement de départ.
-Limite de population.
+    Deux joueurs.
+    Nombre de sources de miels et de bois pour chaque emplacement de départ.
+    Limite de population.
 
 III] Diagramme des classes
 --------------------------
@@ -98,3 +98,18 @@ III] Diagramme des classes
 
 IV] Règles du jeu
 -----------------
+
+Le but de Bearcraft est de récolter des ressources et créer une armée afin de détruire vos adversaires.
+
+##### Lancer une nouvelle partie #####
+
+    1. Cliquez sur le bouton "Nouvelle partie"
+    2. Sélectionnez vos option de partie (nombre de joueurs, carte)
+    3 Lorsque vous etes pret, cliquez sur "Commencer"
+    
+##### Vos premier pas #####
+
+Bienvenue dans une nouvelle partie de Bearcraft !
+
+Vous allez pouvoir vous lancer dans une nouvelle aventure. Mais patience, lisez d'abord ces quelques conseils afin de vous assurer la vitoire.
+Votre écran de jeu
