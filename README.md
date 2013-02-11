@@ -85,3 +85,8 @@ La zone d'attque des soldats est plus grande que celle des récolteurs. La zone 
 Deux joueurs.
 Nombre de sources de miels et de bois pour chaque emplacement de départ.
 Limite de population.
+
+III] Diagramme des classes
+--------------------------
+
+![alt text](/path/class\ diagram.jpeg "diagram")
