@@ -1,8 +1,10 @@
-![alt text](Code/images/RecolteurJoueur1.png "Ours") PT4 - ROUDEAU & REY & SILVERIO ![alt text](Code/images/RecolteurJoueur2.png "Ours")
+![alt text](Code/images/RecolteurJoueur1.png "Ours") # PT4 - ROUDEAU & REY & SILVERIO ![alt text](Code/images/RecolteurJoueur2.png "Ours")
 ==============================
 
-BearCraft est un Jeu développé grâce à la bibliothèque SFML.
-Pour compiler le jeu, il faut donc installer cette bibliothèque.
+
+
+Bearcraft est un STR réalisé dans le cadre d'un projet informatique de l'IUT de l'Université Bordeaux 1.
+
 
 Table des matières
 ------------------
@@ -17,6 +19,8 @@ Table des matières
 
 I] Installation et Compilation/Exécution
 ----------------------------------------
+BearCraft est un Jeu développé grâce à la bibliothèque SFML.
+Pour compiler le jeu, il faut donc installer cette bibliothèque.
 
 ### Commande pour installer la SFML sous Linux: ###
     - Ouvrir un Terminal/Console
