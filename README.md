@@ -4,7 +4,7 @@ BearCraft est un Jeu développé grâce à la bibliothèque SFML.
 Pour compiler le jeu, il faut donc installer cette bibliothèque.
 
 ## Commande pour installer la SFML sous Linux: ##
-  - Ouvrir un Terminal/Console
+  - [link text][O]Ouvrir un Terminal/Console
   - exécuter la commande suivante :
       - sudo apt-get install libcsfml-dev
 
