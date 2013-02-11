@@ -21,7 +21,7 @@ I] Installation et Compilation/Exécution
 ### Commande pour installer la SFML sous Linux: ###
     - Ouvrir un Terminal/Console
     - exécuter la commande suivante :
-        - sudo apt-get install libcsfml-dev
+        sudo apt-get install libcsfml-dev
 
 
 La SFML est maintenant installée.
