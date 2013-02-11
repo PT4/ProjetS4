@@ -12,10 +12,31 @@
 class GameView {
 	private:
 		int m_width, m_height;
+		bool m_menu, m_optionMenu;
 		GameModel * m_model;
 		
 		sf::RenderWindow * m_window;
-		sf::String m_titre;
+		sf::Font m_font;
+	
+		//Menu
+		sf::String m_option;
+		sf::String m_nbJoueurs;
+		sf::String m_string_joueur2;
+		sf::String m_string_joueur3;
+		sf::String m_string_joueur4;
+		sf::String m_nomCarte;
+		sf::String m_string_carte1;
+		sf::String m_string_carte2;
+		sf::Shape m_miniMap;
+		sf::Image m_image_titre;
+		sf::Sprite m_sprite_titre;
+		sf::Image m_image_commencer;
+		sf::Sprite m_sprite_commencer;
+		sf::Image m_image_nouvellePartie;
+		sf::Sprite m_sprite_nouvellePartie;
+		sf::Image m_image_quitter;
+		sf::Sprite m_sprite_quitter;
+		
 		
 		sf::Image m_image_base_joueur1;
 		sf::Image m_image_base_joueur2;
@@ -53,11 +74,14 @@ class GameView {
 	
 		void setModel(GameModel * model);
 		
+		std::string convertInt(int number);
+		
 		void draw();
-		bool treatEvents();
 		void declarationImages();
 		void affichageCarte();
 		void affichageBaseJoueur(int i, int j);
 		void affichageUnitesJoueur();
+		
+		bool treatEvents();
 };
 #endif

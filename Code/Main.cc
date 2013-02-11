@@ -25,5 +25,9 @@ int main()
 		view->draw();
 		usleep(11000);
 	}
+	
+	delete view;
+	delete model;
+	
 	return EXIT_SUCCESS;
 }
