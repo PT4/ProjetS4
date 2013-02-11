@@ -8,9 +8,13 @@ Table des matières
 ------------------
 
 I] Compilation/Exécution
+
 II] Cahier des charges
+
 III] Diagramme des classes
+
 IV] Règles du jeu
+
 
 
 ### Commande pour installer la SFML sous Linux: ##
