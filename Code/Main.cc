@@ -14,14 +14,14 @@ using namespace sf;
 int main()
 {
 	srand(time(NULL));
-	
+
 	GameModel * model = new GameModel(LARGEUR_FENETRE, HAUTEUR_FENETRE);
 	GameView * view = new GameView(LARGEUR_FENETRE, HAUTEUR_FENETRE);
 	view->setModel(model);
-	
 	while(view->treatEvents()){
-		/*if (!view->getMenu(view))
-			model->nextStep();*/
+		//if (!view->getMenu(view))
+        if (model -> getThread() == false)
+            model->Launch();
 		view->draw();
 		usleep(11000);
 	}

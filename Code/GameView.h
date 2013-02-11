@@ -13,10 +13,10 @@ class GameView {
 	private:
 		int m_width, m_height;
 		GameModel * m_model;
-		
+
 		sf::RenderWindow * m_window;
 		sf::String m_titre;
-		
+
 		sf::Image m_image_base_joueur1;
 		sf::Image m_image_base_joueur2;
 		sf::Image m_image_caserne_joueur1;
@@ -31,7 +31,7 @@ class GameView {
 		sf::Image m_image_herbe;
 		sf::Image m_image_miel;
 		sf::Image m_image_rocher;
-		
+
 		sf::Sprite m_sprite_base_joueur1;
 		sf::Sprite m_sprite_base_joueur2;
 		sf::Sprite m_sprite_caserne_joueur1;
@@ -46,18 +46,22 @@ class GameView {
 		sf::Sprite m_sprite_herbe;
 		sf::Sprite m_sprite_miel;
 		sf::Sprite m_sprite_rocher;
-	
+
 	public:
 		GameView(int width, int height);
 		~GameView();
-	
+
 		void setModel(GameModel * model);
-		
+
 		void draw();
 		bool treatEvents();
 		void declarationImages();
 		void affichageCarte();
 		void affichageBaseJoueur(int i, int j);
+<<<<<<< HEAD
 		void affichageUnitesJoueur();
+=======
+
+>>>>>>> origin/master
 };
 #endif
