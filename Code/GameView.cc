@@ -73,9 +73,9 @@ void GameView::declarationImages()
 		m_option.SetFont(m_font);
 		m_option.SetSize(60);
 		m_option.SetColor(sf::Color(255,204,0));
-		m_option.SetPosition(150,50);
+		m_option.SetPosition(150,12);
 		
-		m_miniMap = sf::Shape::Rectangle(300, 150, 520, 370, sf::Color::Black, 3, sf::Color(102,102,102));
+		m_miniMap = sf::Shape::Rectangle(250, 100, 550, 400, sf::Color::Black, 3, sf::Color(102,102,102));
 		
 		m_nbJoueurs.SetText("Nombre de joueurs :");
 		m_nbJoueurs.SetFont(m_font);
@@ -150,36 +150,69 @@ void GameView::declarationImages()
 }
 
 // Affichage de la carte avec les sprites
-void GameView::affichageCarte()
+void GameView::affichageCarte(bool apercu)
 {
-	for (int i=0; i<TAILLE_MAP ; i++) {
-		for (int j=0 ; j<TAILLE_MAP ; j++)
-			switch (m_model->getPartie()->getCarte()->getCaseMatrice(j,i)) {
-				case 0 :
-					m_sprite_rocher.Resize(16,16);
-					m_sprite_rocher.SetPosition(i*16,j*16);
-					m_window->Draw(m_sprite_rocher);
-					break;
-				case 1 :
-					m_sprite_bois.Resize(16,16);
-					m_sprite_bois.SetPosition(i*16,j*16);
-					m_window->Draw(m_sprite_bois);
-					break;
-				case 2 :
-					m_sprite_miel.Resize(16,16);
-					m_sprite_miel.SetPosition(i*16,j*16);
-					m_window->Draw(m_sprite_miel);
-					break;
-				case 3 :
-					affichageBaseJoueur(i,j);
-					break;
-				case 4 :
-					m_sprite_herbe.Resize(16,16);
-					m_sprite_herbe.SetPosition(i*16,j*16);
-					m_window->Draw(m_sprite_herbe);
-					break;
-			}
-	}
+	if (apercu)
+		for (int i=0; i<TAILLE_MAP ; i++) {
+			for (int j=0 ; j<TAILLE_MAP ; j++)
+				switch (m_model->getPartie()->getCarte()->getCaseMatrice(j,i)) {
+					case 0 :
+						m_sprite_rocher.Resize(6,6);
+						m_sprite_rocher.SetPosition(250+i*6,100+j*6);
+						m_window->Draw(m_sprite_rocher);
+						break;
+					case 1 :
+						m_sprite_bois.Resize(6,6);
+						m_sprite_bois.SetPosition(250+i*6,100+j*6);
+						m_window->Draw(m_sprite_bois);
+						break;
+					case 2 :
+						m_sprite_miel.Resize(6,6);
+						m_sprite_miel.SetPosition(250+i*6,100+j*6);
+						m_window->Draw(m_sprite_miel);
+						break;
+					case 3 :
+						m_sprite_base_joueur1.Resize(6,6);
+						m_sprite_base_joueur1.SetPosition(250+i*6,100+j*6);
+						m_window->Draw(m_sprite_base_joueur1);
+						break;
+					case 4 :
+						m_sprite_herbe.Resize(6,6);
+						m_sprite_herbe.SetPosition(250+i*6,100+j*6);
+						m_window->Draw(m_sprite_herbe);
+						break;
+				}
+		}
+	
+	else
+		for (int i=0; i<TAILLE_MAP ; i++) {
+			for (int j=0 ; j<TAILLE_MAP ; j++)
+				switch (m_model->getPartie()->getCarte()->getCaseMatrice(j,i)) {
+					case 0 :
+						m_sprite_rocher.Resize(16,16);
+						m_sprite_rocher.SetPosition(i*16,j*16);
+						m_window->Draw(m_sprite_rocher);
+						break;
+					case 1 :
+						m_sprite_bois.Resize(16,16);
+						m_sprite_bois.SetPosition(i*16,j*16);
+						m_window->Draw(m_sprite_bois);
+						break;
+					case 2 :
+						m_sprite_miel.Resize(16,16);
+						m_sprite_miel.SetPosition(i*16,j*16);
+						m_window->Draw(m_sprite_miel);
+						break;
+					case 3 :
+						affichageBaseJoueur(i,j);
+						break;
+					case 4 :
+						m_sprite_herbe.Resize(16,16);
+						m_sprite_herbe.SetPosition(i*16,j*16);
+						m_window->Draw(m_sprite_herbe);
+						break;
+				}
+		}
 		
 }
 
@@ -242,6 +275,7 @@ void GameView::draw()
 					m_window->Draw(m_sprite_herbe);
 			}
 			m_window->Draw(m_miniMap);
+			this->affichageCarte(true);
 			m_window->Draw(m_option);
 			
 			m_window->Draw(m_nbJoueurs);
@@ -258,7 +292,7 @@ void GameView::draw()
 	}
 	else if (!m_menu) {
 		m_window->Clear(sf::Color::Black);
-		this->affichageCarte();
+		this->affichageCarte(false);
 		this->affichageUnitesJoueur();
 	}
 	m_window->Display();

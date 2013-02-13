@@ -78,7 +78,7 @@ class GameView {
 		
 		void draw();
 		void declarationImages();
-		void affichageCarte();
+		void affichageCarte(bool apercu);
 		void affichageBaseJoueur(int i, int j);
 		void affichageUnitesJoueur();
 		
