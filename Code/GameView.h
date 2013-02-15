@@ -27,6 +27,8 @@ class GameView {
 		sf::String m_nomCarte;
 		sf::String m_string_carte1;
 		sf::String m_string_carte2;
+		std::string m_string_adresse_carte1;
+		std::string m_string_adresse_carte2;
 		sf::Shape m_miniMap;
 		sf::Image m_image_titre;
 		sf::Sprite m_sprite_titre;
@@ -74,13 +76,14 @@ class GameView {
 	
 		void setModel(GameModel * model);
 		
-		std::string convertInt(int number);
+		int convertString(std::string number);
 		
 		void draw();
 		void declarationImages();
 		void affichageCarte(bool apercu);
 		void affichageBaseJoueur(int i, int j);
 		void affichageUnitesJoueur();
+		std::string selectionOptionMenu(sf::String selection);
 		
 		bool treatEvents();
 };
