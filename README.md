@@ -26,10 +26,8 @@ Pour compiler le jeu, il faut donc installer cette bibliothèque.
 ### Commande pour installer la SFML sous Linux: ###
     - Ouvrir un Terminal/Console
     - Se rendre dans le dossier "Installation SFML" du Projet
-    - Taper la commande "./installationSFML.sh"
-        - Si erreur :
-            - Taper la commande "sudo chmod +x installationSFML.sh"
-            - Relancer la commande "./installationSFML.sh"
+    - Taper la commande "sudo chmod +x installationSFML.sh"
+    - Relancer la commande "./installationSFML.sh"
 
 
 La SFML est maintenant installée.
