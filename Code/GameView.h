@@ -14,6 +14,7 @@ class GameView {
 		int m_width, m_height;
 		bool m_menu, m_optionMenu;
 		GameModel * m_model;
+		sf::View m_ecranJeu;
 		
 		sf::RenderWindow * m_window;
 		sf::Font m_font;

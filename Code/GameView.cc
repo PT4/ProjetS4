@@ -13,6 +13,7 @@ using namespace sf;
 GameView::GameView(int width, int height): m_width(width), m_height(height), m_menu(true), m_optionMenu(false)
 {
 	m_window = new RenderWindow(sf::VideoMode(width, height, 32), "BearCraft", sf::Style::Close);
+	m_ecranJeu.SetFromRect(sf::FloatRect(0, 0, LARGEUR_FENETRE, HAUTEUR_FENETRE));; 	 
 	
 	//chargement de la police
 	if (!m_font.LoadFromFile("images/TheKingsoftheHouse-Regular.ttf", 50))
@@ -339,9 +340,25 @@ bool GameView::treatEvents()
 				if (mouse_x >= 270 && mouse_x <= 539 && mouse_y >= 680 && mouse_y <= 769)
 				{
 					if (event.Type == Event::MouseButtonPressed && event.MouseButton.Button == Mouse::Left)
+					{
 						m_menu = false;
+						m_window->SetView(m_ecranJeu);
+						m_ecranJeu.Zoom(4);
+					}
 				}
 			}
+			if (!m_menu)
+			{
+				if ((event.Type == sf::Event::KeyPressed) && (event.Key.Code == sf::Key::Z))
+					m_ecranJeu.Move(0, -10);
+				else if ((event.Type == sf::Event::KeyPressed) && (event.Key.Code == sf::Key::S))
+					m_ecranJeu.Move(0, 10);
+				else if ((event.Type == sf::Event::KeyPressed) && (event.Key.Code == sf::Key::D))
+					m_ecranJeu.Move(10, 0);
+				else if ((event.Type == sf::Event::KeyPressed) && (event.Key.Code == sf::Key::Q))
+					m_ecranJeu.Move(-10, 0);
+			}
+				
 		}
 	}
 	return result;
