@@ -32,6 +32,7 @@ sudo make install;
 make sfml-samples;
 
 sudo apt-get install libcsfml1.6-dbg;
+sudo apt-get install libsfml-dev;
 
 cd ..;
 
