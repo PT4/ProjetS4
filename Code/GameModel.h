@@ -20,6 +20,7 @@ class GameModel : private sf::Thread{
 		~GameModel();
 		void nextStep();
 		Partie* getPartie() const;
+		void setPartie(Partie * m_newPartie);
 		void DoSomething();
 		bool getThread() const;
         bool setThread ();

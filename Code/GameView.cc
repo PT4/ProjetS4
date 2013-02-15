@@ -13,7 +13,10 @@ using namespace sf;
 GameView::GameView(int width, int height): m_width(width), m_height(height), m_menu(true), m_optionMenu(false)
 {
 	m_window = new RenderWindow(sf::VideoMode(width, height, 32), "BearCraft", sf::Style::Close);
-	m_ecranJeu.SetFromRect(sf::FloatRect(0, 0, LARGEUR_FENETRE, HAUTEUR_FENETRE));; 	 
+	m_ecranJeu.SetFromRect(sf::FloatRect(0, 0, LARGEUR_FENETRE, HAUTEUR_FENETRE));
+	
+	m_string_adresse_carte1 = "maps/MaitreDeLaColline.txt";
+	m_string_adresse_carte2 = "maps/LesDeuxPasses.txt";
 	
 	//chargement de la police
 	if (!m_font.LoadFromFile("images/TheKingsoftheHouse-Regular.ttf", 50))
@@ -58,11 +61,11 @@ void GameView::setModel(GameModel * model)
 }
 
 // Fonction de dessin
-string GameView::convertInt(int number)
+int GameView::convertString(string number)
 {
-	stringstream ss;
-	ss << number;
-	return ss.str();
+	int ss;
+	istringstream (number) >> ss;
+	return ss;
 }
 
 // Déclaration des objets graphiques
@@ -299,6 +302,41 @@ void GameView::draw()
 	m_window->Display();
 }
 
+// Sélection des options de la partie
+string GameView::selectionOptionMenu(sf::String selection)
+{
+	// Tests sur le nombre de joueurs
+	if (selection.GetColor() == Color::White) {
+		if ((((string)selection.GetText()).compare((string)m_string_joueur2.GetText()))==0) {
+			m_string_joueur2.SetColor(sf::Color(255,216,43));
+			m_string_joueur3.SetColor(sf::Color::White);
+			m_string_joueur4.SetColor(sf::Color::White);
+		}
+		else if ((((string)selection.GetText()).compare((string)m_string_joueur3.GetText()))==0) {
+			m_string_joueur3.SetColor(sf::Color(255,216,43));
+			m_string_joueur2.SetColor(sf::Color::White);
+			m_string_joueur4.SetColor(sf::Color::White);
+		}
+		else if ((((string)selection.GetText()).compare((string)m_string_joueur4.GetText()))==0) {
+			m_string_joueur4.SetColor(sf::Color(255,216,43));
+			m_string_joueur3.SetColor(sf::Color::White);
+			m_string_joueur2.SetColor(sf::Color::White);
+		}
+	
+		// Tests sur le nom de la carte
+		else if ((((string)selection.GetText()).compare((string)m_string_carte1.GetText()))==0) {
+			m_string_carte1.SetColor(sf::Color(255,216,43));
+			m_string_carte2.SetColor(sf::Color::White);
+		}
+		else if ((((string)selection.GetText()).compare((string)m_string_carte2.GetText()))==0) {
+			m_string_carte2.SetColor(sf::Color(255,216,43));
+			m_string_carte1.SetColor(sf::Color::White);
+		}
+	}
+	return selection.GetText();
+}
+
+
 // Traitement des evenements
 bool GameView::treatEvents() 
 {
@@ -321,11 +359,13 @@ bool GameView::treatEvents()
 			}
 			
 			if (m_menu && !m_optionMenu) {
+				// Bouton nouvelle partie
 				if (mouse_x >= 200 && mouse_x <= 580 && mouse_y >= 400 && mouse_y <= 530)
 				{
 					if (event.Type == Event::MouseButtonPressed && event.MouseButton.Button == Mouse::Left)
 						m_optionMenu = true;
 				}
+				// Bouton quitter
 				else if (mouse_x >= 200 && mouse_x <= 578 && mouse_y >= 600 && mouse_y <= 723)
 				{
 					if (event.Type == Event::MouseButtonPressed && event.MouseButton.Button == Mouse::Left) 
@@ -337,13 +377,30 @@ bool GameView::treatEvents()
 			}
 			
 			else if (m_menu && m_optionMenu) {
-				if (mouse_x >= 270 && mouse_x <= 539 && mouse_y >= 680 && mouse_y <= 769)
-				{
-					if (event.Type == Event::MouseButtonPressed && event.MouseButton.Button == Mouse::Left)
-					{
-						m_menu = false;
-						m_window->SetView(m_ecranJeu);
-						m_ecranJeu.Zoom(4);
+
+				int nbJoueurs=1;
+				string carte="";
+			// Gestion des clics du nombre de joueur
+				if (event.Type == Event::MouseButtonPressed && event.MouseButton.Button == Mouse::Left) {
+					if (mouse_x >= 250 && mouse_x <= 270 && mouse_y >= 450 && mouse_y <= 470)
+							nbJoueurs = convertString(selectionOptionMenu(m_string_joueur2));
+					else if (mouse_x >= 400 && mouse_x <= 420 && mouse_y >= 450 && mouse_y <= 470)
+							nbJoueurs = convertString(selectionOptionMenu(m_string_joueur3));
+					else if (mouse_x >= 550 && mouse_x <= 570 && mouse_y >= 450 && mouse_y <= 470)
+							nbJoueurs = convertString(selectionOptionMenu(m_string_joueur4));
+					else if (mouse_x >= 300 && mouse_x <= 420 && mouse_y >= 550 && mouse_y <= 570) {
+							carte = (selectionOptionMenu(m_string_carte1));
+							carte = m_string_adresse_carte1;
+					}
+					else if (mouse_x >= 300 && mouse_x <= 570 && mouse_y >= 600 && mouse_y <= 620) {
+							carte = (selectionOptionMenu(m_string_carte2));
+							carte = m_string_adresse_carte2;
+					}
+			// Gestion du clic sur le bouton commencer
+					else if (mouse_x >= 270 && mouse_x <= 539 && mouse_y >= 680 && mouse_y <= 769) {
+							m_menu = false;
+							m_window->SetView(m_ecranJeu);
+							m_ecranJeu.Zoom(4);
 					}
 				}
 			}
@@ -358,7 +415,6 @@ bool GameView::treatEvents()
 				else if ((event.Type == sf::Event::KeyPressed) && (event.Key.Code == sf::Key::Q))
 					m_ecranJeu.Move(-10, 0);
 			}
-				
 		}
 	}
 	return result;

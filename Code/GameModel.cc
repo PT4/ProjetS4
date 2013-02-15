@@ -14,12 +14,15 @@ using namespace sf;
 GameModel::GameModel() : m_width(LARGEUR_FENETRE), m_height(HAUTEUR_FENETRE)
 {
 	m_partie=new Partie("maps/MaitreDeLaColline.txt", 2);
+	//~ m_partie=NULL;
+	
 	m_thread = false;
 }
 
 GameModel::GameModel(int width, int height): m_width(width), m_height(height)
 {
 	m_partie=new Partie("maps/MaitreDeLaColline.txt", 2);
+	//~ m_partie=NULL;
 	m_thread = false;
 }
 
@@ -40,6 +43,11 @@ void GameModel::nextStep()
 Partie* GameModel::getPartie() const
 {
 	return m_partie;
+}
+
+void GameModel::setPartie(Partie * m_newPartie)
+{
+	m_partie=m_newPartie;
 }
 
 bool GameModel::setThread ()
