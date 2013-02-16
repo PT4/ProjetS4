@@ -15,10 +15,13 @@ class GameView {
 		bool m_menu, m_optionMenu;
 		GameModel * m_model;
 		sf::View m_ecranJeu;
-		
+
+		int m_selectionNbJoueurs;
+        std::string m_selectionCarte;
+
 		sf::RenderWindow * m_window;
 		sf::Font m_font;
-	
+
 		//Menu
 		sf::String m_option;
 		sf::String m_nbJoueurs;
@@ -39,8 +42,8 @@ class GameView {
 		sf::Sprite m_sprite_nouvellePartie;
 		sf::Image m_image_quitter;
 		sf::Sprite m_sprite_quitter;
-		
-		
+
+
 		sf::Image m_image_base_joueur1;
 		sf::Image m_image_base_joueur2;
 		sf::Image m_image_caserne_joueur1;
@@ -55,7 +58,7 @@ class GameView {
 		sf::Image m_image_herbe;
 		sf::Image m_image_miel;
 		sf::Image m_image_rocher;
-		
+
 		sf::Sprite m_sprite_base_joueur1;
 		sf::Sprite m_sprite_base_joueur2;
 		sf::Sprite m_sprite_caserne_joueur1;
@@ -70,22 +73,21 @@ class GameView {
 		sf::Sprite m_sprite_herbe;
 		sf::Sprite m_sprite_miel;
 		sf::Sprite m_sprite_rocher;
-	
+
 	public:
 		GameView(int width, int height);
 		~GameView();
-	
+
 		void setModel(GameModel * model);
-		
+
 		int convertString(std::string number);
-		
+        void verificationInformations();
 		void draw();
 		void declarationImages();
 		void affichageCarte(bool apercu);
 		void affichageBaseJoueur(int i, int j);
 		void affichageUnitesJoueur();
 		std::string selectionOptionMenu(sf::String selection);
-		
 		bool treatEvents();
 };
 #endif

@@ -15,7 +15,7 @@ GameModel::GameModel() : m_width(LARGEUR_FENETRE), m_height(HAUTEUR_FENETRE)
 {
 	m_partie=new Partie("maps/MaitreDeLaColline.txt", 2);
 	//~ m_partie=NULL;
-	
+
 	m_thread = false;
 }
 
@@ -70,4 +70,11 @@ void GameModel::Run()
 void GameModel::DoSomething()
 {
 	Launch();
+}
+
+void GameModel::creerPartie(int nbJoueur, string carte)
+{
+    delete m_partie;
+    Partie * p = new Partie (carte,nbJoueur);
+    setPartie(p);
 }

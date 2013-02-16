@@ -11,10 +11,10 @@ class GameModel : private sf::Thread{
 		int m_width, m_height;
 		Partie* m_partie;
 		bool m_thread;
-		
+
         virtual void Run();
 	public:
-		
+
 		GameModel();
 		GameModel(int width, int height);
 		~GameModel();
@@ -24,5 +24,6 @@ class GameModel : private sf::Thread{
 		void DoSomething();
 		bool getThread() const;
         bool setThread ();
+        void creerPartie(int nbJoueur, std::string carte);
 };
 #endif

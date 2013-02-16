@@ -7,7 +7,8 @@ using namespace std;
 
 //Constructeurs
 Partie::Partie()
-{}
+{
+}
 
 Partie::Partie(string nomMap, int nbJoueurs):m_monFichier(nomMap)
 {
