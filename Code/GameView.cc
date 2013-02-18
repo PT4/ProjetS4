@@ -30,23 +30,23 @@ GameView::GameView(int width, int height): m_width(width), m_height(height), m_m
 	else if (!m_image_base_joueur1.LoadFromFile("images/BaseJoueur1.png") ||
 		 !m_image_base_joueur2.LoadFromFile("images/BaseJoueur2.png") ||
 		 !m_image_base_joueur3.LoadFromFile("images/BaseJoueur3.png") ||
-		 //!m_image_base_joueur4.LoadFromFile("images/BaseJoueur4.png") ||
+		 !m_image_base_joueur4.LoadFromFile("images/BaseJoueur4.png") ||
 		 !m_image_caserne_joueur1.LoadFromFile("images/CaserneJoueur1.png") ||
 		 !m_image_caserne_joueur2.LoadFromFile("images/CaserneJoueur2.png") ||
 		 !m_image_caserne_joueur3.LoadFromFile("images/CaserneJoueur3.png") ||
-		 //!m_image_caserne_joueur4.LoadFromFile("images/CaserneJoueur4.png") ||
+		 !m_image_caserne_joueur4.LoadFromFile("images/CaserneJoueur4.png") ||
 		 !m_image_entrepot_joueur1.LoadFromFile("images/EntrepotJoueur1.png") ||
 		 !m_image_entrepot_joueur2.LoadFromFile("images/EntrepotJoueur2.png") ||
 		 !m_image_entrepot_joueur3.LoadFromFile("images/EntrepotJoueur3.png") ||
-		 //!m_image_entrepot_joueur4.LoadFromFile("images/EntrepotJoueur4.png") ||
+		 !m_image_entrepot_joueur4.LoadFromFile("images/EntrepotJoueur4.png") ||
 		 !m_image_recolteur_joueur1.LoadFromFile("images/RecolteurJoueur1.png") ||
 		 !m_image_recolteur_joueur2.LoadFromFile("images/RecolteurJoueur2.png") ||
 		 !m_image_recolteur_joueur3.LoadFromFile("images/RecolteurJoueur3.png") ||
-		 //!m_image_recolteur_joueur4.LoadFromFile("images/RecolteurJoueur4.png") ||
+		 !m_image_recolteur_joueur4.LoadFromFile("images/RecolteurJoueur4.png") ||
 		 !m_image_soldat_joueur1.LoadFromFile("images/soldatJoueur1.png") ||
 		 !m_image_soldat_joueur2.LoadFromFile("images/soldatJoueur2.png") ||
 		 !m_image_soldat_joueur3.LoadFromFile("images/soldatJoueur3.png") ||
-		 //!m_image_soldat_joueur4.LoadFromFile("images/soldatJoueur4.png") ||
+		 !m_image_soldat_joueur4.LoadFromFile("images/soldatJoueur4.png") ||
 		 !m_image_bois.LoadFromFile("images/bois.png") ||
 		 !m_image_miel.LoadFromFile("images/miel.png") ||
 		 !m_image_herbe.LoadFromFile("images/herbe.png") ||
@@ -141,24 +141,26 @@ void GameView::declarationImages()
 
 		m_sprite_recolteur_joueur1 = Sprite(m_image_recolteur_joueur1);
 		m_sprite_recolteur_joueur2 = Sprite(m_image_recolteur_joueur2);
+		m_sprite_recolteur_joueur3 = Sprite(m_image_recolteur_joueur3);
+		m_sprite_recolteur_joueur4 = Sprite(m_image_recolteur_joueur4);
 
 		// Sprites
 		m_sprite_base_joueur1 = Sprite(m_image_base_joueur1);
 		m_sprite_base_joueur2 = Sprite(m_image_base_joueur2);
 		m_sprite_base_joueur3 = Sprite(m_image_base_joueur3);
-		//m_sprite_base_joueur4 = Sprite(m_image_base_joueur4);
+		m_sprite_base_joueur4 = Sprite(m_image_base_joueur4);
 		m_sprite_caserne_joueur1 = Sprite(m_image_caserne_joueur1);
 		m_sprite_caserne_joueur2 = Sprite(m_image_caserne_joueur2);
 		m_sprite_caserne_joueur3 = Sprite(m_image_caserne_joueur3);
-		//m_sprite_caserne_joueur4 = Sprite(m_image_caserne_joueur4);
+		m_sprite_caserne_joueur4 = Sprite(m_image_caserne_joueur4);
 		m_sprite_entrepot_joueur1 = Sprite(m_image_entrepot_joueur1);
 		m_sprite_entrepot_joueur2 = Sprite(m_image_entrepot_joueur2);
 		m_sprite_entrepot_joueur3 = Sprite(m_image_entrepot_joueur3);
-		//m_sprite_entrepot_joueur4 = Sprite(m_image_entrepot_joueur4);
+		m_sprite_entrepot_joueur4 = Sprite(m_image_entrepot_joueur4);
 		m_sprite_soldat_joueur1 = Sprite(m_image_soldat_joueur1);
 		m_sprite_soldat_joueur2 = Sprite(m_image_soldat_joueur2);
 		m_sprite_soldat_joueur3 = Sprite(m_image_soldat_joueur3);
-		//m_sprite_soldat_joueur4 = Sprite(m_image_soldat_joueur4);
+		m_sprite_soldat_joueur4 = Sprite(m_image_soldat_joueur4);
 		m_sprite_bois = Sprite(m_image_bois);
 		m_sprite_miel = Sprite(m_image_miel);
 		m_sprite_rocher = Sprite(m_image_rocher);
@@ -259,6 +261,18 @@ void GameView::affichageBaseJoueur(int i, int j)
 				m_sprite_base_joueur2.SetPosition(i*16,j*16);
 				m_window->Draw(m_sprite_base_joueur2);
 			}
+			else if(k==2 && j==m_model->getPartie()->getListeJoueurs()[k]->getListeBatiments()[l]->getI() && i==m_model->getPartie()->getListeJoueurs()[k]->getListeBatiments()[l]->getJ())
+			{
+				m_sprite_base_joueur3.Resize(16,16);
+				m_sprite_base_joueur3.SetPosition(i*16,j*16);
+				m_window->Draw(m_sprite_base_joueur3);
+			}
+			else if(k==3 && j==m_model->getPartie()->getListeJoueurs()[k]->getListeBatiments()[l]->getI() && i==m_model->getPartie()->getListeJoueurs()[k]->getListeBatiments()[l]->getJ())
+			{
+				m_sprite_base_joueur4.Resize(16,16);
+				m_sprite_base_joueur4.SetPosition(i*16,j*16);
+				m_window->Draw(m_sprite_base_joueur4);
+			}
 		}
 	}
 }
@@ -278,6 +292,16 @@ void GameView::affichageUnitesJoueur()
 					m_sprite_recolteur_joueur2.Resize(16,16);
 					m_sprite_recolteur_joueur2.SetPosition(m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getJ()*16,m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getI()*16);
 					m_window->Draw(m_sprite_recolteur_joueur2);
+					break;
+				case 2:
+					m_sprite_recolteur_joueur3.Resize(16,16);
+					m_sprite_recolteur_joueur3.SetPosition(m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getJ()*16,m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getI()*16);
+					m_window->Draw(m_sprite_recolteur_joueur3);
+					break;
+				case 3:
+					m_sprite_recolteur_joueur4.Resize(16,16);
+					m_sprite_recolteur_joueur4.SetPosition(m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getJ()*16,m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getI()*16);
+					m_window->Draw(m_sprite_recolteur_joueur4);
 					break;
 			}
 }
