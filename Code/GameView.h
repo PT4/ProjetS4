@@ -21,6 +21,8 @@ class GameView {
 
 		sf::RenderWindow * m_window;
 		sf::Font m_font;
+		
+		int m_selectionApercuCarte;
 
 		//Menu
 		sf::String m_option;
@@ -33,7 +35,6 @@ class GameView {
 		sf::String m_string_carte2;
 		std::string m_string_adresse_carte1;
 		std::string m_string_adresse_carte2;
-		sf::Shape m_miniMap;
 		sf::Image m_image_titre;
 		sf::Sprite m_sprite_titre;
 		sf::Image m_image_commencer;
@@ -42,8 +43,15 @@ class GameView {
 		sf::Sprite m_sprite_nouvellePartie;
 		sf::Image m_image_quitter;
 		sf::Sprite m_sprite_quitter;
+		sf::Image m_image_apercuVide;
+		sf::Sprite m_sprite_apercuVide;
+		sf::Image m_image_apercuMC;
+		sf::Sprite m_sprite_apercuMC;
+		sf::Image m_image_apercuDP;
+		sf::Sprite m_sprite_apercuDP;
 
 
+		// Déclaration des images et des sprites
 		sf::Image m_image_base_joueur1;
 		sf::Image m_image_base_joueur2;
 		sf::Image m_image_base_joueur3;
@@ -104,7 +112,7 @@ class GameView {
         void verificationInformations();
 		void draw();
 		void declarationImages();
-		void affichageCarte(bool apercu);
+		void affichageCarte();
 		void affichageBaseJoueur(int i, int j);
 		void affichageUnitesJoueur();
 		std::string selectionOptionMenu(sf::String selection);
