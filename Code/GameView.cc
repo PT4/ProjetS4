@@ -406,14 +406,22 @@ bool GameView::treatEvents()
 			}
 			if (!m_menu)
 			{
-				if ((event.Type == sf::Event::KeyPressed) && (event.Key.Code == sf::Key::Z))
-					m_ecranJeu.Move(0, -10);
-				else if ((event.Type == sf::Event::KeyPressed) && (event.Key.Code == sf::Key::S))
-					m_ecranJeu.Move(0, 10);
-				else if ((event.Type == sf::Event::KeyPressed) && (event.Key.Code == sf::Key::D))
-					m_ecranJeu.Move(10, 0);
-				else if ((event.Type == sf::Event::KeyPressed) && (event.Key.Code == sf::Key::Q))
-					m_ecranJeu.Move(-10, 0);
+				if ((event.Type == sf::Event::KeyPressed) && ((event.Key.Code == sf::Key::Z) || (event.Key.Code == sf::Key::Up))) {
+					if (m_ecranJeu.GetCenter().y > 100)
+						m_ecranJeu.Move(0, -10);
+				}
+				else if ((event.Type == sf::Event::KeyPressed) && ((event.Key.Code == sf::Key::S) || (event.Key.Code == sf::Key::Down))) {
+					if (m_ecranJeu.GetCenter().y < 700)
+						m_ecranJeu.Move(0, 10);
+				}
+				else if ((event.Type == sf::Event::KeyPressed) && ((event.Key.Code == sf::Key::D) || (event.Key.Code == sf::Key::Right))) {
+					if (m_ecranJeu.GetCenter().x < 700)
+						m_ecranJeu.Move(10, 0);
+				}
+				else if ((event.Type == sf::Event::KeyPressed) && ((event.Key.Code == sf::Key::Q) || (event.Key.Code == sf::Key::Left))) {
+					if (m_ecranJeu.GetCenter().x > 100)
+						m_ecranJeu.Move(-10, 0);
+				}
 			}
 		}
 	}
@@ -427,6 +435,20 @@ void GameView::verificationInformations()
         m_menu = false;
         m_model -> creerPartie (m_selectionNbJoueurs,m_selectionCarte);
         m_window->SetView(m_ecranJeu);
+        
+        if (m_model->getPartie()->getListeJoueurs()[0]->getListeBatiments()[0]->getJ() == 3) {
+			if (m_model->getPartie()->getListeJoueurs()[0]->getListeBatiments()[0]->getI() == 3)
+				m_ecranJeu.SetCenter(100,100);
+			else if (m_model->getPartie()->getListeJoueurs()[0]->getListeBatiments()[0]->getI() == 46)
+				m_ecranJeu.SetCenter(100,700);
+		}
+		else if (m_model->getPartie()->getListeJoueurs()[0]->getListeBatiments()[0]->getJ() == 46) {
+			if (m_model->getPartie()->getListeJoueurs()[0]->getListeBatiments()[0]->getI() == 3)
+				m_ecranJeu.SetCenter(700,100);
+			else if (m_model->getPartie()->getListeJoueurs()[0]->getListeBatiments()[0]->getI() == 46)
+				m_ecranJeu.SetCenter(700,700);
+		}
+		
         m_ecranJeu.Zoom(4);
     }
 }
