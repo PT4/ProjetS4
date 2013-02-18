@@ -29,14 +29,24 @@ GameView::GameView(int width, int height): m_width(width), m_height(height), m_m
 	// chargement des images
 	else if (!m_image_base_joueur1.LoadFromFile("images/BaseJoueur1.png") ||
 		 !m_image_base_joueur2.LoadFromFile("images/BaseJoueur2.png") ||
+		 !m_image_base_joueur3.LoadFromFile("images/BaseJoueur3.png") ||
+		 //!m_image_base_joueur4.LoadFromFile("images/BaseJoueur4.png") ||
 		 !m_image_caserne_joueur1.LoadFromFile("images/CaserneJoueur1.png") ||
 		 !m_image_caserne_joueur2.LoadFromFile("images/CaserneJoueur2.png") ||
+		 !m_image_caserne_joueur3.LoadFromFile("images/CaserneJoueur3.png") ||
+		 //!m_image_caserne_joueur4.LoadFromFile("images/CaserneJoueur4.png") ||
 		 !m_image_entrepot_joueur1.LoadFromFile("images/EntrepotJoueur1.png") ||
 		 !m_image_entrepot_joueur2.LoadFromFile("images/EntrepotJoueur2.png") ||
+		 !m_image_entrepot_joueur3.LoadFromFile("images/EntrepotJoueur3.png") ||
+		 //!m_image_entrepot_joueur4.LoadFromFile("images/EntrepotJoueur4.png") ||
 		 !m_image_recolteur_joueur1.LoadFromFile("images/RecolteurJoueur1.png") ||
 		 !m_image_recolteur_joueur2.LoadFromFile("images/RecolteurJoueur2.png") ||
+		 !m_image_recolteur_joueur3.LoadFromFile("images/RecolteurJoueur3.png") ||
+		 //!m_image_recolteur_joueur4.LoadFromFile("images/RecolteurJoueur4.png") ||
 		 !m_image_soldat_joueur1.LoadFromFile("images/soldatJoueur1.png") ||
 		 !m_image_soldat_joueur2.LoadFromFile("images/soldatJoueur2.png") ||
+		 !m_image_soldat_joueur3.LoadFromFile("images/soldatJoueur3.png") ||
+		 //!m_image_soldat_joueur4.LoadFromFile("images/soldatJoueur4.png") ||
 		 !m_image_bois.LoadFromFile("images/bois.png") ||
 		 !m_image_miel.LoadFromFile("images/miel.png") ||
 		 !m_image_herbe.LoadFromFile("images/herbe.png") ||
@@ -135,12 +145,20 @@ void GameView::declarationImages()
 		// Sprites
 		m_sprite_base_joueur1 = Sprite(m_image_base_joueur1);
 		m_sprite_base_joueur2 = Sprite(m_image_base_joueur2);
+		m_sprite_base_joueur3 = Sprite(m_image_base_joueur3);
+		//m_sprite_base_joueur4 = Sprite(m_image_base_joueur4);
 		m_sprite_caserne_joueur1 = Sprite(m_image_caserne_joueur1);
 		m_sprite_caserne_joueur2 = Sprite(m_image_caserne_joueur2);
+		m_sprite_caserne_joueur3 = Sprite(m_image_caserne_joueur3);
+		//m_sprite_caserne_joueur4 = Sprite(m_image_caserne_joueur4);
 		m_sprite_entrepot_joueur1 = Sprite(m_image_entrepot_joueur1);
 		m_sprite_entrepot_joueur2 = Sprite(m_image_entrepot_joueur2);
+		m_sprite_entrepot_joueur3 = Sprite(m_image_entrepot_joueur3);
+		//m_sprite_entrepot_joueur4 = Sprite(m_image_entrepot_joueur4);
 		m_sprite_soldat_joueur1 = Sprite(m_image_soldat_joueur1);
 		m_sprite_soldat_joueur2 = Sprite(m_image_soldat_joueur2);
+		m_sprite_soldat_joueur3 = Sprite(m_image_soldat_joueur3);
+		//m_sprite_soldat_joueur4 = Sprite(m_image_soldat_joueur4);
 		m_sprite_bois = Sprite(m_image_bois);
 		m_sprite_miel = Sprite(m_image_miel);
 		m_sprite_rocher = Sprite(m_image_rocher);
@@ -309,7 +327,7 @@ void GameView::draw()
 string GameView::selectionOptionMenu(sf::String selection)
 {
 	// Tests sur le nombre de joueurs
-	if (selection.GetColor() == Color::White) {
+	if (selection.GetColor() != Color(255,216,43)) {
 		if ((((string)selection.GetText()).compare((string)m_string_joueur2.GetText()))==0) {
 			m_string_joueur2.SetColor(sf::Color(255,216,43));
 			m_string_joueur3.SetColor(sf::Color::White);
@@ -390,7 +408,7 @@ bool GameView::treatEvents()
 							m_selectionNbJoueurs = convertString(selectionOptionMenu(m_string_joueur3));
 					else if (mouse_x >= 550 && mouse_x <= 570 && mouse_y >= 450 && mouse_y <= 470)
 							m_selectionNbJoueurs = convertString(selectionOptionMenu(m_string_joueur4));
-					else if (mouse_x >= 300 && mouse_x <= 420 && mouse_y >= 550 && mouse_y <= 570) {
+					else if (mouse_x >= 300 && mouse_x <= 480 && mouse_y >= 550 && mouse_y <= 570) {
 							m_selectionCarte = (selectionOptionMenu(m_string_carte1));
 							m_selectionCarte = m_string_adresse_carte1;
 					}
@@ -420,6 +438,8 @@ bool GameView::treatEvents()
 	return result;
 }
 
+//Verification lors du clic sur "commencer" si toute les infos sont valident
+
 void GameView::verificationInformations()
 {
     if (m_selectionNbJoueurs > 1 && m_selectionCarte != "")
@@ -429,4 +449,17 @@ void GameView::verificationInformations()
         m_window->SetView(m_ecranJeu);
         m_ecranJeu.Zoom(4);
     }
+    
+    if (m_selectionNbJoueurs == 1)
+    {
+		m_string_joueur4.SetColor(sf::Color::Red);
+		m_string_joueur3.SetColor(sf::Color::Red);
+		m_string_joueur2.SetColor(sf::Color::Red);
+	}
+	
+	if (m_selectionCarte == "")
+	{
+		m_string_carte1.SetColor(sf::Color::Red);
+		m_string_carte2.SetColor(sf::Color::Red);
+	}
 }
