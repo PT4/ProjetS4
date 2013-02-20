@@ -101,6 +101,8 @@ class GameView {
 		sf::Sprite m_sprite_herbe;
 		sf::Sprite m_sprite_miel;
 		sf::Sprite m_sprite_rocher;
+		
+		sf::Shape m_barreInfo;
 
 	public:
 		GameView(int width, int height);

@@ -92,61 +92,60 @@ void GameView::declarationImages()
 		m_sprite_apercuMC = Sprite(m_image_apercuMC);
 		m_sprite_apercuDP = Sprite(m_image_apercuDP);
 
-		m_sprite_apercuVide.SetPosition(300, 100);
-		m_sprite_apercuMC.SetPosition(300, 100);
-		m_sprite_apercuDP.SetPosition(300, 100);
+		m_sprite_apercuVide.SetPosition(400, 100);
+		m_sprite_apercuMC.SetPosition(400, 100);
+		m_sprite_apercuDP.SetPosition(400, 100);
 		
 		m_option.SetText(L"Option de la partie");
 		m_option.SetFont(m_font);
 		m_option.SetSize(60);
 		m_option.SetColor(sf::Color(255,204,0));
-		m_option.SetPosition(150,12);
-		
+		m_option.SetPosition(250,12);
 
 		m_nbJoueurs.SetText("Nombre de joueurs :");
 		m_nbJoueurs.SetFont(m_font);
 		m_nbJoueurs.SetSize(30);
 		m_nbJoueurs.SetColor(sf::Color(255,204,0));
-		m_nbJoueurs.SetPosition(50,400);
+		m_nbJoueurs.SetPosition(150,400);
 
 		m_nomCarte.SetText("Choix de la carte :");
 		m_nomCarte.SetFont(m_font);
 		m_nomCarte.SetSize(30);
 		m_nomCarte.SetColor(sf::Color(255,204,0));
-		m_nomCarte.SetPosition(50,500);
+		m_nomCarte.SetPosition(150,500);
 
 		m_string_joueur2.SetText("2");
-		m_string_joueur2.SetPosition(250, 450);
+		m_string_joueur2.SetPosition(350, 450);
 		m_string_joueur2.SetFont(m_font);
 		m_string_joueur2.SetSize(20);
 		m_string_joueur2.SetColor(sf::Color::White);
 
 		m_string_joueur3.SetText("3");
-		m_string_joueur3.SetPosition(400, 450);
+		m_string_joueur3.SetPosition(500, 450);
 		m_string_joueur3.SetFont(m_font);
 		m_string_joueur3.SetSize(20);
 		m_string_joueur3.SetColor(sf::Color::White);
 
 		m_string_joueur4.SetText("4");
-		m_string_joueur4.SetPosition(550, 450);
+		m_string_joueur4.SetPosition(650, 450);
 		m_string_joueur4.SetFont(m_font);
 		m_string_joueur4.SetSize(20);
 		m_string_joueur4.SetColor(sf::Color::White);
 
 		m_string_carte1.SetText("Maitre de la Colline");
-		m_string_carte1.SetPosition(300, 550);
+		m_string_carte1.SetPosition(400, 550);
 		m_string_carte1.SetFont(m_font);
 		m_string_carte1.SetSize(20);
 		m_string_carte1.SetColor(sf::Color::White);
 
 		m_string_carte2.SetText("Les Deux Passes");
-		m_string_carte2.SetPosition(300, 600);
+		m_string_carte2.SetPosition(400, 600);
 		m_string_carte2.SetFont(m_font);
 		m_string_carte2.SetSize(20);
 		m_string_carte2.SetColor(sf::Color::White);
 
 		m_sprite_commencer = Sprite(m_image_commencer);
-		m_sprite_commencer.SetPosition(270,680);
+		m_sprite_commencer.SetPosition(370,680);
 
 		m_sprite_recolteur_joueur1 = Sprite(m_image_recolteur_joueur1);
 		m_sprite_recolteur_joueur2 = Sprite(m_image_recolteur_joueur2);
@@ -173,16 +172,20 @@ void GameView::declarationImages()
 		m_sprite_bois = Sprite(m_image_bois);
 		m_sprite_miel = Sprite(m_image_miel);
 		m_sprite_rocher = Sprite(m_image_rocher);
+		
+		m_barreInfo = Shape::Rectangle(800, 0, 1000, 800, Color(192,192,192));
+
 
 		// Menu Titre
 		m_sprite_titre = Sprite(m_image_titre);
+		m_sprite_titre.Resize(1000,800);
 		m_sprite_titre.SetPosition(0, 0);
 
 		m_sprite_nouvellePartie = Sprite (m_image_nouvellePartie);
-		m_sprite_nouvellePartie.SetPosition(200, 400);
+		m_sprite_nouvellePartie.SetPosition(300, 400);
 
 		m_sprite_quitter = Sprite (m_image_quitter);
-		m_sprite_quitter.SetPosition(200, 600);
+		m_sprite_quitter.SetPosition(300, 600);
 		
 }
 
@@ -295,8 +298,8 @@ void GameView::draw()
 		else if (m_optionMenu) {
 			for (int i=0; i<TAILLE_MAP ; i++)
 				for (int j=0 ; j<TAILLE_MAP ; j++) {
-					m_sprite_herbe.Resize(16,16);
-					m_sprite_herbe.SetPosition(i*16,j*16);
+					m_sprite_herbe.Resize(20,16);
+					m_sprite_herbe.SetPosition(i*20,j*16);
 					m_window->Draw(m_sprite_herbe);
 				}
 			m_window->Draw(m_option);
@@ -391,13 +394,13 @@ bool GameView::treatEvents()
 
 			if (m_menu && !m_optionMenu) {
 				// Bouton nouvelle partie
-				if (mouse_x >= 200 && mouse_x <= 580 && mouse_y >= 400 && mouse_y <= 530)
+				if (mouse_x >= 300 && mouse_x <= 680 && mouse_y >= 400 && mouse_y <= 530)
 				{
 					if (event.Type == Event::MouseButtonPressed && event.MouseButton.Button == Mouse::Left)
 						m_optionMenu = true;
 				}
 				// Bouton quitter
-				else if (mouse_x >= 200 && mouse_x <= 578 && mouse_y >= 600 && mouse_y <= 723)
+				else if (mouse_x >= 300 && mouse_x <= 678 && mouse_y >= 600 && mouse_y <= 723)
 				{
 					if (event.Type == Event::MouseButtonPressed && event.MouseButton.Button == Mouse::Left)
 					{
@@ -412,24 +415,24 @@ bool GameView::treatEvents()
 
 			// Gestion des clics du nombre de joueur
 				if (event.Type == Event::MouseButtonPressed && event.MouseButton.Button == Mouse::Left) {
-					if (mouse_x >= 250 && mouse_x <= 270 && mouse_y >= 450 && mouse_y <= 470)
+					if (mouse_x >= 350 && mouse_x <= 370 && mouse_y >= 450 && mouse_y <= 470)
 							m_selectionNbJoueurs = convertString(selectionOptionMenu(m_string_joueur2));
-					else if (mouse_x >= 400 && mouse_x <= 420 && mouse_y >= 450 && mouse_y <= 470)
+					else if (mouse_x >= 500 && mouse_x <= 520 && mouse_y >= 450 && mouse_y <= 470)
 							m_selectionNbJoueurs = convertString(selectionOptionMenu(m_string_joueur3));
-					else if (mouse_x >= 550 && mouse_x <= 570 && mouse_y >= 450 && mouse_y <= 470)
+					else if (mouse_x >= 650 && mouse_x <= 670 && mouse_y >= 450 && mouse_y <= 470)
 							m_selectionNbJoueurs = convertString(selectionOptionMenu(m_string_joueur4));
-					else if (mouse_x >= 300 && mouse_x <= 480 && mouse_y >= 550 && mouse_y <= 570) {
+					else if (mouse_x >= 400 && mouse_x <= 580 && mouse_y >= 550 && mouse_y <= 570) {
 							m_selectionCarte = (selectionOptionMenu(m_string_carte1));
 							m_selectionCarte = m_string_adresse_carte1;
 							m_selectionApercuCarte = 1;
 					}
-					else if (mouse_x >= 300 && mouse_x <= 570 && mouse_y >= 600 && mouse_y <= 620) {
+					else if (mouse_x >= 400 && mouse_x <= 570 && mouse_y >= 600 && mouse_y <= 620) {
 							m_selectionCarte = (selectionOptionMenu(m_string_carte2));
 							m_selectionCarte = m_string_adresse_carte2;
 							m_selectionApercuCarte = 2;
 					}
 			// Gestion du clic sur le bouton commencer
-					else if (mouse_x >= 270 && mouse_x <= 539 && mouse_y >= 680 && mouse_y <= 769) {
+					else if (mouse_x >= 370 && mouse_x <= 639 && mouse_y >= 680 && mouse_y <= 769) {
                         verificationInformations();
 					}
 				}
@@ -445,12 +448,16 @@ bool GameView::treatEvents()
 						m_ecranJeu.Move(0, 10);
 				}
 				else if ((event.Type == sf::Event::KeyPressed) && ((event.Key.Code == sf::Key::D) || (event.Key.Code == sf::Key::Right))) {
-					if (m_ecranJeu.GetCenter().x < 700)
+					if (m_ecranJeu.GetCenter().x < 670)
 						m_ecranJeu.Move(10, 0);
+					else if (m_ecranJeu.GetCenter().x <= 670 && m_ecranJeu.GetCenter().x > 680)
+						m_ecranJeu.SetCenter(675, m_ecranJeu.GetCenter().y);
 				}
 				else if ((event.Type == sf::Event::KeyPressed) && ((event.Key.Code == sf::Key::Q) || (event.Key.Code == sf::Key::Left))) {
-					if (m_ecranJeu.GetCenter().x > 100)
+					if (m_ecranJeu.GetCenter().x > 130)
 						m_ecranJeu.Move(-10, 0);
+					else if (m_ecranJeu.GetCenter().x <= 130 && m_ecranJeu.GetCenter().x > 120)
+						m_ecranJeu.SetCenter(125, m_ecranJeu.GetCenter().y);
 				}
 			}
 		}
@@ -470,15 +477,15 @@ void GameView::verificationInformations()
         
         if (m_model->getPartie()->getListeJoueurs()[0]->getListeBatiments()[0]->getJ() == 3) {
 			if (m_model->getPartie()->getListeJoueurs()[0]->getListeBatiments()[0]->getI() == 3)
-				m_ecranJeu.SetCenter(100,100);
+				m_ecranJeu.SetCenter(125,100);
 			else if (m_model->getPartie()->getListeJoueurs()[0]->getListeBatiments()[0]->getI() == 46)
-				m_ecranJeu.SetCenter(100,700);
+				m_ecranJeu.SetCenter(125,700);
 		}
 		else if (m_model->getPartie()->getListeJoueurs()[0]->getListeBatiments()[0]->getJ() == 46) {
 			if (m_model->getPartie()->getListeJoueurs()[0]->getListeBatiments()[0]->getI() == 3)
-				m_ecranJeu.SetCenter(700,100);
+				m_ecranJeu.SetCenter(675,100);
 			else if (m_model->getPartie()->getListeJoueurs()[0]->getListeBatiments()[0]->getI() == 46)
-				m_ecranJeu.SetCenter(700,700);
+				m_ecranJeu.SetCenter(675,700);
 		}
 		
         m_ecranJeu.Zoom(4);

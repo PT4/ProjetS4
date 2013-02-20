@@ -2,8 +2,12 @@
 #define _CONSTANTES_H_
 
 //Initialisation de la fenêtre
-const int LARGEUR_FENETRE=800;
+const int LARGEUR_FENETRE=1000;
 const int HAUTEUR_FENETRE=800;
+
+//Initialisation de la taille de la barre d'informations (ressources,..)
+const int LARGEUR_BARRE=200;
+const int HAUTEUR_BARRE=1000;
 
 //Initialisation des propriétés du joueurs
 const int NB_JOUEURS_MAX=2;
