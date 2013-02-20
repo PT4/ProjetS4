@@ -173,8 +173,7 @@ void GameView::declarationImages()
 		m_sprite_miel = Sprite(m_image_miel);
 		m_sprite_rocher = Sprite(m_image_rocher);
 		
-		m_barreInfo = Shape::Rectangle(800, 0, 1000, 800, Color(192,192,192));
-
+		m_barreInfo = Shape::Rectangle(0, 0, 50, 200, Color(91,53,12));
 
 		// Menu Titre
 		m_sprite_titre = Sprite(m_image_titre);
@@ -332,6 +331,9 @@ void GameView::draw()
 		m_window->Clear(sf::Color::Black);
 		this->affichageCarte();
 		this->affichageUnitesJoueur();
+		m_barreInfo.SetPosition(m_ecranJeu.GetCenter().x+75,m_ecranJeu.GetCenter().y-100);
+		cout << m_barreInfo.GetCenter().x << " "<< m_barreInfo.GetCenter().y <<endl;
+		m_window -> Draw (m_barreInfo);
 	}
 	m_window->Display();
 }
@@ -448,7 +450,7 @@ bool GameView::treatEvents()
 						m_ecranJeu.Move(0, 10);
 				}
 				else if ((event.Type == sf::Event::KeyPressed) && ((event.Key.Code == sf::Key::D) || (event.Key.Code == sf::Key::Right))) {
-					if (m_ecranJeu.GetCenter().x < 670)
+					if (m_ecranJeu.GetCenter().x < 720)
 						m_ecranJeu.Move(10, 0);
 					else if (m_ecranJeu.GetCenter().x <= 670 && m_ecranJeu.GetCenter().x > 680)
 						m_ecranJeu.SetCenter(675, m_ecranJeu.GetCenter().y);
@@ -483,9 +485,9 @@ void GameView::verificationInformations()
 		}
 		else if (m_model->getPartie()->getListeJoueurs()[0]->getListeBatiments()[0]->getJ() == 46) {
 			if (m_model->getPartie()->getListeJoueurs()[0]->getListeBatiments()[0]->getI() == 3)
-				m_ecranJeu.SetCenter(675,100);
+				m_ecranJeu.SetCenter(725,100);
 			else if (m_model->getPartie()->getListeJoueurs()[0]->getListeBatiments()[0]->getI() == 46)
-				m_ecranJeu.SetCenter(675,700);
+				m_ecranJeu.SetCenter(725,700);
 		}
 		
         m_ecranJeu.Zoom(4);
