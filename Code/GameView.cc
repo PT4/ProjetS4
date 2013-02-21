@@ -173,7 +173,7 @@ void GameView::declarationImages()
 		m_sprite_miel = Sprite(m_image_miel);
 		m_sprite_rocher = Sprite(m_image_rocher);
 		
-		m_barreInfo = Shape::Rectangle(0, 0, 50, 200, Color(91,53,12));
+		m_barreInfo = Shape::Rectangle(0, 0, 50, 200, Color(192,192,192));
 
 		// Menu Titre
 		m_sprite_titre = Sprite(m_image_titre);
@@ -331,13 +331,9 @@ void GameView::draw()
 		m_window->Clear(sf::Color::Black);
 		this->affichageCarte();
 		this->affichageUnitesJoueur();
-<<<<<<< HEAD
 		m_window->Draw(m_selection);
-=======
 		m_barreInfo.SetPosition(m_ecranJeu.GetCenter().x+75,m_ecranJeu.GetCenter().y-100);
-		cout << m_barreInfo.GetCenter().x << " "<< m_barreInfo.GetCenter().y <<endl;
 		m_window -> Draw (m_barreInfo);
->>>>>>> 8cb4c21447c5bfb01d66fc9157a3ee9149a5b0d9
 	}
 	m_window->Display();
 }
@@ -472,7 +468,7 @@ bool GameView::treatEvents()
 					//~ selectionUnites(mouse_x,mouse_y);
 					//~ for (int i=0, i<m_model->getPartie()->getListeJoueurs()[0]->getListeUnites().size(); i++)
 						//~ if (m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[i]->getJ() < 
-					cout << mouse_x << endl;
+					cout << (((mouse_x/4)+m_ecranJeu.GetCenter().x)/16)-8 << " " << ((mouse_y/4+m_ecranJeu.GetCenter().y)/16) << endl;
 				}
 				
 			}
