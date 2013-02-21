@@ -332,6 +332,7 @@ void GameView::draw()
 		m_window->Clear(sf::Color::Black);
 		this->affichageCarte();
 		this->affichageUnitesJoueur();
+		m_window->Draw(m_selection);
 	}
 	m_window->Display();
 }
@@ -439,6 +440,7 @@ bool GameView::treatEvents()
 			}
 			if (!m_menu)
 			{
+				// Déplacement de la vue sur la map
 				if ((event.Type == sf::Event::KeyPressed) && ((event.Key.Code == sf::Key::Z) || (event.Key.Code == sf::Key::Up))) {
 					if (m_ecranJeu.GetCenter().y > 100)
 						m_ecranJeu.Move(0, -10);
@@ -459,6 +461,15 @@ bool GameView::treatEvents()
 					else if (m_ecranJeu.GetCenter().x <= 130 && m_ecranJeu.GetCenter().x > 120)
 						m_ecranJeu.SetCenter(125, m_ecranJeu.GetCenter().y);
 				}
+				
+				// Sélection des unités avec un clic
+				if (event.Type == Event::MouseButtonPressed && event.MouseButton.Button == Mouse::Left) {
+					//~ selectionUnites(mouse_x,mouse_y);
+					//~ for (int i=0, i<m_model->getPartie()->getListeJoueurs()[0]->getListeUnites().size(); i++)
+						//~ if (m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[i]->getJ() < 
+					cout << mouse_x << endl;
+				}
+				
 			}
 		}
 	}
@@ -503,4 +514,16 @@ void GameView::verificationInformations()
 		m_string_carte1.SetColor(sf::Color::Red);
 		m_string_carte2.SetColor(sf::Color::Red);
 	}
+}
+
+void GameView::selectionUnites(int selectionDebutX, int selectionUnitesY) {
+	const sf::Input& input = m_window->GetInput();
+
+	sf::Event event;
+	int mouse_x = input.GetMouseX();
+	int mouse_y = input.GetMouseY();
+	do {
+		cout << "Coucou Emiles while clic enfoncé" << endl;
+		m_selection = Shape::Rectangle(selectionDebutX/4, selectionUnitesY/4, mouse_x/4, mouse_y/4, Color(192,192,192));
+	} while (event.Type == Event::MouseButtonReleased && event.MouseButton.Button == Mouse::Left);
 }

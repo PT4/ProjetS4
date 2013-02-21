@@ -15,6 +15,9 @@ class GameView {
 		bool m_menu, m_optionMenu;
 		GameModel * m_model;
 		sf::View m_ecranJeu;
+		
+		std::vector<Unite *> uniteSelectionnees;
+		sf::Shape m_selection;
 
 		int m_selectionNbJoueurs;
         std::string m_selectionCarte;
@@ -119,5 +122,7 @@ class GameView {
 		void affichageUnitesJoueur();
 		std::string selectionOptionMenu(sf::String selection);
 		bool treatEvents();
+		void selectionUnites(int selectionDebutX, int selectionUnitesY);
+		
 };
 #endif
