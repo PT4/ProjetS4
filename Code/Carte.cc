@@ -1,10 +1,15 @@
 #include "Carte.h"
-#include "Constantes.h"
+#include "Joueur.h"
+#include "Ressource.h"
+#include "Obstacle.h"
+#include "EmplacementDepart.h"
+#include "Unite.h"
+#include "Batiment.h"
 
-#include <iostream>
 #include <cstdlib>
 #include <fstream>
 #include <SFML/System.hpp>
+#include <iostream>
 
 using namespace std;
 using namespace sf;

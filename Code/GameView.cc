@@ -1,9 +1,15 @@
-#include <cstdlib>
-#include <iostream>
-#include <sstream>
 #include "GameView.h"
 #include "GameModel.h"
 #include "Constantes.h"
+#include "Partie.h"
+#include "Joueur.h"
+#include "Batiment.h"
+#include "Unite.h"
+#include "Carte.h"
+
+#include <cstdlib>
+#include <sstream>
+#include <iostream>
 
 using namespace std;
 using namespace sf;

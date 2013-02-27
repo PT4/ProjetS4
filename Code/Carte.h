@@ -2,13 +2,15 @@
 #define _CARTE_H_
 
 #include "Constantes.h"
-#include "Joueur.h"
-#include "Ressource.h"
-#include "Obstacle.h"
-#include "EmplacementDepart.h"
 
 #include <string>
 #include <vector>
+
+
+class Joueur;
+class Ressource;
+class Obstacle;
+class EmplacementDepart;
 
 class Carte {
 	

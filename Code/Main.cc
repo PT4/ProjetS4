@@ -5,9 +5,6 @@
 #include "GameView.h"
 #include "Constantes.h"
 
-#include "Soldat.h"
-#include "Entrepot.h"
-
 using namespace std;
 using namespace sf;
 

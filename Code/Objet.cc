@@ -1,7 +1,5 @@
 #include "Objet.h"
 
-#include <iostream>
-
 using namespace std;
 
 //Constructeurs

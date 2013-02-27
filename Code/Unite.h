@@ -3,8 +3,6 @@
 
 #include "Entite.h"
 
-#include <string>
-
 class Unite: public Entite {
 	
 	protected:

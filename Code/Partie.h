@@ -1,11 +1,11 @@
 #ifndef _PARTIE_H_
 #define _PARTIE_H_
 
-#include "Carte.h"
-#include "Joueur.h"
-
-#include <cstring>
+#include <string>
 #include <vector>
+
+class Carte;
+class Joueur;
 
 class Partie {
 	

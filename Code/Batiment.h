@@ -3,8 +3,6 @@
 
 #include "Entite.h"
 
-#include <string>
-
 class Batiment: public Entite {
 	
 	protected:

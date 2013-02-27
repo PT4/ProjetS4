@@ -1,6 +1,5 @@
 #include "Entite.h"
 
-#include <string>
 #include <cstdlib>
 
 using namespace std;

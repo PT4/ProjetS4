@@ -2,8 +2,7 @@
 #include "Constantes.h"
 
 #include <cstdlib>
-#include <string>
-#include <iostream>
+
 using namespace std;
 
 //Constructeurs

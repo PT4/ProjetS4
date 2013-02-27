@@ -2,6 +2,7 @@
 #define _ENTITE_H_
 
 #include "Objet.h"
+
 #include <string>
 
 class Entite : public Objet {

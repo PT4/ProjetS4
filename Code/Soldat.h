@@ -3,8 +3,6 @@
 
 #include "Unite.h"
 
-#include <string>
-
 class Soldat: public Unite {
 	
 	private:

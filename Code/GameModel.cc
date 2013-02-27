@@ -1,10 +1,7 @@
 #include "GameModel.h"
 #include "Constantes.h"
+#include "Partie.h"
 
-#include "Soldat.h"
-#include "Entrepot.h"
-
-#include <iostream>
 #include <fstream>
 
 using namespace std;

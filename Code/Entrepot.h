@@ -2,7 +2,6 @@
 #define _ENTREPOT_H_
 
 #include "Batiment.h"
-#include "Joueur.h"
 
 class Entrepot: public Batiment {
 	

@@ -1,7 +1,8 @@
 #include "Partie.h"
+#include "Carte.h"
+#include "Joueur.h"
 
 #include <cstdlib>
-#include <iostream>
 
 using namespace std;
 

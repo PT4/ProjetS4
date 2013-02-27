@@ -1,12 +1,13 @@
 #ifndef _GAMEVIEW_H_
 #define _GAMEVIEW_H_
 
-#include "GameModel.h"
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 #include <sstream>
 #include <fstream>
 #include <string>
+
+class GameModel;
 
 
 class GameView {

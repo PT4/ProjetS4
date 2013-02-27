@@ -1,10 +1,16 @@
 #include "Joueur.h"
-#include "Recolteur.h"
 #include "Constantes.h"
+#include "Base.h"
+#include "Caserne.h"
+#include "Entrepot.h"
+#include "Recolteur.h"
+#include "Soldat.h"
+#include "Unite.h"
+#include "Batiment.h"
 
 #include <cstdlib>
 #include <vector>
-#include <iostream>
+
 using namespace std;
 
 //Constructeurs

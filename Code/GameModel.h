@@ -3,7 +3,7 @@
 
 #include <SFML/System.hpp>
 
-#include "Partie.h"
+class Partie;
 
 
 class GameModel : private sf::Thread{

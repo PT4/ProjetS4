@@ -1,7 +1,5 @@
 #include "Batiment.h"
 
-#include <string>
-
 using namespace std;
 
 //Contructeurs

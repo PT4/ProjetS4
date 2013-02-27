@@ -1,14 +1,11 @@
 #ifndef _JOUEUR_H_
 #define _JOUEUR_H_
 
-#include "Recolteur.h"
-#include "Soldat.h"
-#include "Base.h"
-#include "Entrepot.h"
-#include "Caserne.h"
-
 #include <string>
 #include <vector>
+
+class Unite;
+class Batiment;
 
 class Joueur {
 	
