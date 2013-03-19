@@ -25,5 +25,6 @@ class GameModel : private sf::Thread{
 		bool getThread() const;
         bool setThread ();
         void creerPartie(int nbJoueur, std::string carte);
+
 };
 #endif

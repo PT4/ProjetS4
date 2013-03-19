@@ -75,3 +75,5 @@ void GameModel::creerPartie(int nbJoueur, string carte)
     Partie * p = new Partie (carte,nbJoueur);
     setPartie(p);
 }
+
+

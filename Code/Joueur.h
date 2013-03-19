@@ -16,6 +16,7 @@ class Joueur {
 		int m_population;
 		std::vector<Unite*> m_listeUnites;
 		std::vector<Batiment*> m_listeBatiments;
+		std::vector<Unite*> m_selection;
 		
 	public:
 		Joueur();
@@ -24,6 +25,9 @@ class Joueur {
 		std::vector<Unite*> getListeUnites() const;
 		void ajouterBatiment(int type, int i, int j);
 		void ajouterUnite(int type, int i, int j);
+		void inverseCoordonnee(double &a,double &b);
+		void remplirSelection(double clicX, double clicY, double clicTempX, double clicTempY);
+		void viderSelection();
 };
 
 #endif

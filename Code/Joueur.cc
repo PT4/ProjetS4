@@ -9,6 +9,8 @@
 #include "Batiment.h"
 
 #include <cstdlib>
+#include <sstream>
+#include <iostream>
 #include <vector>
 
 using namespace std;
@@ -66,4 +68,37 @@ void Joueur::ajouterUnite(int type, int i, int j)
 		case 2: m_listeUnites.push_back(new Soldat(i, j)); break;
 		default: break;
 	}
+}
+
+void Joueur::viderSelection()
+{
+	m_selection.clear();
+}
+
+void Joueur::inverseCoordonnee(double &a,double &b)
+{
+	double temp = 0;
+	temp = a;
+	a  = b;
+	b = temp;
+}
+
+void Joueur::remplirSelection(double clicX, double clicY, double clicTempX, double clicTempY)
+{
+	
+	if (clicX > clicTempX)
+		inverseCoordonnee(clicX,clicTempX);
+	if (clicY > clicTempY)
+		inverseCoordonnee(clicY,clicTempY);
+		
+	for (int i = 0; i < m_listeUnites.size();i++)
+	{
+		if (m_listeUnites[i]->getJ() >= clicX && m_listeUnites[i]->getJ() <= clicTempX
+			&& m_listeUnites[i]->getI() >= clicY && m_listeUnites[i]->getI() <= clicTempY)
+			{
+				m_selection.push_back(m_listeUnites[i]);
+			}
+	}
+	
+	cout << "La selection contient : "<<m_selection.size() << " unites"<<endl;
 }

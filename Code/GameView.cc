@@ -21,6 +21,12 @@ GameView::GameView(int width, int height): m_width(width), m_height(height), m_m
 	m_window = new RenderWindow(sf::VideoMode(width, height, 32), "BearCraft", sf::Style::Close);
 	m_ecranJeu.SetFromRect(sf::FloatRect(0, 0, LARGEUR_FENETRE, HAUTEUR_FENETRE));
 
+	m_clic=false;
+	m_clicX = 0;
+	m_clicY = 0;
+	m_clicTempX=0;
+	m_clicTempY=0;
+
     m_selectionNbJoueurs = 1;
     m_selectionCarte = "";
 
@@ -339,6 +345,12 @@ void GameView::draw()
 		this->affichageUnitesJoueur();
 		m_window->Draw(m_selection);
 		m_barreInfo.SetPosition(m_ecranJeu.GetCenter().x+75,m_ecranJeu.GetCenter().y-100);
+		if (m_clic==true)
+		{
+			Shape selection=Shape::Rectangle(m_clicX, m_clicY, m_clicTempX, m_clicTempY, sf::Color::Black, .5f, sf::Color::Black);
+			selection.EnableFill(false);
+			m_window -> Draw(selection);
+		}
 		m_window -> Draw (m_barreInfo);
 	}
 	m_window->Display();
@@ -393,6 +405,7 @@ bool GameView::treatEvents()
 		{
 			int mouse_x = input.GetMouseX();
 			int mouse_y = input.GetMouseY();
+			bool LeftButtonDown = input.IsMouseButtonDown(sf::Mouse::Left);
 			if ((event.Type == sf::Event::Closed) ||
 				((event.Type == sf::Event::KeyPressed) && (event.Key.Code == sf::Key::Escape)))
 			{
@@ -475,6 +488,29 @@ bool GameView::treatEvents()
 					//~ for (int i=0, i<m_model->getPartie()->getListeJoueurs()[0]->getListeUnites().size(); i++)
 						//~ if (m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[i]->getJ() < 
 					cout << (((mouse_x/4)+m_ecranJeu.GetCenter().x)/16)-8 << " " << ((mouse_y/4+m_ecranJeu.GetCenter().y)/16) << endl;
+				}
+
+				if (LeftButtonDown)
+				{
+					m_clic = true;
+					if (m_clicX ==0 && m_clicY == 0)
+					{
+						m_model -> getPartie() -> getListeJoueurs()[0] -> viderSelection();
+						m_clicX = mouse_x/4+m_ecranJeu.GetRect().Left;
+						m_clicY = mouse_y/4+m_ecranJeu.GetRect().Top;
+					}
+					m_clicTempX = mouse_x/4+m_ecranJeu.GetRect().Left;
+					m_clicTempY = mouse_y/4+m_ecranJeu.GetRect().Top;
+				}
+			
+				else if (!LeftButtonDown && m_clic == true)
+				{
+					m_model -> getPartie() -> getListeJoueurs()[0] -> remplirSelection(m_clicX/16,m_clicY/16,m_clicTempX/16,m_clicTempY/16);
+					m_clic = false;
+					m_clicX = 0;
+					m_clicY = 0;
+					m_clicTempX=0;
+					m_clicTempY=0;
 				}
 				
 			}

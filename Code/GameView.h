@@ -17,6 +17,10 @@ class GameView {
 		GameModel * m_model;
 		sf::View m_ecranJeu;
 
+		bool m_clic;
+		int m_clicX,m_clicY;
+		int m_clicTempX,m_clicTempY;
+
 		int m_selectionNbJoueurs;
         std::string m_selectionCarte;
         sf::Shape m_selection;
