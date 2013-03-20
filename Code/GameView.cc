@@ -207,26 +207,26 @@ void GameView::affichageCarte()
 		for (int j=0 ; j<TAILLE_MAP ; j++)
 			switch (m_model->getPartie()->getCarte()->getCaseMatrice(j,i)) {
 				case 0 :
-					m_sprite_rocher.Resize(16,16);
-					m_sprite_rocher.SetPosition(i*16,j*16);
+					m_sprite_rocher.Resize(TAILLE_CASE,TAILLE_CASE);
+					m_sprite_rocher.SetPosition(i*TAILLE_CASE,j*TAILLE_CASE);
 					m_window->Draw(m_sprite_rocher);
 					break;
 				case 1 :
-					m_sprite_bois.Resize(16,16);
-					m_sprite_bois.SetPosition(i*16,j*16);
+					m_sprite_bois.Resize(TAILLE_CASE,TAILLE_CASE);
+					m_sprite_bois.SetPosition(i*TAILLE_CASE,j*TAILLE_CASE);
 					m_window->Draw(m_sprite_bois);
 					break;
 				case 2 :
-					m_sprite_miel.Resize(16,16);
-					m_sprite_miel.SetPosition(i*16,j*16);
+					m_sprite_miel.Resize(TAILLE_CASE,TAILLE_CASE);
+					m_sprite_miel.SetPosition(i*TAILLE_CASE,j*TAILLE_CASE);
 					m_window->Draw(m_sprite_miel);
 					break;
 				case 3 :
 					affichageBaseJoueur(i,j);
 					break;
 				case 4 :
-					m_sprite_herbe.Resize(16,16);
-					m_sprite_herbe.SetPosition(i*16,j*16);
+					m_sprite_herbe.Resize(TAILLE_CASE,TAILLE_CASE);
+					m_sprite_herbe.SetPosition(i*TAILLE_CASE,j*TAILLE_CASE);
 					m_window->Draw(m_sprite_herbe);
 					break;
 			}
@@ -241,26 +241,26 @@ void GameView::affichageBaseJoueur(int i, int j)
 		{
 			if(k==0 && j==m_model->getPartie()->getListeJoueurs()[k]->getListeBatiments()[l]->getI() && i==m_model->getPartie()->getListeJoueurs()[k]->getListeBatiments()[l]->getJ())
 			{
-				m_sprite_base_joueur1.Resize(16,16);
-				m_sprite_base_joueur1.SetPosition(i*16,j*16);
+				m_sprite_base_joueur1.Resize(TAILLE_CASE,TAILLE_CASE);
+				m_sprite_base_joueur1.SetPosition(i*TAILLE_CASE,j*TAILLE_CASE);
 				m_window->Draw(m_sprite_base_joueur1);
 			}
 			else if(k==1 && j==m_model->getPartie()->getListeJoueurs()[k]->getListeBatiments()[l]->getI() && i==m_model->getPartie()->getListeJoueurs()[k]->getListeBatiments()[l]->getJ())
 			{
-				m_sprite_base_joueur2.Resize(16,16);
-				m_sprite_base_joueur2.SetPosition(i*16,j*16);
+				m_sprite_base_joueur2.Resize(TAILLE_CASE,TAILLE_CASE);
+				m_sprite_base_joueur2.SetPosition(i*TAILLE_CASE,j*TAILLE_CASE);
 				m_window->Draw(m_sprite_base_joueur2);
 			}
 			else if(k==2 && j==m_model->getPartie()->getListeJoueurs()[k]->getListeBatiments()[l]->getI() && i==m_model->getPartie()->getListeJoueurs()[k]->getListeBatiments()[l]->getJ())
 			{
-				m_sprite_base_joueur3.Resize(16,16);
-				m_sprite_base_joueur3.SetPosition(i*16,j*16);
+				m_sprite_base_joueur3.Resize(TAILLE_CASE,TAILLE_CASE);
+				m_sprite_base_joueur3.SetPosition(i*TAILLE_CASE,j*TAILLE_CASE);
 				m_window->Draw(m_sprite_base_joueur3);
 			}
 			else if(k==3 && j==m_model->getPartie()->getListeJoueurs()[k]->getListeBatiments()[l]->getI() && i==m_model->getPartie()->getListeJoueurs()[k]->getListeBatiments()[l]->getJ())
 			{
-				m_sprite_base_joueur4.Resize(16,16);
-				m_sprite_base_joueur4.SetPosition(i*16,j*16);
+				m_sprite_base_joueur4.Resize(TAILLE_CASE,TAILLE_CASE);
+				m_sprite_base_joueur4.SetPosition(i*TAILLE_CASE,j*TAILLE_CASE);
 				m_window->Draw(m_sprite_base_joueur4);
 			}
 		}
@@ -274,23 +274,23 @@ void GameView::affichageUnitesJoueur()
 			switch(k)
 			{
 				case 0:
-					m_sprite_recolteur_joueur1.Resize(16,16);
-					m_sprite_recolteur_joueur1.SetPosition(m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getJ()*16,m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getI()*16);
+					m_sprite_recolteur_joueur1.Resize(TAILLE_CASE,TAILLE_CASE);
+					m_sprite_recolteur_joueur1.SetPosition(m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getJ()*TAILLE_CASE,m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getI()*TAILLE_CASE);
 					m_window->Draw(m_sprite_recolteur_joueur1);
 					break;
 				case 1:
-					m_sprite_recolteur_joueur2.Resize(16,16);
-					m_sprite_recolteur_joueur2.SetPosition(m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getJ()*16,m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getI()*16);
+					m_sprite_recolteur_joueur2.Resize(TAILLE_CASE,TAILLE_CASE);
+					m_sprite_recolteur_joueur2.SetPosition(m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getJ()*TAILLE_CASE,m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getI()*TAILLE_CASE);
 					m_window->Draw(m_sprite_recolteur_joueur2);
 					break;
 				case 2:
-					m_sprite_recolteur_joueur3.Resize(16,16);
-					m_sprite_recolteur_joueur3.SetPosition(m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getJ()*16,m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getI()*16);
+					m_sprite_recolteur_joueur3.Resize(TAILLE_CASE,TAILLE_CASE);
+					m_sprite_recolteur_joueur3.SetPosition(m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getJ()*TAILLE_CASE,m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getI()*TAILLE_CASE);
 					m_window->Draw(m_sprite_recolteur_joueur3);
 					break;
 				case 3:
-					m_sprite_recolteur_joueur4.Resize(16,16);
-					m_sprite_recolteur_joueur4.SetPosition(m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getJ()*16,m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getI()*16);
+					m_sprite_recolteur_joueur4.Resize(TAILLE_CASE,TAILLE_CASE);
+					m_sprite_recolteur_joueur4.SetPosition(m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getJ()*TAILLE_CASE,m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getI()*TAILLE_CASE);
 					m_window->Draw(m_sprite_recolteur_joueur4);
 					break;
 			}
@@ -487,7 +487,7 @@ bool GameView::treatEvents()
 					//~ selectionUnites(mouse_x,mouse_y);
 					//~ for (int i=0, i<m_model->getPartie()->getListeJoueurs()[0]->getListeUnites().size(); i++)
 						//~ if (m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[i]->getJ() < 
-					cout << (((mouse_x/4)+m_ecranJeu.GetCenter().x)/16)-8 << " " << ((mouse_y/4+m_ecranJeu.GetCenter().y)/16) << endl;
+					cout << (((mouse_x/ZOOM_FENETRE)+m_ecranJeu.GetCenter().x)/TAILLE_CASE)-8 << " " << ((mouse_y/ZOOM_FENETRE+m_ecranJeu.GetCenter().y)/TAILLE_CASE)-6 << endl;
 				}
 
 				if (LeftButtonDown)
@@ -496,16 +496,16 @@ bool GameView::treatEvents()
 					if (m_clicX ==0 && m_clicY == 0)
 					{
 						m_model -> getPartie() -> getListeJoueurs()[0] -> viderSelection();
-						m_clicX = mouse_x/4+m_ecranJeu.GetRect().Left;
-						m_clicY = mouse_y/4+m_ecranJeu.GetRect().Top;
+						m_clicX = clicToZoomArene(mouse_x, false);
+						m_clicY = clicToZoomArene(mouse_y, true);
 					}
-					m_clicTempX = mouse_x/4+m_ecranJeu.GetRect().Left;
-					m_clicTempY = mouse_y/4+m_ecranJeu.GetRect().Top;
+					m_clicTempX = clicToZoomArene(mouse_x, false);
+					m_clicTempY = clicToZoomArene(mouse_y, true);
 				}
 			
 				else if (!LeftButtonDown && m_clic == true)
 				{
-					m_model -> getPartie() -> getListeJoueurs()[0] -> remplirSelection(m_clicX/16,m_clicY/16,m_clicTempX/16,m_clicTempY/16);
+					m_model -> getPartie() -> getListeJoueurs()[0] -> remplirSelection(m_clicX/TAILLE_CASE,m_clicY/TAILLE_CASE,m_clicTempX/TAILLE_CASE,m_clicTempY/TAILLE_CASE);
 					m_clic = false;
 					m_clicX = 0;
 					m_clicY = 0;
@@ -542,7 +542,7 @@ void GameView::verificationInformations()
 				m_ecranJeu.SetCenter(725,700);
 		}
 		
-        m_ecranJeu.Zoom(4);
+        m_ecranJeu.Zoom(ZOOM_FENETRE);
     }
     
     if (m_selectionNbJoueurs == 1)
@@ -559,6 +559,17 @@ void GameView::verificationInformations()
 	}
 }
 
+int GameView::clicToZoomArene(float coord, bool coordVertical) {
+	int coordZoomArene;
+	
+	if (!coordVertical)
+		coordZoomArene = (coord/ZOOM_FENETRE) + m_ecranJeu.GetRect().Left;
+	else
+		coordZoomArene = (coord/ZOOM_FENETRE) + m_ecranJeu.GetRect().Top;
+		
+	return coordZoomArene;
+}
+
 void GameView::selectionUnites(int selectionDebutX, int selectionUnitesY) {
 	const sf::Input& input = m_window->GetInput();
 
@@ -567,6 +578,6 @@ void GameView::selectionUnites(int selectionDebutX, int selectionUnitesY) {
 	int mouse_y = input.GetMouseY();
 	do {
 		cout << "Coucou Emiles while clic enfoncé" << endl;
-		m_selection = Shape::Rectangle(selectionDebutX/4, selectionUnitesY/4, mouse_x/4, mouse_y/4, Color(192,192,192));
+		m_selection = Shape::Rectangle(selectionDebutX/ZOOM_FENETRE, selectionUnitesY/ZOOM_FENETRE, mouse_x/ZOOM_FENETRE, mouse_y/ZOOM_FENETRE, Color(192,192,192));
 	} while (event.Type == Event::MouseButtonReleased && event.MouseButton.Button == Mouse::Left);
 }

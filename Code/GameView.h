@@ -117,6 +117,7 @@ class GameView {
 		void setModel(GameModel * model);
 
 		int convertString(std::string number);
+		int clicToZoomArene(float coord, bool coordVertical);
         void verificationInformations();
 		void draw();
 		void declarationImages();
