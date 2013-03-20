@@ -11,6 +11,7 @@
 #include <sstream>
 #include <iostream>
 
+
 using namespace std;
 using namespace sf;
 
@@ -20,6 +21,8 @@ GameView::GameView(int width, int height): m_width(width), m_height(height), m_m
 {
 	m_window = new RenderWindow(sf::VideoMode(width, height, 32), "BearCraft", sf::Style::Close);
 	m_ecranJeu.SetFromRect(sf::FloatRect(0, 0, LARGEUR_FENETRE, HAUTEUR_FENETRE));
+
+	m_thread = false;
 
 	m_clic=false;
 	m_clicX = 0;
@@ -73,11 +76,13 @@ GameView::GameView(int width, int height): m_width(width), m_height(height), m_m
 		 cout << "Erreur lors du chargement des images" << endl;
 
 	this->declarationImages();
+	
 }
 
 // Destructeur
 GameView::~GameView()
 {
+	m_thread = false;
 	if(m_window!= NULL)
 		delete m_window;
 }
@@ -525,6 +530,8 @@ void GameView::verificationInformations()
 {
     if (m_selectionNbJoueurs > 1 && m_selectionCarte != "")
     {
+		m_thread= true;
+		DoSomething();
         m_menu = false;
         m_model -> creerPartie (m_selectionNbJoueurs,m_selectionCarte);
         m_window->SetView(m_ecranJeu);
@@ -580,4 +587,21 @@ void GameView::selectionUnites(int selectionDebutX, int selectionUnitesY) {
 		cout << "Coucou Emiles while clic enfoncé" << endl;
 		m_selection = Shape::Rectangle(selectionDebutX/ZOOM_FENETRE, selectionUnitesY/ZOOM_FENETRE, mouse_x/ZOOM_FENETRE, mouse_y/ZOOM_FENETRE, Color(192,192,192));
 	} while (event.Type == Event::MouseButtonReleased && event.MouseButton.Button == Mouse::Left);
+}
+
+void GameView::afficheMiniMap()
+{
+	while (m_thread)
+		cout << "MiniMap" << endl;
+}
+
+
+void GameView::Run()
+{
+   afficheMiniMap();
+}
+
+void GameView::DoSomething()
+{
+	Launch();
 }

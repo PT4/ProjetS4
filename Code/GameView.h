@@ -3,6 +3,7 @@
 
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
+#include <SFML/System.hpp>
 #include <sstream>
 #include <fstream>
 #include <string>
@@ -10,7 +11,7 @@
 class GameModel;
 
 
-class GameView {
+class GameView :public sf::Thread{
 	private:
 		int m_width, m_height;
 		bool m_menu, m_optionMenu;
@@ -27,6 +28,10 @@ class GameView {
 
 		sf::RenderWindow * m_window;
 		sf::Font m_font;
+		
+		bool m_thread;
+
+        virtual void Run();
 		
 		int m_selectionApercuCarte;
 
@@ -111,6 +116,7 @@ class GameView {
 		sf::Shape m_barreInfo;
 
 	public:
+	
 		GameView(int width, int height);
 		~GameView();
 
@@ -127,5 +133,7 @@ class GameView {
 		std::string selectionOptionMenu(sf::String selection);
 		bool treatEvents();
 		void selectionUnites(int selectionDebutX, int selectionDebutY);
+		void afficheMiniMap();
+        void DoSomething();
 };
 #endif
