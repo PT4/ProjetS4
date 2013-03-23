@@ -646,7 +646,7 @@ void GameView::afficheMiniMap()
 	float posX =  posXBarreInfo+m_ecranJeu.GetRect().Left/TAILLE_CASE;
 	float posY = posYBarreInfo+ m_ecranJeu.GetRect().Top/TAILLE_CASE;
 	Shape vueActuelle=Shape::Rectangle(posX, posY, 
-							posX+12.5,posY+12.5,
+							posX+12.5,posY+11.5,
 							sf::Color::Black, .3f, sf::Color::Black);
 	vueActuelle.EnableFill(false);
 	m_window -> Draw(vueActuelle);
