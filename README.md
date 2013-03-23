@@ -18,6 +18,8 @@ Table des matières
 
 ###### IV] Règles du jeu ######
 
+###### V] IA : Mode d'emploi ######
+
 I] Installation et Compilation/Exécution
 ----------------------------------------
 BearCraft est un Jeu développé grâce à la bibliothèque SFML.
@@ -151,3 +153,11 @@ Au départ, votre vision de la carte est limitée. Pour augmenter votre vision, 
 
 ##### Gain de la partie #####
 Vous gagnez la partie lorsque vous avez détruit toutes les unités et batiments adverses.
+
+
+V] IA : Mode d'emploi
+----------------------
+
+Afin d'implémenter votre propre IA, ce paragraphe vous sera surement utile. L'architecture du programme est conçue de manière à
+faciliter l'implémentation d'une IA. Il existe deux controleurs, le GameModel qui gère tous les évènement de jeu et la classe Joueur
+qui contrôle toutes les actions nécessaires au joueur. 
