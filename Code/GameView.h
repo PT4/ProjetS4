@@ -132,7 +132,6 @@ class GameView :public sf::Thread{
 		void affichageUnitesJoueur();
 		std::string selectionOptionMenu(sf::String selection);
 		bool treatEvents();
-		void selectionUnites(int selectionDebutX, int selectionDebutY);
 		void afficheMiniMap();
         void DoSomething();
 };

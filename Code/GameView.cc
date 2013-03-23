@@ -310,6 +310,7 @@ void GameView::draw()
 			m_window->Draw(m_sprite_titre);
 			m_window->Draw(m_sprite_nouvellePartie);
 			m_window->Draw(m_sprite_quitter);
+			
 		}
 		else if (m_optionMenu) {
 			for (int i=0; i<TAILLE_MAP ; i++)
@@ -357,6 +358,7 @@ void GameView::draw()
 			m_window -> Draw(selection);
 		}
 		m_window -> Draw (m_barreInfo);
+		afficheMiniMap();
 	}
 	m_window->Display();
 }
@@ -531,7 +533,7 @@ void GameView::verificationInformations()
     if (m_selectionNbJoueurs > 1 && m_selectionCarte != "")
     {
 		m_thread= true;
-		DoSomething();
+		//DoSomething();
         m_menu = false;
         m_model -> creerPartie (m_selectionNbJoueurs,m_selectionCarte);
         m_window->SetView(m_ecranJeu);
@@ -577,22 +579,78 @@ int GameView::clicToZoomArene(float coord, bool coordVertical) {
 	return coordZoomArene;
 }
 
-void GameView::selectionUnites(int selectionDebutX, int selectionUnitesY) {
-	const sf::Input& input = m_window->GetInput();
-
-	sf::Event event;
-	int mouse_x = input.GetMouseX();
-	int mouse_y = input.GetMouseY();
-	do {
-		cout << "Coucou Emiles while clic enfoncé" << endl;
-		m_selection = Shape::Rectangle(selectionDebutX/ZOOM_FENETRE, selectionUnitesY/ZOOM_FENETRE, mouse_x/ZOOM_FENETRE, mouse_y/ZOOM_FENETRE, Color(192,192,192));
-	} while (event.Type == Event::MouseButtonReleased && event.MouseButton.Button == Mouse::Left);
-}
-
 void GameView::afficheMiniMap()
 {
-	while (m_thread)
-		cout << "MiniMap" << endl;
+	Shape miniMap [50][50];
+	int posXBarreInfo = m_barreInfo.GetPosition().x;
+	int posYBarreInfo = m_barreInfo.GetPosition().y;
+	sf::Color couleur = sf::Color(51,153,255);
+	
+	//On met dans la matrice tout les éléments qui consernent l'environnement
+	for (int i=0; i<TAILLE_MAP ; i++) 
+	{
+		for (int j=0 ; j<TAILLE_MAP ; j++)
+		{
+			switch (m_model->getPartie()->getCarte()->getCaseMatrice(j,i)) 
+			{
+				case 0 : miniMap[i][j] = Shape::Rectangle(posXBarreInfo+i, posYBarreInfo+j,
+															posXBarreInfo+i+1, posYBarreInfo+j+1,
+															sf::Color(153,153,153));break;
+				case 1 : miniMap[i][j] = Shape::Rectangle(posXBarreInfo+i, posYBarreInfo+j,
+															posXBarreInfo+i+1, posYBarreInfo+j+1,
+															sf::Color(102,51,0));break;
+				case 2 : miniMap[i][j] = Shape::Rectangle(posXBarreInfo+i, posYBarreInfo+j,
+															posXBarreInfo+i+1, posYBarreInfo+j+1,
+															sf::Color(255,204,51));break;
+				case 4 : miniMap[i][j] = Shape::Rectangle(posXBarreInfo+i, posYBarreInfo+j,
+															posXBarreInfo+i+1, posYBarreInfo+j+1,
+															sf::Color(102,153,0));break;
+				default:break;
+			}
+		}
+	}
+	
+	//On met dans la mattrice les unites
+	for ( int i = 0; i < m_model -> getPartie() -> getListeJoueurs().size();i++)
+		for ( int j = 0; j < m_model -> getPartie () -> getListeJoueurs()[i] -> getListeUnites().size();j++)
+		{
+			int posIUnite = m_model -> getPartie () -> getListeJoueurs()[i] -> getListeUnites()[j]->getJ();
+			int posJUnite = m_model -> getPartie () -> getListeJoueurs()[i] -> getListeUnites()[j]-> getI();
+			if (i > 0)
+				couleur = sf::Color::Red;
+			
+			miniMap[posIUnite][posJUnite]=Shape::Rectangle(posXBarreInfo+posIUnite, posYBarreInfo+posJUnite,
+															posXBarreInfo+posIUnite+1, posYBarreInfo+posJUnite+1,
+															couleur);
+		}
+		
+	//On met dans la matrice les batiments
+	couleur = sf::Color(51,153,255);
+	for ( int i = 0; i < m_model -> getPartie() -> getListeJoueurs().size();i++)
+		for ( int j = 0; j < m_model -> getPartie () -> getListeJoueurs()[i] -> getListeUnites().size();j++)
+		{
+			int posIUnite = m_model -> getPartie () -> getListeJoueurs()[i] -> getListeBatiments()[j]->getJ();
+			int posJUnite = m_model -> getPartie () -> getListeJoueurs()[i] -> getListeBatiments()[j]-> getI();
+			if (i > 0)
+				couleur = sf::Color::Red;
+			
+			miniMap[posIUnite][posJUnite]=Shape::Rectangle(posXBarreInfo+posIUnite, posYBarreInfo+posJUnite,
+															posXBarreInfo+posIUnite+1, posYBarreInfo+posJUnite+1,
+															couleur);
+		}
+		
+	for (int i=0; i<TAILLE_MAP ; i++) 
+		for (int j=0 ; j<TAILLE_MAP ; j++)
+			m_window -> Draw (miniMap[i][j]);
+		
+	float posX =  posXBarreInfo+m_ecranJeu.GetRect().Left/TAILLE_CASE;
+	float posY = posYBarreInfo+ m_ecranJeu.GetRect().Top/TAILLE_CASE;
+	Shape vueActuelle=Shape::Rectangle(posX, posY, 
+							posX+12.5,posY+12.5,
+							sf::Color::Black, .3f, sf::Color::Black);
+	vueActuelle.EnableFill(false);
+	m_window -> Draw(vueActuelle);
+													
 }
 
 
