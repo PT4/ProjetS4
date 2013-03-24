@@ -33,7 +33,6 @@ class GameView :public sf::Thread{
 		
 		bool m_thread;
 
-        virtual void Run();
 		int m_selectionApercuCarte;
 
 		//Menu
@@ -45,6 +44,11 @@ class GameView :public sf::Thread{
 		sf::String m_nomCarte;
 		sf::String m_string_carte1;
 		sf::String m_string_carte2;
+		sf::String m_string_barre;
+		sf::String m_string_ressources;
+		sf::String m_string_population;
+		sf::String m_string_bois;
+		sf::String m_string_miel;
 		std::string m_string_adresse_carte1;
 		std::string m_string_adresse_carte2;
 		sf::Image m_image_titre;
@@ -61,6 +65,10 @@ class GameView :public sf::Thread{
 		sf::Sprite m_sprite_apercuMC;
 		sf::Image m_image_apercuDP;
 		sf::Sprite m_sprite_apercuDP;
+		sf::Image m_image_bois_sideBar;
+		sf::Sprite m_sprite_bois_sideBar;
+		sf::Image m_image_miel_sideBar;
+		sf::Sprite m_sprite_miel_sideBar;
 
 
 		// Déclaration des images et des sprites
@@ -124,6 +132,7 @@ class GameView :public sf::Thread{
 		void setModel(GameModel * model);
 
 		int convertString(std::string number);
+		std::string convertInt(int number);
 		int clicToZoomArene(float coord, bool coordVertical);
         void verificationInformations();
 		void draw();
@@ -131,9 +140,9 @@ class GameView :public sf::Thread{
 		void affichageCarte();
 		void affichageBaseJoueur(int i, int j);
 		void affichageUnitesJoueur();
+		void affichageSideBar();
 		std::string selectionOptionMenu(sf::String selection);
 		bool treatEvents();
 		void afficheMiniMap();
-        void DoSomething();
 };
 #endif

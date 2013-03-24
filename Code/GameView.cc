@@ -71,7 +71,9 @@ GameView::GameView(int width, int height): m_width(width), m_height(height), m_m
 		 !m_image_quitter.LoadFromFile("images/Quitter.png") ||
 		 !m_image_apercuVide.LoadFromFile("images/apercuVierge.png") ||
 		 !m_image_apercuMC.LoadFromFile("images/apercuMaitreCollines.png") ||
-		 !m_image_apercuDP.LoadFromFile("images/apercuDeuxPasses.png"))
+		 !m_image_apercuDP.LoadFromFile("images/apercuDeuxPasses.png") ||
+		 !m_image_bois_sideBar.LoadFromFile("images/boisSideBar.png") ||
+		 !m_image_miel_sideBar.LoadFromFile("images/mielSideBar.png"))
 		 cout << "Erreur lors du chargement des images" << endl;
 
 	this->declarationImages();
@@ -98,6 +100,12 @@ int GameView::convertString(string number)
 	int ss;
 	istringstream (number) >> ss;
 	return ss;
+}
+
+string GameView::convertInt(int number) {
+	ostringstream stm;
+	stm << number;
+	return stm.str();
 }
 
 // Déclaration des objets graphiques
@@ -202,6 +210,34 @@ void GameView::declarationImages()
 		m_sprite_quitter = Sprite (m_image_quitter);
 		m_sprite_quitter.SetPosition(300, 600);
 		
+		// Side Bar
+		m_sprite_bois_sideBar = Sprite(m_image_bois_sideBar);
+		m_sprite_bois_sideBar.Resize(10, 10);
+		
+		m_sprite_miel_sideBar = Sprite(m_image_miel_sideBar);
+		m_sprite_miel_sideBar.Resize(10, 10);
+		
+		m_string_ressources.SetText("Ressources");
+		m_string_ressources.SetFont(m_font);
+		m_string_ressources.SetSize(5);
+		m_string_ressources.SetColor(sf::Color::Black);
+		
+		m_string_barre.SetText("____________");
+		m_string_barre.SetFont(m_font);
+		m_string_barre.SetSize(5);
+		m_string_barre.SetColor(sf::Color::Black);
+		
+		m_string_population.SetFont(m_font);
+		m_string_population.SetSize(5);
+		m_string_population.SetColor(sf::Color::Black);
+		
+		m_string_miel.SetFont(m_font);
+		m_string_miel.SetSize(5);
+		m_string_miel.SetColor(sf::Color::Black);
+		
+		m_string_bois.SetFont(m_font);
+		m_string_bois.SetSize(5);
+		m_string_bois.SetColor(sf::Color::Black);
 }
 
 void GameView::afficheMiniMap()
@@ -374,6 +410,32 @@ void GameView::affichageUnitesJoueur()
 			}
 }
 
+void GameView::affichageSideBar() {
+	m_string_ressources.SetPosition(m_barreInfo.GetPosition().x + 18, m_barreInfo.GetPosition().y + 60);
+	m_string_barre.SetPosition(m_barreInfo.GetPosition().x + 4, m_barreInfo.GetPosition().y + 55);
+	m_window->Draw(m_string_barre);
+	m_string_barre.SetPosition(m_barreInfo.GetPosition().x + 4, m_barreInfo.GetPosition().y + 95);
+	
+	//~ m_sprite_recolteur
+	//~ m_sprite_recolteur_joueur1.SetPosition(m_barreInfo.GetPosition().x + 4, m_barreInfo.GetPosition().y + 65);
+	m_sprite_bois_sideBar.SetPosition(m_barreInfo.GetPosition().x + 4, m_barreInfo.GetPosition().y + 76);
+	m_sprite_miel_sideBar.SetPosition(m_barreInfo.GetPosition().x + 4, m_barreInfo.GetPosition().y + 87);
+	m_string_population.SetText(convertInt(m_model->getPartie()->getListeJoueurs()[0]->getListeUnites().size()));
+	m_string_population.SetPosition(m_barreInfo.GetPosition().x + 20, m_barreInfo.GetPosition().y + 67);
+	m_string_bois.SetText(convertInt(m_model->getPartie()->getListeJoueurs()[0]->getQuantiteBois()));
+	m_string_bois.SetPosition(m_barreInfo.GetPosition().x + 20, m_barreInfo.GetPosition().y + 78);
+	m_string_miel.SetText(convertInt(m_model->getPartie()->getListeJoueurs()[0]->getQuantiteMiel()));
+	m_string_miel.SetPosition(m_barreInfo.GetPosition().x + 20, m_barreInfo.GetPosition().y + 89);
+	
+	m_window->Draw(m_string_ressources);
+	m_window->Draw(m_string_barre);
+	m_window->Draw(m_sprite_bois_sideBar);
+	m_window->Draw(m_sprite_miel_sideBar);
+	m_window->Draw(m_string_population);
+	m_window->Draw(m_string_bois);
+	m_window->Draw(m_string_miel);
+}
+
 // Boucle d'affichage
 void GameView::draw()
 {
@@ -432,6 +494,7 @@ void GameView::draw()
 		}
 		m_window -> Draw (m_barreInfo);
 		afficheMiniMap();
+		affichageSideBar();
 	}
 	
 	m_window->Display();
@@ -653,12 +716,3 @@ int GameView::clicToZoomArene(float coord, bool coordVertical) {
 	return coordZoomArene;
 }
 
-void GameView::Run()
-{
-   afficheMiniMap();
-}
-
-void GameView::DoSomething()
-{
-	Launch();
-}

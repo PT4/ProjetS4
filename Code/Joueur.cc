@@ -21,6 +21,9 @@ Joueur::Joueur()
 {
 	for (int i=0; i<NB_RECOLTEUR_DEPART; i++)
 		m_listeUnites.push_back(new Recolteur(this));
+	m_quantiteMiel=QUANTITE_MIEL_DEPART;
+	m_quantiteBois=QUANTITE_BOIS_DEPART;
+	m_population=NB_RECOLTEUR_DEPART;
 }
 
 //Destructeur
@@ -103,3 +106,28 @@ void Joueur::remplirSelection(double clicX, double clicY, double clicTempX, doub
 	
 	cout << "La selection contient : "<<m_selection.size() << " unites"<<endl;
 }
+
+int Joueur::getPopulation() {
+	return m_population;
+}
+
+void Joueur::setPopulation(int pop) {
+	m_population = pop;
+}
+
+int Joueur::getQuantiteMiel() {
+	return m_quantiteMiel;
+}
+
+void Joueur::setQuantiteMiel(int miel) {
+	m_quantiteMiel = miel;
+}
+
+int Joueur::getQuantiteBois() {
+	return m_quantiteBois;
+}
+
+void Joueur::setQuantiteBois(int bois) {
+	m_quantiteBois = bois;
+}
+

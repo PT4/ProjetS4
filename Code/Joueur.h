@@ -29,6 +29,13 @@ class Joueur {
 		void inverseCoordonnee(double &a,double &b);
 		void remplirSelection(double clicX, double clicY, double clicTempX, double clicTempY);
 		void viderSelection();
+		
+		int getPopulation();
+		void setPopulation(int pop);
+		int getQuantiteMiel();
+		void setQuantiteMiel(int miel);
+		int getQuantiteBois();
+		void setQuantiteBois(int bois);
 };
 
 #endif
