@@ -8,6 +8,8 @@
 #include <fstream>
 #include <string>
 
+#include "Constantes.h"
+
 class GameModel;
 
 
@@ -32,7 +34,6 @@ class GameView :public sf::Thread{
 		bool m_thread;
 
         virtual void Run();
-		
 		int m_selectionApercuCarte;
 
 		//Menu
