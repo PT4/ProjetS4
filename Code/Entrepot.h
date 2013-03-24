@@ -3,11 +3,14 @@
 
 #include "Batiment.h"
 
+class Joueur;
+
 class Entrepot: public Batiment {
 	
 	public:
 		Entrepot();
-		Entrepot(int i, int j);
+		Entrepot(Joueur* joueur);
+		Entrepot(int i, int j, Joueur* joueur);
 		~Entrepot();
 		void stocker();
 };

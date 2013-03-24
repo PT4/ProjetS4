@@ -7,6 +7,7 @@
 #include "Soldat.h"
 #include "Unite.h"
 #include "Batiment.h"
+#include "Tache.h"
 
 #include <cstdlib>
 #include <sstream>
@@ -19,7 +20,7 @@ using namespace std;
 Joueur::Joueur()
 {
 	for (int i=0; i<NB_RECOLTEUR_DEPART; i++)
-		m_listeUnites.push_back(new Recolteur());
+		m_listeUnites.push_back(new Recolteur(this));
 }
 
 //Destructeur
@@ -53,9 +54,9 @@ void Joueur::ajouterBatiment(int type, int i, int j)
 {
 	switch(type)
 	{
-		case 1: m_listeBatiments.push_back(new Base(i, j)); break;
-		case 2: m_listeBatiments.push_back(new Caserne(i, j)); break;
-		case 3: m_listeBatiments.push_back(new Entrepot(i, j)); break;
+		case 1: m_listeBatiments.push_back(new Base(i, j,this)); break;
+		case 2: m_listeBatiments.push_back(new Caserne(i, j,this)); break;
+		case 3: m_listeBatiments.push_back(new Entrepot(i, j,this)); break;
 		default: break;
 	}
 }
@@ -64,8 +65,8 @@ void Joueur::ajouterUnite(int type, int i, int j)
 {
 	switch(type)
 	{
-		case 1: m_listeUnites.push_back(new Recolteur(i, j)); break;
-		case 2: m_listeUnites.push_back(new Soldat(i, j)); break;
+		case 1: m_listeUnites.push_back(new Recolteur(i, j,this));break;
+		case 2: m_listeUnites.push_back(new Soldat(i, j,this)); break;
 		default: break;
 	}
 }

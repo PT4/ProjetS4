@@ -1,4 +1,5 @@
 #include "Unite.h"
+#include "Joueur.h"
 
 #include <cstdlib>
 
@@ -12,13 +13,19 @@ Unite::Unite(string nom, int pointsVie, int prixMiel, int vitesse, int degat, in
 				m_prixMiel(prixMiel), m_vitesse(vitesse), m_degat(degat), m_rayonAttaque(rayonAttaque), m_seDeplace(0), m_attaque(0)
 {}
 
-Unite::Unite(int i, int j, string nom, int pointsVie, int prixMiel, int vitesse, int degat, int rayonAttaque): Entite(i, j, true, nom, pointsVie), 
+Unite::Unite(string nom, int pointsVie, Joueur* joueur, int prixMiel, int vitesse, int degat, int rayonAttaque): Entite(nom, pointsVie, joueur), 
+				m_prixMiel(prixMiel), m_vitesse(vitesse), m_degat(degat), m_rayonAttaque(rayonAttaque), m_seDeplace(0), m_attaque(0)
+{}
+
+Unite::Unite(int i, int j, string nom, int pointsVie, Joueur* joueur, int prixMiel, int vitesse, int degat, int rayonAttaque): Entite(i, j, true, nom, pointsVie, joueur), 
 				m_prixMiel(prixMiel), m_vitesse(vitesse), m_degat(degat), m_rayonAttaque(rayonAttaque), m_seDeplace(0), m_attaque(0)
 {}
 
 //Destructeur
 Unite::~Unite()
-{}
+{
+	m_listeTaches.clear();
+}
 
 //Accesseurs en lecture
 bool Unite::getDeplacement() const {
@@ -51,4 +58,8 @@ void Unite::seDeplacer() {
 void Unite::attaquer(Entite& cible) {
 	cible.setPointsVie(cible.getPointsVie()-m_degat);
 	cible.setPointsVie(getDegat());
+}
+
+void Unite::creerTache(string type) {
+	
 }

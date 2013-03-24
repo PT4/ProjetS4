@@ -3,6 +3,8 @@
 
 #include "Unite.h"
 
+class Joueur;
+
 class Recolteur: public Unite {
 	
 	private:
@@ -11,7 +13,8 @@ class Recolteur: public Unite {
 		
 	public:
 		Recolteur();
-		Recolteur(int i, int j);
+		Recolteur(Joueur* joueur);
+		Recolteur(int i, int j, Joueur* joueur);
 		~Recolteur();
 		int getPoids() const;
 		void setPoids(int poids);

@@ -3,6 +3,8 @@
 
 #include "Entite.h"
 
+class Joueur;
+
 class Batiment: public Entite {
 	
 	protected:
@@ -12,7 +14,8 @@ class Batiment: public Entite {
 	public:
 		Batiment();
 		Batiment(std::string nom, int pointsVie, int prixBois, bool formeUnite);
-		Batiment(int i, int j, std::string nom, int pointsVie, int prixBois, bool formeUnite);
+		Batiment(std::string nom, int pointsVie, Joueur* joueur, int prixBois, bool formeUnite);
+		Batiment(int i, int j, std::string nom, int pointsVie, Joueur* joueur, int prixBois, bool formeUnite);
 		~Batiment();
 		bool getFormation() const;
 		void setFormation(bool formeUnite);

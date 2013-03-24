@@ -3,6 +3,8 @@
 
 #include "Unite.h"
 
+class Joueur;
+
 class Soldat: public Unite {
 	
 	private:
@@ -10,7 +12,8 @@ class Soldat: public Unite {
 		
 	public:
 		Soldat();
-		Soldat(int i, int j);
+		Soldat(Joueur* joueur);
+		Soldat(int i, int j, Joueur* joueur);
 		~Soldat();
 		int getArmure() const;
 		void setArmure(int armure);

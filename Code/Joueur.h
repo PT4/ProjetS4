@@ -6,6 +6,7 @@
 
 class Unite;
 class Batiment;
+class Tache;
 
 class Joueur {
 	

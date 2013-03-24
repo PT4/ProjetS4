@@ -1,4 +1,4 @@
-CC=g++ -g -lsfml-graphics -lsfml-window -lsfml-system
+CC=g++ -g -Wall -lsfml-graphics -lsfml-window -lsfml-system
 OBJECTS=GameModel.o GameView.o Main.o Partie.o Joueur.o Entite.o Unite.o Recolteur.o Soldat.o Batiment.o Base.o Caserne.o Entrepot.o Carte.o Objet.o Obstacle.o Ressource.o EmplacementDepart.o Tache.o
 TARGET=BearCraft
 
