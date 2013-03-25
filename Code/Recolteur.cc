@@ -8,15 +8,15 @@
 using namespace std;
 
 //Constructeurs
-Recolteur::Recolteur(): Unite("Soldat", POINTS_VIE_RECOLTEUR, PRIX_MIEL_RECOLTEUR, VITESSE_RECOLTEUR, DEGAT_RECOLTEUR, RAYON_ATTAQUE_RECOLTEUR),
+Recolteur::Recolteur(): Unite("Recolteur", POINTS_VIE_RECOLTEUR, PRIX_MIEL_RECOLTEUR, VITESSE_RECOLTEUR, DEGAT_RECOLTEUR, RAYON_ATTAQUE_RECOLTEUR),
 									m_poids(0), m_recolte(0)
 {}
 
-Recolteur::Recolteur(Joueur* joueur): Unite("Soldat", POINTS_VIE_RECOLTEUR, joueur, PRIX_MIEL_RECOLTEUR, VITESSE_RECOLTEUR, DEGAT_RECOLTEUR, RAYON_ATTAQUE_RECOLTEUR),
+Recolteur::Recolteur(Joueur* joueur): Unite("Recolteur", POINTS_VIE_RECOLTEUR, joueur, PRIX_MIEL_RECOLTEUR, VITESSE_RECOLTEUR, DEGAT_RECOLTEUR, RAYON_ATTAQUE_RECOLTEUR),
 									m_poids(0), m_recolte(0)
 {}
 
-Recolteur::Recolteur(int i, int j, Joueur* joueur): Unite(i, j,"Soldat", POINTS_VIE_RECOLTEUR,joueur, PRIX_MIEL_RECOLTEUR, VITESSE_RECOLTEUR, DEGAT_RECOLTEUR, RAYON_ATTAQUE_RECOLTEUR),
+Recolteur::Recolteur(int i, int j, Joueur* joueur): Unite(i, j,"Recolteur", POINTS_VIE_RECOLTEUR,joueur, PRIX_MIEL_RECOLTEUR, VITESSE_RECOLTEUR, DEGAT_RECOLTEUR, RAYON_ATTAQUE_RECOLTEUR),
 									m_poids(0), m_recolte(0)
 {}
 

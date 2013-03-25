@@ -10,6 +10,7 @@ class GameModel : private sf::Thread{
 	private:
 		int m_width, m_height;
 		Partie* m_partie;
+		bool ok ;
 		bool m_thread;
 
         virtual void Run();

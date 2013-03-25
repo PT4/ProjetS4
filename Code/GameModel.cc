@@ -1,6 +1,9 @@
 #include "GameModel.h"
 #include "Constantes.h"
 #include "Partie.h"
+#include "Joueur.h"
+#include "Unite.h"
+#include "Carte.h"
 
 #include <fstream>
 
@@ -10,15 +13,15 @@ using namespace sf;
 // Constructeurs
 GameModel::GameModel() : m_width(LARGEUR_FENETRE), m_height(HAUTEUR_FENETRE)
 {
-	m_partie=new Partie("maps/MaitreDeLaColline.txt", 2);
-	//~ m_partie=NULL;
+	m_partie=NULL;
+	ok = false;
 
 	m_thread = false;
 }
 
 GameModel::GameModel(int width, int height): m_width(width), m_height(height)
 {
-	m_partie=new Partie("maps/MaitreDeLaColline.txt", 2);
+	m_partie=NULL;
 	//~ m_partie=NULL;
 	m_thread = false;
 }
@@ -34,6 +37,7 @@ GameModel::~GameModel()
 void GameModel::nextStep()
 {
 	setThread();
+
     setThread();
 }
 
@@ -74,6 +78,7 @@ void GameModel::creerPartie(int nbJoueur, string carte)
     delete m_partie;
     Partie * p = new Partie (carte,nbJoueur);
     setPartie(p);
+    ok = true;
 }
 
 

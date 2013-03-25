@@ -14,3 +14,12 @@ Ressource::Ressource(int i, int j, string type):Objet(i, j, false), m_type(type)
 Ressource::~Ressource()
 {}
 
+int Ressource::getStock () const
+{
+	return m_stock;
+}
+
+void Ressource::setStock (int deduction)
+{
+	m_stock -= deduction;
+}

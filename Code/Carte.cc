@@ -50,13 +50,13 @@ int Carte::getCaseMatrice(int i, int j) const
 }
 
 //Accesseur en écriture
-void Carte::setCaseMatrice(int i, int j, int val) 
+void Carte::setCaseMatrice(int i, int j, int val)
 {
 	m_matrice[i][j]=val;
 }
 
-//Méthodes	
-void Carte::chargementFichier(string mon_fichier) 
+//Méthodes
+void Carte::chargementFichier(string mon_fichier)
 {
 	int tab[TAILLE_MAP][TAILLE_MAP];
 	int i=0, j=0, val=0;
@@ -105,7 +105,7 @@ void Carte::choisirEmplacementDepartJoueur(vector<Joueur*> listeJoueurs)
 				listeJoueurs[k]->getListeUnites()[l]->setJ(listeJoueurs[k]->getListeBatiments()[0]->getJ()-1+l);
 				listeJoueurs[k]->getListeUnites()[l]->setI(listeJoueurs[k]->getListeBatiments()[0]->getI()-1);
 			}
-		else 
+		else
 			for (int l=0; l<listeJoueurs[k]->getListeUnites().size(); l++)
 			{
 				listeJoueurs[k]->getListeUnites()[l]->setJ(listeJoueurs[k]->getListeBatiments()[0]->getJ()-1+l);
@@ -115,4 +115,24 @@ void Carte::choisirEmplacementDepartJoueur(vector<Joueur*> listeJoueurs)
 	for(int k=0; k<m_listeEmplacementsDeparts.size(); k++)
 		if(!m_listeEmplacementsDeparts[k]->getOccupation())
 			setCaseMatrice(m_listeEmplacementsDeparts[k]->getI(), m_listeEmplacementsDeparts[k]->getJ(), 4);
+}
+
+vector<Ressource*> Carte::getListeRessources() const
+{
+	return m_listeRessources;
+}
+
+void Carte::supprime(int i ,int j)
+{
+		for (int l = 0; l < m_listeRessources.size(); l++)
+		{
+
+			if (m_listeRessources[l] -> getI() == i && m_listeRessources[l] -> getJ() == j)
+			{
+				m_matrice[m_listeRessources[l]->getI()][m_listeRessources[l]->getJ()]=4;
+				m_listeRessources.erase(m_listeRessources.begin()+i);
+			}
+		}
+
+
 }

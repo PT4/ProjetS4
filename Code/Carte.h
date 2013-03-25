@@ -13,13 +13,13 @@ class Obstacle;
 class EmplacementDepart;
 
 class Carte {
-	
+
 	private:
 		int m_matrice[TAILLE_MAP][TAILLE_MAP];
 		std::vector<EmplacementDepart*> m_listeEmplacementsDeparts;
 		std::vector<Ressource*> m_listeRessources;
 		std::vector<Obstacle*> m_listeObstacles;
-		
+
 	public:
 		Carte();
 		Carte(std::string mon_fichier);
@@ -28,6 +28,8 @@ class Carte {
 		void setCaseMatrice(int i, int j, int val);
 		void chargementFichier(std::string mon_fichier);
 		void choisirEmplacementDepartJoueur(std::vector<Joueur*> listeJoueurs);
+		std::vector<Ressource*> getListeRessources() const;
+		void supprime(int i , int j);
 };
 
 #endif

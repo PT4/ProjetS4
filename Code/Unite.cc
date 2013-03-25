@@ -9,15 +9,15 @@ using namespace std;
 Unite::Unite(): Entite(), m_seDeplace(0), m_attaque(0)
 {}
 
-Unite::Unite(string nom, int pointsVie, int prixMiel, int vitesse, int degat, int rayonAttaque): Entite(nom, pointsVie), 
+Unite::Unite(string nom, int pointsVie, int prixMiel, int vitesse, int degat, int rayonAttaque): Entite(nom, pointsVie),
 				m_prixMiel(prixMiel), m_vitesse(vitesse), m_degat(degat), m_rayonAttaque(rayonAttaque), m_seDeplace(0), m_attaque(0)
 {}
 
-Unite::Unite(string nom, int pointsVie, Joueur* joueur, int prixMiel, int vitesse, int degat, int rayonAttaque): Entite(nom, pointsVie, joueur), 
+Unite::Unite(string nom, int pointsVie, Joueur* joueur, int prixMiel, int vitesse, int degat, int rayonAttaque): Entite(nom, pointsVie, joueur),
 				m_prixMiel(prixMiel), m_vitesse(vitesse), m_degat(degat), m_rayonAttaque(rayonAttaque), m_seDeplace(0), m_attaque(0)
 {}
 
-Unite::Unite(int i, int j, string nom, int pointsVie, Joueur* joueur, int prixMiel, int vitesse, int degat, int rayonAttaque): Entite(i, j, true, nom, pointsVie, joueur), 
+Unite::Unite(int i, int j, string nom, int pointsVie, Joueur* joueur, int prixMiel, int vitesse, int degat, int rayonAttaque): Entite(i, j, true, nom, pointsVie, joueur),
 				m_prixMiel(prixMiel), m_vitesse(vitesse), m_degat(degat), m_rayonAttaque(rayonAttaque), m_seDeplace(0), m_attaque(0)
 {}
 
@@ -60,6 +60,16 @@ void Unite::attaquer(Entite& cible) {
 	cible.setPointsVie(getDegat());
 }
 
-void Unite::creerTache(string type) {
-	
+void Unite::creerTache(string type,int i,int j,Carte* carte) {
+	m_listeTaches.push_back(new Tache(type,this,i,j,carte));
+}
+
+vector<Tache*> Unite::getListeTaches() const
+{
+	return m_listeTaches;
+}
+
+void Unite::viderListeTaches()
+{
+	m_listeTaches.clear();
 }
