@@ -8,12 +8,13 @@ class Unite;
 class Carte;
 class Entite;
 class Ressource;
+class Recolteur;
 
 class Tache {
 	private:
 		std::string m_type;
 		Ressource* m_ressource;
-		Unite* m_unite;
+		Recolteur* m_recolteur;;
 		Carte* m_carte;
 		bool estActive;
 
