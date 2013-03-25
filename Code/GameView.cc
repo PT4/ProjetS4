@@ -3,6 +3,7 @@
 #include "Partie.h"
 #include "Joueur.h"
 #include "Batiment.h"
+#include "Base.h"
 #include "Unite.h"
 #include "Carte.h"
 
@@ -227,6 +228,11 @@ void GameView::declarationImages()
 		m_string_barre.SetSize(5);
 		m_string_barre.SetColor(sf::Color::Black);
 		
+		m_string_selection.SetText("Selection");
+		m_string_selection.SetFont(m_font);
+		m_string_selection.SetSize(5);
+		m_string_selection.SetColor(sf::Color::Black);
+		
 		m_string_population.SetFont(m_font);
 		m_string_population.SetSize(5);
 		m_string_population.SetColor(sf::Color::Black);
@@ -415,9 +421,10 @@ void GameView::affichageSideBar() {
 	m_string_barre.SetPosition(m_barreInfo.GetPosition().x + 4, m_barreInfo.GetPosition().y + 55);
 	m_window->Draw(m_string_barre);
 	m_string_barre.SetPosition(m_barreInfo.GetPosition().x + 4, m_barreInfo.GetPosition().y + 95);
-	
-	//~ m_sprite_recolteur
-	//~ m_sprite_recolteur_joueur1.SetPosition(m_barreInfo.GetPosition().x + 4, m_barreInfo.GetPosition().y + 65);
+
+	//Onglet ressources
+	m_sprite_recolteur_joueur1.Resize(10,10);
+	m_sprite_recolteur_joueur1.SetPosition(m_barreInfo.GetPosition().x + 4, m_barreInfo.GetPosition().y + 65);
 	m_sprite_bois_sideBar.SetPosition(m_barreInfo.GetPosition().x + 4, m_barreInfo.GetPosition().y + 76);
 	m_sprite_miel_sideBar.SetPosition(m_barreInfo.GetPosition().x + 4, m_barreInfo.GetPosition().y + 87);
 	m_string_population.SetText(convertInt(m_model->getPartie()->getListeJoueurs()[0]->getListeUnites().size()));
@@ -427,13 +434,23 @@ void GameView::affichageSideBar() {
 	m_string_miel.SetText(convertInt(m_model->getPartie()->getListeJoueurs()[0]->getQuantiteMiel()));
 	m_string_miel.SetPosition(m_barreInfo.GetPosition().x + 20, m_barreInfo.GetPosition().y + 89);
 	
+	//Onglet selection
+	m_string_selection.SetPosition(m_barreInfo.GetPosition().x + 17, m_barreInfo.GetPosition().y + 100);
+	/*Base* baseSelection = new Base;
+	baseSelection = dynamic_cast<Batiment*> (m_model->getPartie()->getListeJoueurs()[0]->getSelection()[0]);
+	if (baseSelection != NULL) {
+		cout << "Base sélectionnée" << endl;
+	}*/
+	
 	m_window->Draw(m_string_ressources);
 	m_window->Draw(m_string_barre);
+	m_window->Draw(m_sprite_recolteur_joueur1);
 	m_window->Draw(m_sprite_bois_sideBar);
 	m_window->Draw(m_sprite_miel_sideBar);
 	m_window->Draw(m_string_population);
 	m_window->Draw(m_string_bois);
 	m_window->Draw(m_string_miel);
+	m_window->Draw(m_string_selection);
 }
 
 // Boucle d'affichage
@@ -670,7 +687,6 @@ void GameView::verificationInformations()
     if (m_selectionNbJoueurs > 1 && m_selectionCarte != "")
     {
 		m_thread= true;
-		//DoSomething();
         m_menu = false;
         m_model -> creerPartie (m_selectionNbJoueurs,m_selectionCarte);
         m_window->SetView(m_ecranJeu);

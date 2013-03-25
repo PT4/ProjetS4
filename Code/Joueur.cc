@@ -8,6 +8,7 @@
 #include "Unite.h"
 #include "Batiment.h"
 #include "Tache.h"
+#include "Entite.h"
 
 #include <cstdlib>
 #include <sstream>
@@ -52,6 +53,11 @@ vector<Unite*> Joueur::getListeUnites() const
 	return m_listeUnites;
 }
 
+vector<Entite*> Joueur::getSelection() const
+{
+	return m_selection;
+}
+
 //Methodes
 void Joueur::ajouterBatiment(int type, int i, int j)
 {
@@ -89,6 +95,7 @@ void Joueur::inverseCoordonnee(double &a,double &b)
 
 void Joueur::remplirSelection(double clicX, double clicY, double clicTempX, double clicTempY)
 {
+	m_selection.clear();
 	
 	if (clicX > clicTempX)
 		inverseCoordonnee(clicX,clicTempX);
@@ -104,10 +111,18 @@ void Joueur::remplirSelection(double clicX, double clicY, double clicTempX, doub
 			}
 	}
 	
+	if (m_selection.size() == 0)
+		for (int j=0; j<m_listeBatiments.size() ; j++) {
+			if (m_listeBatiments[j]->getJ() >= clicX && m_listeBatiments[j]->getJ() >= clicTempX
+				&& m_listeBatiments[j]->getI() >= clicY && m_listeBatiments[j]->getI() >= clicTempY) {
+				m_selection.clear();
+				m_selection.push_back(m_listeBatiments[j]);
+			}
+		}
 	cout << "La selection contient : "<<m_selection.size() << " unites"<<endl;
 }
 
-int Joueur::getPopulation() {
+int Joueur::getPopulation() const {
 	return m_population;
 }
 
@@ -115,7 +130,7 @@ void Joueur::setPopulation(int pop) {
 	m_population = pop;
 }
 
-int Joueur::getQuantiteMiel() {
+int Joueur::getQuantiteMiel() const {
 	return m_quantiteMiel;
 }
 
@@ -123,7 +138,7 @@ void Joueur::setQuantiteMiel(int miel) {
 	m_quantiteMiel = miel;
 }
 
-int Joueur::getQuantiteBois() {
+int Joueur::getQuantiteBois() const {
 	return m_quantiteBois;
 }
 

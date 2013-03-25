@@ -6,6 +6,7 @@
 
 class Unite;
 class Carte;
+class Entite;
 
 class Tache {
 	private:
@@ -18,6 +19,7 @@ class Tache {
 		Tache();
 		Tache(std::string type);
 		~Tache();
+		void attaquer(Entite *entite);
 };
 
 #endif

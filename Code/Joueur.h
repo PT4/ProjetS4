@@ -7,6 +7,7 @@
 class Unite;
 class Batiment;
 class Tache;
+class Entite;
 
 class Joueur {
 	
@@ -17,24 +18,25 @@ class Joueur {
 		int m_population;
 		std::vector<Unite*> m_listeUnites;
 		std::vector<Batiment*> m_listeBatiments;
-		std::vector<Unite*> m_selection;
+		std::vector<Entite*> m_selection;
 		
 	public:
 		Joueur();
 		~Joueur();
 		std::vector<Batiment*> getListeBatiments() const;
 		std::vector<Unite*> getListeUnites() const;
+		std::vector<Entite*> getSelection() const;
 		void ajouterBatiment(int type, int i, int j);
 		void ajouterUnite(int type, int i, int j);
 		void inverseCoordonnee(double &a,double &b);
 		void remplirSelection(double clicX, double clicY, double clicTempX, double clicTempY);
 		void viderSelection();
 		
-		int getPopulation();
+		int getPopulation() const;
 		void setPopulation(int pop);
-		int getQuantiteMiel();
+		int getQuantiteMiel() const;
 		void setQuantiteMiel(int miel);
-		int getQuantiteBois();
+		int getQuantiteBois() const;
 		void setQuantiteBois(int bois);
 };
 
