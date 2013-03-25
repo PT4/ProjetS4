@@ -27,13 +27,13 @@ class GameView :public sf::Thread{
 		int m_selectionNbJoueurs;
         std::string m_selectionCarte;
         sf::Shape m_selection;
+		int m_selectionApercuCarte;
+		bool m_construction;
 
 		sf::RenderWindow * m_window;
 		sf::Font m_font;
 		
 		bool m_thread;
-
-		int m_selectionApercuCarte;
 
 		//Menu
 		sf::String m_option;
@@ -50,6 +50,7 @@ class GameView :public sf::Thread{
 		sf::String m_string_bois;
 		sf::String m_string_miel;
 		sf::String m_string_selection;
+		sf::String m_string_sante;
 		std::string m_string_adresse_carte1;
 		std::string m_string_adresse_carte2;
 		sf::Image m_image_titre;
@@ -70,6 +71,16 @@ class GameView :public sf::Thread{
 		sf::Sprite m_sprite_bois_sideBar;
 		sf::Image m_image_miel_sideBar;
 		sf::Sprite m_sprite_miel_sideBar;
+		sf::Image m_image_recolteur_sideBar;
+		sf::Sprite m_sprite_recolteur_sideBar;
+		sf::Image m_image_soldat_sideBar;
+		sf::Sprite m_sprite_soldat_sideBar;
+		sf::Image m_image_base_sideBar;
+		sf::Sprite m_sprite_base_sideBar;
+		sf::Image m_image_caserne_sideBar;
+		sf::Sprite m_sprite_caserne_sideBar;
+		sf::Image m_image_entrepot_sideBar;
+		sf::Sprite m_sprite_entrepot_sideBar;
 
 
 		// Déclaration des images et des sprites

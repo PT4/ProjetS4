@@ -5,19 +5,23 @@
 #include "Batiment.h"
 #include "Base.h"
 #include "Unite.h"
+#include "Recolteur.h"
+#include "Soldat.h"
+#include "Caserne.h"
+#include "Entrepot.h"
 #include "Carte.h"
 
 #include <cstdlib>
 #include <sstream>
 #include <iostream>
-
+#include <typeinfo>
 
 using namespace std;
 using namespace sf;
 
 // Constructeurs
 
-GameView::GameView(int width, int height): m_width(width), m_height(height), m_menu(true), m_optionMenu(false), m_selectionApercuCarte(0)
+GameView::GameView(int width, int height): m_width(width), m_height(height), m_menu(true), m_optionMenu(false), m_selectionApercuCarte(0), m_construction(false)
 {
 	m_window = new RenderWindow(sf::VideoMode(width, height, 32), "BearCraft", sf::Style::Close);
 	m_ecranJeu.SetFromRect(sf::FloatRect(0, 0, LARGEUR_FENETRE, HAUTEUR_FENETRE));
@@ -74,11 +78,16 @@ GameView::GameView(int width, int height): m_width(width), m_height(height), m_m
 		 !m_image_apercuMC.LoadFromFile("images/apercuMaitreCollines.png") ||
 		 !m_image_apercuDP.LoadFromFile("images/apercuDeuxPasses.png") ||
 		 !m_image_bois_sideBar.LoadFromFile("images/boisSideBar.png") ||
-		 !m_image_miel_sideBar.LoadFromFile("images/mielSideBar.png"))
+		 !m_image_miel_sideBar.LoadFromFile("images/mielSideBar.png") ||
+		 !m_image_recolteur_sideBar.LoadFromFile("images/recolteur.png") ||
+		 !m_image_soldat_sideBar.LoadFromFile("images/soldat.png") ||
+		 !m_image_base_sideBar.LoadFromFile("images/chateau.png") ||
+		 !m_image_caserne_sideBar.LoadFromFile("images/maison.png") ||
+		 !m_image_entrepot_sideBar.LoadFromFile("images/entrepot.png"))
 		 cout << "Erreur lors du chargement des images" << endl;
 
 	this->declarationImages();
-
+	
 }
 
 // Destructeur
@@ -120,7 +129,7 @@ void GameView::declarationImages()
 		m_sprite_apercuVide.SetPosition(400, 100);
 		m_sprite_apercuMC.SetPosition(400, 100);
 		m_sprite_apercuDP.SetPosition(400, 100);
-
+		
 		m_option.SetText(L"Option de la partie");
 		m_option.SetFont(m_font);
 		m_option.SetSize(60);
@@ -197,7 +206,7 @@ void GameView::declarationImages()
 		m_sprite_bois = Sprite(m_image_bois);
 		m_sprite_miel = Sprite(m_image_miel);
 		m_sprite_rocher = Sprite(m_image_rocher);
-
+		
 		m_barreInfo = Shape::Rectangle(0, 0, 60, 200, Color(192,192,192));
 
 		// Menu Titre
@@ -210,40 +219,59 @@ void GameView::declarationImages()
 
 		m_sprite_quitter = Sprite (m_image_quitter);
 		m_sprite_quitter.SetPosition(300, 600);
-
+		
 		// Side Bar
 		m_sprite_bois_sideBar = Sprite(m_image_bois_sideBar);
 		m_sprite_bois_sideBar.Resize(10, 10);
-
+		
 		m_sprite_miel_sideBar = Sprite(m_image_miel_sideBar);
 		m_sprite_miel_sideBar.Resize(10, 10);
-
+		
+		m_sprite_recolteur_sideBar = Sprite(m_image_recolteur_sideBar);
+		m_sprite_recolteur_sideBar.Resize(15, 15);
+		
+		m_sprite_soldat_sideBar = Sprite(m_image_soldat_sideBar);
+		m_sprite_soldat_sideBar.Resize(15, 15);
+		
+		m_sprite_base_sideBar = Sprite(m_image_base_sideBar);
+		m_sprite_base_sideBar.Resize(15, 15);
+		
+		m_sprite_caserne_sideBar = Sprite(m_image_caserne_sideBar);
+		m_sprite_caserne_sideBar.Resize(15, 15);
+		
+		m_sprite_entrepot_sideBar = Sprite(m_image_entrepot_sideBar);
+		m_sprite_entrepot_sideBar.Resize(15, 15);
+		
 		m_string_ressources.SetText("Ressources");
 		m_string_ressources.SetFont(m_font);
 		m_string_ressources.SetSize(5);
 		m_string_ressources.SetColor(sf::Color::Black);
-
+		
 		m_string_barre.SetText("____________");
 		m_string_barre.SetFont(m_font);
 		m_string_barre.SetSize(5);
 		m_string_barre.SetColor(sf::Color::Black);
-
+		
 		m_string_selection.SetText("Selection");
 		m_string_selection.SetFont(m_font);
 		m_string_selection.SetSize(5);
 		m_string_selection.SetColor(sf::Color::Black);
-
+		
 		m_string_population.SetFont(m_font);
 		m_string_population.SetSize(5);
 		m_string_population.SetColor(sf::Color::Black);
-
+		
 		m_string_miel.SetFont(m_font);
 		m_string_miel.SetSize(5);
 		m_string_miel.SetColor(sf::Color::Black);
-
+		
 		m_string_bois.SetFont(m_font);
 		m_string_bois.SetSize(5);
 		m_string_bois.SetColor(sf::Color::Black);
+		
+		m_string_sante.SetFont(m_font);
+		m_string_sante.SetSize(5);
+		m_string_sante.SetColor(sf::Color::Black);
 }
 
 void GameView::afficheMiniMap()
@@ -251,16 +279,14 @@ void GameView::afficheMiniMap()
 	Shape miniMap [50][50];
 	int posXBarreInfo = m_barreInfo.GetPosition().x+5;
 	int posYBarreInfo = m_barreInfo.GetPosition().y+5;
-	int posIUnite =0;
-	int posJUnite =0;
 	sf::Color couleur = sf::Color(51,153,255);
-
+	
 	//On met dans la matrice tout les éléments qui consernent l'environnement
-	for (int i=0; i<TAILLE_MAP ; i++)
+	for (int i=0; i<TAILLE_MAP ; i++) 
 	{
 		for (int j=0 ; j<TAILLE_MAP ; j++)
 		{
-			switch (m_model->getPartie()->getCarte()->getCaseMatrice(j,i))
+			switch (m_model->getPartie()->getCarte()->getCaseMatrice(j,i)) 
 			{
 				case 0 : miniMap[i][j] = Shape::Rectangle(posXBarreInfo+i, posYBarreInfo+j,
 															posXBarreInfo+i+1, posYBarreInfo+j+1,
@@ -278,48 +304,48 @@ void GameView::afficheMiniMap()
 			}
 		}
 	}
-
+	
 	//On met dans la mattrice les unites
 	for ( int i = 0; i < m_model -> getPartie() -> getListeJoueurs().size();i++)
 		for ( int j = 0; j < m_model -> getPartie () -> getListeJoueurs()[i] -> getListeUnites().size();j++)
 		{
-			posIUnite = m_model -> getPartie () -> getListeJoueurs()[i] -> getListeUnites()[j]->getJ();
-			posJUnite = m_model -> getPartie () -> getListeJoueurs()[i] -> getListeUnites()[j]-> getI();
+			int posIUnite = m_model -> getPartie () -> getListeJoueurs()[i] -> getListeUnites()[j]->getJ();
+			int posJUnite = m_model -> getPartie () -> getListeJoueurs()[i] -> getListeUnites()[j]-> getI();
 			if (i > 0)
 				couleur = sf::Color::Red;
-
+			
 			miniMap[posIUnite][posJUnite]=Shape::Rectangle(posXBarreInfo+posIUnite, posYBarreInfo+posJUnite,
 															posXBarreInfo+posIUnite+1, posYBarreInfo+posJUnite+1,
 															couleur);
 		}
-
+		
 	//On met dans la matrice les batiments
 	couleur = sf::Color(51,153,255);
 	for ( int i = 0; i < m_model -> getPartie() -> getListeJoueurs().size();i++)
-		for ( int j = 0; j < m_model -> getPartie () -> getListeJoueurs()[i] -> getListeBatiments().size();j++)
+		for ( int j = 0; j < m_model -> getPartie () -> getListeJoueurs()[i] -> getListeUnites().size();j++)
 		{
-			posIUnite = m_model -> getPartie () -> getListeJoueurs()[i] -> getListeBatiments()[j]->getJ();
-			posJUnite = m_model -> getPartie () -> getListeJoueurs()[i] -> getListeBatiments()[j]-> getI();
+			int posIUnite = m_model -> getPartie () -> getListeJoueurs()[i] -> getListeBatiments()[j]->getJ();
+			int posJUnite = m_model -> getPartie () -> getListeJoueurs()[i] -> getListeBatiments()[j]-> getI();
 			if (i > 0)
 				couleur = sf::Color::Red;
-
+			
 			miniMap[posIUnite][posJUnite]=Shape::Rectangle(posXBarreInfo+posIUnite, posYBarreInfo+posJUnite,
 															posXBarreInfo+posIUnite+1, posYBarreInfo+posJUnite+1,
 															couleur);
 		}
-
-	for (int i=0; i<TAILLE_MAP ; i++)
+		
+	for (int i=0; i<TAILLE_MAP ; i++) 
 		for (int j=0 ; j<TAILLE_MAP ; j++)
 			m_window -> Draw (miniMap[i][j]);
-
+		
 	float posX =  posXBarreInfo+m_ecranJeu.GetRect().Left/TAILLE_CASE;
 	float posY = posYBarreInfo+ m_ecranJeu.GetRect().Top/TAILLE_CASE;
-	Shape vueActuelle=Shape::Rectangle(posX, posY,
+	Shape vueActuelle=Shape::Rectangle(posX, posY, 
 							posX+12,posY+12,
 							sf::Color::Black, .3f, sf::Color::Black);
 	vueActuelle.EnableFill(false);
 	m_window -> Draw(vueActuelle);
-
+													
 }
 
 // Affichage de la carte avec les sprites
@@ -427,23 +453,85 @@ void GameView::affichageSideBar() {
 	//Onglet ressources
 	m_sprite_recolteur_joueur1.Resize(10,10);
 	m_sprite_recolteur_joueur1.SetPosition(m_barreInfo.GetPosition().x + 4, m_barreInfo.GetPosition().y + 65);
+	m_window->Draw(m_sprite_recolteur_joueur1);
+	
 	m_sprite_bois_sideBar.SetPosition(m_barreInfo.GetPosition().x + 4, m_barreInfo.GetPosition().y + 76);
 	m_sprite_miel_sideBar.SetPosition(m_barreInfo.GetPosition().x + 4, m_barreInfo.GetPosition().y + 87);
+	
 	m_string_population.SetText(convertInt(m_model->getPartie()->getListeJoueurs()[0]->getListeUnites().size()));
 	m_string_population.SetPosition(m_barreInfo.GetPosition().x + 20, m_barreInfo.GetPosition().y + 67);
+	
 	m_string_bois.SetText(convertInt(m_model->getPartie()->getListeJoueurs()[0]->getQuantiteBois()));
 	m_string_bois.SetPosition(m_barreInfo.GetPosition().x + 20, m_barreInfo.GetPosition().y + 78);
+	
 	m_string_miel.SetText(convertInt(m_model->getPartie()->getListeJoueurs()[0]->getQuantiteMiel()));
 	m_string_miel.SetPosition(m_barreInfo.GetPosition().x + 20, m_barreInfo.GetPosition().y + 89);
-
+	
 	//Onglet selection
-	m_string_selection.SetPosition(m_barreInfo.GetPosition().x + 17, m_barreInfo.GetPosition().y + 100);
-	/*Base* baseSelection = new Base;
-	baseSelection = dynamic_cast<Batiment*> (m_model->getPartie()->getListeJoueurs()[0]->getSelection()[0]);
-	if (baseSelection != NULL) {
-		cout << "Base sélectionnée" << endl;
-	}*/
-
+	m_string_selection.SetPosition(m_barreInfo.GetPosition().x + 19, m_barreInfo.GetPosition().y + 100);
+	string sante = "";
+	if (m_model->getPartie()->getListeJoueurs()[0]->getSelection().size() != 0) {
+		Recolteur* recolteurSelection = dynamic_cast<Recolteur*> (m_model->getPartie()->getListeJoueurs()[0]->getSelection()[0]);
+		Soldat* soldatSelection = dynamic_cast<Soldat*> (m_model->getPartie()->getListeJoueurs()[0]->getSelection()[0]);
+		Base* baseSelection = dynamic_cast<Base*> (m_model->getPartie()->getListeJoueurs()[0]->getSelection()[0]);
+		Entrepot* entrepotSelection = dynamic_cast<Entrepot*> (m_model->getPartie()->getListeJoueurs()[0]->getSelection()[0]);
+		Caserne* caserneSelection = dynamic_cast<Caserne*> (m_model->getPartie()->getListeJoueurs()[0]->getSelection()[0]);
+		
+		if (recolteurSelection != NULL) {
+			cout << "Ours sélectionné" << endl;
+			m_sprite_recolteur_joueur1.Resize(20,20);
+			m_sprite_recolteur_joueur1.SetPosition(m_barreInfo.GetPosition().x + 20, m_barreInfo.GetPosition().y + 110);
+			sante = "Sante : " + convertInt(m_model->getPartie()->getListeJoueurs()[0]->getSelection()[0]->getPointsVie()) + " / " + convertInt(POINTS_VIE_RECOLTEUR);
+			m_string_sante.SetText(sante);
+			m_window->Draw(m_sprite_recolteur_joueur1);
+			m_sprite_base_sideBar.SetPosition(m_barreInfo.GetPosition().x + 2, m_barreInfo.GetPosition().y + 145);
+			m_sprite_caserne_sideBar.SetPosition(m_barreInfo.GetPosition().x + 22, m_barreInfo.GetPosition().y + 145);
+			m_sprite_entrepot_sideBar.SetPosition(m_barreInfo.GetPosition().x + 42, m_barreInfo.GetPosition().y + 145);
+			m_window->Draw(m_sprite_base_sideBar);
+			m_window->Draw(m_sprite_caserne_sideBar);
+			m_window->Draw(m_sprite_entrepot_sideBar);
+		}
+		else if (soldatSelection != NULL) {
+			cout << "Soldat sélectionnée" << endl;
+			m_sprite_soldat_joueur1.Resize(20,20);
+			m_sprite_soldat_joueur1.SetPosition(m_barreInfo.GetPosition().x + 20, m_barreInfo.GetPosition().y + 110);
+			sante = "Sante : " + convertInt(m_model->getPartie()->getListeJoueurs()[0]->getSelection()[0]->getPointsVie()) + " / " + convertInt(POINTS_VIE_SOLDAT);
+			m_string_sante.SetText(sante);
+			m_window->Draw(m_sprite_soldat_joueur1);
+		}
+		else if (baseSelection != NULL) {
+			cout << "Base sélectionnée" << endl;
+			m_sprite_base_joueur1.Resize(20,20);
+			m_sprite_base_joueur1.SetPosition(m_barreInfo.GetPosition().x + 20, m_barreInfo.GetPosition().y + 110);
+			sante = "Sante : " + convertInt(m_model->getPartie()->getListeJoueurs()[0]->getSelection()[0]->getPointsVie()) + " / " + convertInt(POINTS_VIE_BASE);
+			m_string_sante.SetText(sante);
+			m_window->Draw(m_sprite_base_joueur1);
+			m_sprite_recolteur_sideBar.SetPosition(m_barreInfo.GetPosition().x + 22, m_barreInfo.GetPosition().y + 145);
+			m_window->Draw(m_sprite_recolteur_sideBar);
+		}
+		else if (caserneSelection != NULL) {
+			cout << "Caserne sélectionnée" << endl;
+			m_sprite_caserne_joueur1.Resize(20,20);
+			m_sprite_caserne_joueur1.SetPosition(m_barreInfo.GetPosition().x + 20, m_barreInfo.GetPosition().y + 110);
+			sante = "Sante : " + convertInt(m_model->getPartie()->getListeJoueurs()[0]->getSelection()[0]->getPointsVie()) + " / " + convertInt(POINTS_VIE_CASERNE);
+			m_string_sante.SetText(sante);
+			m_window->Draw(m_sprite_caserne_joueur1);
+			m_sprite_soldat_sideBar.SetPosition(m_barreInfo.GetPosition().x + 22, m_barreInfo.GetPosition().y + 145);
+			m_window->Draw(m_sprite_soldat_sideBar);
+		}
+		else if (entrepotSelection != NULL) {
+			cout << "Entrepot sélectionnée" << endl;
+			m_sprite_entrepot_joueur1.Resize(20,20);
+			m_sprite_entrepot_joueur1.SetPosition(m_barreInfo.GetPosition().x + 20, m_barreInfo.GetPosition().y + 110);
+			sante = "Sante : " + convertInt(m_model->getPartie()->getListeJoueurs()[0]->getSelection()[0]->getPointsVie()) + " / " + convertInt(POINTS_VIE_ENTREPOT);
+			m_string_sante.SetText(sante);
+			m_window->Draw(m_sprite_entrepot_joueur1);
+		}
+		
+	}
+	m_string_sante.SetPosition(m_barreInfo.GetPosition().x + 4, m_barreInfo.GetPosition().y + 135);
+	m_string_sante.SetText(sante);
+	
 	m_window->Draw(m_string_ressources);
 	m_window->Draw(m_string_barre);
 	m_window->Draw(m_sprite_recolteur_joueur1);
@@ -453,6 +541,7 @@ void GameView::affichageSideBar() {
 	m_window->Draw(m_string_bois);
 	m_window->Draw(m_string_miel);
 	m_window->Draw(m_string_selection);
+	m_window->Draw(m_string_sante);
 }
 
 // Boucle d'affichage
@@ -464,7 +553,7 @@ void GameView::draw()
 			m_window->Draw(m_sprite_titre);
 			m_window->Draw(m_sprite_nouvellePartie);
 			m_window->Draw(m_sprite_quitter);
-
+			
 		}
 		else if (m_optionMenu) {
 			for (int i=0; i<TAILLE_MAP ; i++)
@@ -474,12 +563,12 @@ void GameView::draw()
 					m_window->Draw(m_sprite_herbe);
 				}
 			m_window->Draw(m_option);
-
+			
 			switch (m_selectionApercuCarte) {
-				case 0 :
+				case 0 : 
 					m_window->Draw(m_sprite_apercuVide);
 					break;
-				case 1 :
+				case 1 :	
 					m_window->Draw(m_sprite_apercuMC);
 					break;
 				case 2 :
@@ -515,7 +604,7 @@ void GameView::draw()
 		afficheMiniMap();
 		affichageSideBar();
 	}
-
+	
 	m_window->Display();
 }
 
@@ -644,12 +733,12 @@ bool GameView::treatEvents()
 					else if (m_ecranJeu.GetCenter().x <= 130 && m_ecranJeu.GetCenter().x > 120)
 						m_ecranJeu.SetCenter(125, m_ecranJeu.GetCenter().y);
 				}
-
+				
 				// Sélection des unités avec un clic
 				if (event.Type == Event::MouseButtonPressed && event.MouseButton.Button == Mouse::Left) {
 					//~ selectionUnites(mouse_x,mouse_y);
 					//~ for (int i=0, i<m_model->getPartie()->getListeJoueurs()[0]->getListeUnites().size(); i++)
-						//~ if (m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[i]->getJ() <
+						//~ if (m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[i]->getJ() < 
 					cout << (((mouse_x/ZOOM_FENETRE)+m_ecranJeu.GetCenter().x)/TAILLE_CASE)-8 << " " << ((mouse_y/ZOOM_FENETRE+m_ecranJeu.GetCenter().y)/TAILLE_CASE)-6 << endl;
 				}
 
@@ -665,7 +754,7 @@ bool GameView::treatEvents()
 					m_clicTempX = clicToZoomArene(mouse_x, false);
 					m_clicTempY = clicToZoomArene(mouse_y, true);
 				}
-
+			
 				else if (!LeftButtonDown && m_clic == true)
 				{
 					m_model -> getPartie() -> getListeJoueurs()[0] -> remplirSelection(m_clicX/TAILLE_CASE,m_clicY/TAILLE_CASE,m_clicTempX/TAILLE_CASE,m_clicTempY/TAILLE_CASE);
@@ -675,7 +764,7 @@ bool GameView::treatEvents()
 					m_clicTempX=0;
 					m_clicTempY=0;
 				}
-
+				
 			}
 		}
 	}
@@ -692,7 +781,7 @@ void GameView::verificationInformations()
         m_menu = false;
         m_model -> creerPartie (m_selectionNbJoueurs,m_selectionCarte);
         m_window->SetView(m_ecranJeu);
-
+        
         if (m_model->getPartie()->getListeJoueurs()[0]->getListeBatiments()[0]->getJ() == 3) {
 			if (m_model->getPartie()->getListeJoueurs()[0]->getListeBatiments()[0]->getI() == 3)
 				m_ecranJeu.SetCenter(125,100);
@@ -705,17 +794,17 @@ void GameView::verificationInformations()
 			else if (m_model->getPartie()->getListeJoueurs()[0]->getListeBatiments()[0]->getI() == 46)
 				m_ecranJeu.SetCenter(725,700);
 		}
-
+		
         m_ecranJeu.Zoom(ZOOM_FENETRE);
     }
-
+    
     if (m_selectionNbJoueurs == 1)
     {
 		m_string_joueur4.SetColor(sf::Color::Red);
 		m_string_joueur3.SetColor(sf::Color::Red);
 		m_string_joueur2.SetColor(sf::Color::Red);
 	}
-
+	
 	if (m_selectionCarte == "")
 	{
 		m_string_carte1.SetColor(sf::Color::Red);
@@ -725,12 +814,12 @@ void GameView::verificationInformations()
 
 int GameView::clicToZoomArene(float coord, bool coordVertical) {
 	int coordZoomArene;
-
+	
 	if (!coordVertical)
 		coordZoomArene = (coord/ZOOM_FENETRE) + m_ecranJeu.GetRect().Left;
 	else
 		coordZoomArene = (coord/ZOOM_FENETRE) + m_ecranJeu.GetRect().Top;
-
+		
 	return coordZoomArene;
 }
 
