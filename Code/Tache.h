@@ -24,6 +24,7 @@ class Tache {
 	public:
 		Tache();
 		Tache(std::string type,Unite* me,int cibleI,int cibleJ,Carte* carte);
+		Tache(std::string type,Unite* me,Entite* cible,Carte* carte);
 		~Tache();
 		void attaquer(Entite *entite);
 		bool recolter();

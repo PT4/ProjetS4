@@ -19,7 +19,7 @@ Tache::Tache(string type,Unite* me,int cibleI,int cibleJ,Carte* carte): m_type(t
 	cout << "Constructeur tache"<<endl;
 	
 	m_recolteur=dynamic_cast<Recolteur*>(me);
-	m_soldat=dynamic_cast<Soldat*>(me);
+	
     if (m_type == "Recolter" && m_recolteur != NULL)
 	{
 		m_soldat = NULL;
@@ -30,12 +30,18 @@ Tache::Tache(string type,Unite* me,int cibleI,int cibleJ,Carte* carte): m_type(t
 				m_ressource = m_carte -> getListeRessources()[i];
 		}
 	}
-	
-	else if (m_type == "Attaquer" && m_soldat != NULL)
+}
+
+Tache::Tache(string type,Unite* me,Entite* cible,Carte* carte): m_type(type), m_carte(carte) , m_cible(cible)
+{
+	m_type = "Attaquer";
+	m_soldat=dynamic_cast<Soldat*>(me);
+	if (m_soldat == NULL)
 	{
-		m_ressource = NULL;
-		m_recolteur = NULL;
+		cout << "Erreur ce n'est pas un soldat" << endl;
 	}
+	m_ressource = NULL;
+	m_recolteur = NULL;
 }
 
 Tache::~Tache()
