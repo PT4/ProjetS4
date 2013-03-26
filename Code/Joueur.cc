@@ -113,8 +113,8 @@ void Joueur::remplirSelection(double clicX, double clicY, double clicTempX, doub
 	
 	if (m_selection.size() == 0)
 		for (int j=0; j<m_listeBatiments.size() ; j++) {
-			if (m_listeBatiments[j]->getJ() >= clicX && m_listeBatiments[j]->getJ() >= clicTempX
-				&& m_listeBatiments[j]->getI() >= clicY && m_listeBatiments[j]->getI() >= clicTempY) {
+			if (m_listeBatiments[j]->getJ() >= clicX && m_listeBatiments[j]->getJ() <= clicTempX
+				&& m_listeBatiments[j]->getI() >= clicY && m_listeBatiments[j]->getI() <= clicTempY) {
 				m_selection.clear();
 				m_selection.push_back(m_listeBatiments[j]);
 			}
