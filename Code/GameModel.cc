@@ -37,7 +37,25 @@ GameModel::~GameModel()
 void GameModel::nextStep()
 {
 	setThread();
-
+		if (m_partie != NULL)
+				for (int i = 0; i < m_partie -> getListeJoueurs().size() ; i++)
+				{
+					for (int j = 0; j < m_partie -> getListeJoueurs()[i]->getListeUnites().size(); j++)
+					{
+						for (int k = 0; k < m_partie -> getListeJoueurs()[i]->getListeUnites()[j] -> getListeTaches().size(); k++)
+						{
+							string tache=m_partie -> getListeJoueurs()[i]->getListeUnites()[j] -> getListeTaches()[k]->getType();
+							if (tache == "Recolter")
+								if (m_partie -> getListeJoueurs()[i]->getListeUnites()[j] -> getListeTaches()[k]->recolter() == false)
+									m_partie -> getListeJoueurs()[i]->getListeUnites()[j] -> viderListeTaches();
+							else if ( tache == "Attaquer")
+							{
+							}
+						}
+						
+					}
+					
+				}
     setThread();
 }
 

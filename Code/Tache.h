@@ -9,12 +9,15 @@ class Carte;
 class Entite;
 class Ressource;
 class Recolteur;
+class Soldat;
 
 class Tache {
 	private:
 		std::string m_type;
 		Ressource* m_ressource;
-		Recolteur* m_recolteur;;
+		Recolteur* m_recolteur;
+		Soldat* m_soldat;
+		Entite* m_cible;
 		Carte* m_carte;
 		bool estActive;
 
@@ -23,7 +26,7 @@ class Tache {
 		Tache(std::string type,Unite* me,int cibleI,int cibleJ,Carte* carte);
 		~Tache();
 		void attaquer(Entite *entite);
-		bool Recolter();
+		bool recolter();
 		void setCarte(Carte *carte);
 		std::string getType() const;
 		Carte* getCarte () const;
