@@ -19,7 +19,7 @@ class Entite : public Objet {
 		Entite(std::string nom, int pointsVie);
 		Entite(std::string nom, int pointsVie, Joueur* joueur);
 		Entite(int i, int j, bool estFranchissable, std::string nom, int pointsVie, Joueur* joueur);
-		~Entite();
+		virtual ~Entite();
 		int getPointsVie() const;
 		std::string getNom() const;
 		void setPointsVie(int pointsVie);
