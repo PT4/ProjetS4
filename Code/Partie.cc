@@ -17,7 +17,7 @@ Partie::Partie(string nomMap, int nbJoueurs):m_monFichier(nomMap)
 	//Ne pas oublier de faire un test sur le nombre maximal de joueur.
 	for (int i=0;i<nbJoueurs;i++)
 	{
-		m_listeDeJoueurs.push_back(new Joueur());
+		m_listeDeJoueurs.push_back(new Joueur(m_carte));
 	}
 	m_carte->choisirEmplacementDepartJoueur(m_listeDeJoueurs);
 }

@@ -97,7 +97,7 @@ void Carte::choisirEmplacementDepartJoueur(vector<Joueur*> listeJoueurs)
 			emplacement=Randomizer::Random(1,NB_EMPLACEMENTS_DEPARTS_MAX);
 		//Création de la base et coordonnées
 		m_listeEmplacementsDeparts[emplacement-1]->setOccupation(1);
-		listeJoueurs[k]->ajouterBatiment(1, m_listeEmplacementsDeparts[emplacement-1]->getI(), m_listeEmplacementsDeparts[emplacement-1]->getJ());
+		listeJoueurs[k]->ajouterBatiment(1, m_listeEmplacementsDeparts[emplacement-1]->getI(), m_listeEmplacementsDeparts[emplacement-1]->getJ(),this);
 		//Affectation des coordonnées aux récolteurs
 		if(emplacement<=2)
 			for (int l=0; l<listeJoueurs[k]->getListeUnites().size(); l++)

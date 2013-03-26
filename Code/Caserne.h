@@ -4,13 +4,14 @@
 #include "Batiment.h"
 
 class Joueur;
+class Carte;
 
 class Caserne: public Batiment {
-	
+
 	public:
 		Caserne();
-		Caserne(Joueur* joueur);
-		Caserne(int i, int j, Joueur* joueur);
+		Caserne(Joueur* joueur,Carte* carte);
+		Caserne(int i, int j, Joueur* joueur,Carte* carte);
 		~Caserne();
 		void creerSoldat();
 };

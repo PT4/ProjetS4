@@ -1,4 +1,5 @@
 #include "Batiment.h"
+#include "Carte.h"
 
 using namespace std;
 
@@ -10,12 +11,12 @@ Batiment::Batiment(string nom, int pointsVie, int prixBois, bool formeUnite):
 						Entite(nom, pointsVie), m_prixBois(prixBois), m_formeUnite(formeUnite)
 {}
 
-Batiment::Batiment(string nom, int pointsVie, Joueur* joueur, int prixBois, bool formeUnite):
-						Entite(nom, pointsVie, joueur), m_prixBois(prixBois), m_formeUnite(formeUnite)
+Batiment::Batiment(string nom, int pointsVie, Joueur* joueur, int prixBois, bool formeUnite,Carte* carte):
+						Entite(nom, pointsVie, joueur,carte), m_prixBois(prixBois), m_formeUnite(formeUnite)
 {}
 
-Batiment::Batiment(int i, int j, string nom, int pointsVie, Joueur* joueur, int prixBois, bool formeUnite):
-						Entite(i, j, false, nom, pointsVie, joueur), m_prixBois(prixBois), m_formeUnite(formeUnite)
+Batiment::Batiment(int i, int j, string nom, int pointsVie, Joueur* joueur, int prixBois, bool formeUnite,Carte* carte):
+						Entite(i, j, false, nom, pointsVie, joueur,carte), m_prixBois(prixBois), m_formeUnite(formeUnite)
 {}
 
 //Destructeur

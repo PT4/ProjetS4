@@ -14,25 +14,25 @@ using namespace std;
 Tache::Tache():m_type("")
 {}
 
-Tache::Tache(string type,Unite* me,int cibleI,int cibleJ,Carte* carte): m_type(type), m_carte(carte)
+Tache::Tache(string type,Unite* me,int cibleI,int cibleJ): m_type(type)
 {
 	cout << "Constructeur tache"<<endl;
-	
+
 	m_recolteur=dynamic_cast<Recolteur*>(me);
-	
+
     if (m_type == "Recolter" && m_recolteur != NULL)
 	{
 		m_soldat = NULL;
 		m_cible = NULL;
-		for (int i = 0; i < carte -> getListeRessources().size(); i++)
+		for (int i = 0; i < m_recolteur -> getCarte() -> getListeRessources().size(); i++)
 		{
-			if (m_carte -> getListeRessources()[i]->getI() == cibleI && m_carte -> getListeRessources()[i]->getJ() == cibleJ)
+			if (m_recolteur -> getCarte() -> getListeRessources()[i]->getI() == cibleI && m_carte -> getListeRessources()[i]->getJ() == cibleJ)
 				m_ressource = m_carte -> getListeRessources()[i];
 		}
 	}
 }
 
-Tache::Tache(string type,Unite* me,Entite* cible,Carte* carte): m_type(type), m_carte(carte) , m_cible(cible)
+Tache::Tache(string type,Unite* me,Entite* cible): m_type(type) , m_cible(cible)
 {
 	m_type = "Attaquer";
 	m_soldat=dynamic_cast<Soldat*>(me);
@@ -72,7 +72,7 @@ bool Tache::recolter()
 {
 	if (m_ressource -> getStock() <= 0)
 	{
-		m_carte -> supprime(m_ressource -> getI(),m_ressource -> getJ());
+		m_recolteur -> getCarte() -> supprime(m_ressource -> getI(),m_ressource -> getJ());
 		return false;
 	}
 	else
