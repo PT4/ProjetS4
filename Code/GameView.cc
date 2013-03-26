@@ -272,6 +272,10 @@ void GameView::declarationImages()
 		m_string_sante.SetFont(m_font);
 		m_string_sante.SetSize(5);
 		m_string_sante.SetColor(sf::Color::Black);
+		
+		m_string_poids.SetFont(m_font);
+		m_string_poids.SetSize(5);
+		m_string_poids.SetColor(sf::Color::Black);
 }
 
 void GameView::afficheMiniMap()
@@ -470,6 +474,7 @@ void GameView::affichageSideBar() {
 	//Onglet selection
 	m_string_selection.SetPosition(m_barreInfo.GetPosition().x + 19, m_barreInfo.GetPosition().y + 100);
 	string sante = "";
+	string poids = "";
 	if (m_model->getPartie()->getListeJoueurs()[0]->getSelection().size() != 0) {
 		Recolteur* recolteurSelection = dynamic_cast<Recolteur*> (m_model->getPartie()->getListeJoueurs()[0]->getSelection()[0]);
 		Soldat* soldatSelection = dynamic_cast<Soldat*> (m_model->getPartie()->getListeJoueurs()[0]->getSelection()[0]);
@@ -478,52 +483,50 @@ void GameView::affichageSideBar() {
 		Caserne* caserneSelection = dynamic_cast<Caserne*> (m_model->getPartie()->getListeJoueurs()[0]->getSelection()[0]);
 		
 		if (recolteurSelection != NULL) {
-			cout << "Ours sélectionné" << endl;
 			m_sprite_recolteur_joueur1.Resize(20,20);
 			m_sprite_recolteur_joueur1.SetPosition(m_barreInfo.GetPosition().x + 20, m_barreInfo.GetPosition().y + 110);
-			sante = "Sante : " + convertInt(m_model->getPartie()->getListeJoueurs()[0]->getSelection()[0]->getPointsVie()) + " / " + convertInt(POINTS_VIE_RECOLTEUR);
+			sante = "Sante : " + convertInt(recolteurSelection->getPointsVie()) + " / " + convertInt(POINTS_VIE_RECOLTEUR);
 			m_string_sante.SetText(sante);
+			poids = "Poids : " + convertInt(recolteurSelection->getPoids()) + " / " + convertInt(POIDS_TRANSPORTE_MAX);
+			m_string_poids.SetText(poids);
+			m_string_poids.SetPosition(m_barreInfo.GetPosition().x + 4, m_barreInfo.GetPosition().y + 140);
 			m_window->Draw(m_sprite_recolteur_joueur1);
-			m_sprite_base_sideBar.SetPosition(m_barreInfo.GetPosition().x + 2, m_barreInfo.GetPosition().y + 145);
-			m_sprite_caserne_sideBar.SetPosition(m_barreInfo.GetPosition().x + 22, m_barreInfo.GetPosition().y + 145);
-			m_sprite_entrepot_sideBar.SetPosition(m_barreInfo.GetPosition().x + 42, m_barreInfo.GetPosition().y + 145);
+			m_sprite_base_sideBar.SetPosition(m_barreInfo.GetPosition().x + 2, m_barreInfo.GetPosition().y + 150);
+			m_sprite_caserne_sideBar.SetPosition(m_barreInfo.GetPosition().x + 22, m_barreInfo.GetPosition().y + 150);
+			m_sprite_entrepot_sideBar.SetPosition(m_barreInfo.GetPosition().x + 42, m_barreInfo.GetPosition().y + 150);
 			m_window->Draw(m_sprite_base_sideBar);
 			m_window->Draw(m_sprite_caserne_sideBar);
 			m_window->Draw(m_sprite_entrepot_sideBar);
 		}
 		else if (soldatSelection != NULL) {
-			cout << "Soldat sélectionnée" << endl;
 			m_sprite_soldat_joueur1.Resize(20,20);
 			m_sprite_soldat_joueur1.SetPosition(m_barreInfo.GetPosition().x + 20, m_barreInfo.GetPosition().y + 110);
-			sante = "Sante : " + convertInt(m_model->getPartie()->getListeJoueurs()[0]->getSelection()[0]->getPointsVie()) + " / " + convertInt(POINTS_VIE_SOLDAT);
+			sante = "Sante : " + convertInt(soldatSelection->getPointsVie()) + " / " + convertInt(POINTS_VIE_SOLDAT);
 			m_string_sante.SetText(sante);
 			m_window->Draw(m_sprite_soldat_joueur1);
 		}
 		else if (baseSelection != NULL) {
-			cout << "Base sélectionnée" << endl;
 			m_sprite_base_joueur1.Resize(20,20);
 			m_sprite_base_joueur1.SetPosition(m_barreInfo.GetPosition().x + 20, m_barreInfo.GetPosition().y + 110);
-			sante = "Sante : " + convertInt(m_model->getPartie()->getListeJoueurs()[0]->getSelection()[0]->getPointsVie()) + " / " + convertInt(POINTS_VIE_BASE);
+			sante = "Sante : " + convertInt(baseSelection->getPointsVie()) + " / " + convertInt(POINTS_VIE_BASE);
 			m_string_sante.SetText(sante);
 			m_window->Draw(m_sprite_base_joueur1);
-			m_sprite_recolteur_sideBar.SetPosition(m_barreInfo.GetPosition().x + 22, m_barreInfo.GetPosition().y + 145);
+			m_sprite_recolteur_sideBar.SetPosition(m_barreInfo.GetPosition().x + 22, m_barreInfo.GetPosition().y + 150);
 			m_window->Draw(m_sprite_recolteur_sideBar);
 		}
 		else if (caserneSelection != NULL) {
-			cout << "Caserne sélectionnée" << endl;
 			m_sprite_caserne_joueur1.Resize(20,20);
 			m_sprite_caserne_joueur1.SetPosition(m_barreInfo.GetPosition().x + 20, m_barreInfo.GetPosition().y + 110);
-			sante = "Sante : " + convertInt(m_model->getPartie()->getListeJoueurs()[0]->getSelection()[0]->getPointsVie()) + " / " + convertInt(POINTS_VIE_CASERNE);
+			sante = "Sante : " + convertInt(caserneSelection->getPointsVie()) + " / " + convertInt(POINTS_VIE_CASERNE);
 			m_string_sante.SetText(sante);
 			m_window->Draw(m_sprite_caserne_joueur1);
-			m_sprite_soldat_sideBar.SetPosition(m_barreInfo.GetPosition().x + 22, m_barreInfo.GetPosition().y + 145);
+			m_sprite_soldat_sideBar.SetPosition(m_barreInfo.GetPosition().x + 22, m_barreInfo.GetPosition().y + 150);
 			m_window->Draw(m_sprite_soldat_sideBar);
 		}
 		else if (entrepotSelection != NULL) {
-			cout << "Entrepot sélectionnée" << endl;
 			m_sprite_entrepot_joueur1.Resize(20,20);
 			m_sprite_entrepot_joueur1.SetPosition(m_barreInfo.GetPosition().x + 20, m_barreInfo.GetPosition().y + 110);
-			sante = "Sante : " + convertInt(m_model->getPartie()->getListeJoueurs()[0]->getSelection()[0]->getPointsVie()) + " / " + convertInt(POINTS_VIE_ENTREPOT);
+			sante = "Sante : " + convertInt(entrepotSelection->getPointsVie()) + " / " + convertInt(POINTS_VIE_ENTREPOT);
 			m_string_sante.SetText(sante);
 			m_window->Draw(m_sprite_entrepot_joueur1);
 		}
@@ -531,6 +534,7 @@ void GameView::affichageSideBar() {
 	}
 	m_string_sante.SetPosition(m_barreInfo.GetPosition().x + 4, m_barreInfo.GetPosition().y + 135);
 	m_string_sante.SetText(sante);
+	m_string_poids.SetText(poids);
 	
 	m_window->Draw(m_string_ressources);
 	m_window->Draw(m_string_barre);
@@ -542,6 +546,7 @@ void GameView::affichageSideBar() {
 	m_window->Draw(m_string_miel);
 	m_window->Draw(m_string_selection);
 	m_window->Draw(m_string_sante);
+	m_window->Draw(m_string_poids);
 }
 
 // Boucle d'affichage
@@ -735,13 +740,6 @@ bool GameView::treatEvents()
 				}
 				
 				// Sélection des unités avec un clic
-				if (event.Type == Event::MouseButtonPressed && event.MouseButton.Button == Mouse::Left) {
-					//~ selectionUnites(mouse_x,mouse_y);
-					//~ for (int i=0, i<m_model->getPartie()->getListeJoueurs()[0]->getListeUnites().size(); i++)
-						//~ if (m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[i]->getJ() < 
-					cout << (((mouse_x/ZOOM_FENETRE)+m_ecranJeu.GetCenter().x)/TAILLE_CASE)-8 << " " << ((mouse_y/ZOOM_FENETRE+m_ecranJeu.GetCenter().y)/TAILLE_CASE)-6 << endl;
-				}
-
 				if (LeftButtonDown)
 				{
 					m_clic = true;

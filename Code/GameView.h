@@ -51,6 +51,7 @@ class GameView :public sf::Thread{
 		sf::String m_string_miel;
 		sf::String m_string_selection;
 		sf::String m_string_sante;
+		sf::String m_string_poids;
 		std::string m_string_adresse_carte1;
 		std::string m_string_adresse_carte2;
 		sf::Image m_image_titre;
