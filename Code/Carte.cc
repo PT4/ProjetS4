@@ -104,12 +104,14 @@ void Carte::choisirEmplacementDepartJoueur(vector<Joueur*> listeJoueurs)
 			{
 				listeJoueurs[k]->getListeUnites()[l]->setJ(listeJoueurs[k]->getListeBatiments()[0]->getJ()-1+l);
 				listeJoueurs[k]->getListeUnites()[l]->setI(listeJoueurs[k]->getListeBatiments()[0]->getI()-1);
+				setCaseMatrice(listeJoueurs[k]->getListeUnites()[l]->getI(),listeJoueurs[k]->getListeUnites()[l]->getJ(),5);
 			}
 		else
 			for (int l=0; l<listeJoueurs[k]->getListeUnites().size(); l++)
 			{
 				listeJoueurs[k]->getListeUnites()[l]->setJ(listeJoueurs[k]->getListeBatiments()[0]->getJ()-1+l);
 				listeJoueurs[k]->getListeUnites()[l]->setI(listeJoueurs[k]->getListeBatiments()[0]->getI()+1);
+				setCaseMatrice(listeJoueurs[k]->getListeUnites()[l]->getI(),listeJoueurs[k]->getListeUnites()[l]->getJ(),5);
 			}
 	}
 	for(int k=0; k<m_listeEmplacementsDeparts.size(); k++)

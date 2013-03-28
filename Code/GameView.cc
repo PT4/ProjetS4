@@ -383,6 +383,11 @@ void GameView::affichageCarte()
 					m_sprite_herbe.SetPosition(i*TAILLE_CASE,j*TAILLE_CASE);
 					m_window->Draw(m_sprite_herbe);
 					break;
+                case 5 :
+					m_sprite_herbe.Resize(TAILLE_CASE,TAILLE_CASE);
+					m_sprite_herbe.SetPosition(i*TAILLE_CASE,j*TAILLE_CASE);
+					m_window->Draw(m_sprite_herbe);
+                break;
 			}
 	}
 }
