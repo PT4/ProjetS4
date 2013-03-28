@@ -15,8 +15,8 @@ const int HAUTEUR_BARRE=1000;
 
 //Initialisation des propriétés du joueurss
 const int NB_RECOLTEUR_DEPART=3;
-const int QUANTITE_MIEL_DEPART=0;
-const int QUANTITE_BOIS_DEPART=0;
+const int QUANTITE_MIEL_DEPART=200;
+const int QUANTITE_BOIS_DEPART=200;
 
 //Initialisation de la carte
 const int TAILLE_MAP=50;

@@ -32,7 +32,7 @@ class GameView :public sf::Thread{
 
 		sf::RenderWindow * m_window;
 		sf::Font m_font;
-		
+
 		bool m_thread;
 
 		//Menu
@@ -134,11 +134,12 @@ class GameView :public sf::Thread{
 		sf::Sprite m_sprite_herbe;
 		sf::Sprite m_sprite_miel;
 		sf::Sprite m_sprite_rocher;
-		
+
 		sf::Shape m_barreInfo;
+		std::string m_creationSelection;
 
 	public:
-	
+
 		GameView(int width, int height);
 		~GameView();
 
@@ -153,6 +154,7 @@ class GameView :public sf::Thread{
 		void affichageCarte();
 		void affichageBaseJoueur(int i, int j);
 		void affichageUnitesJoueur();
+		void affichageBatiment();
 		void affichageSideBar();
 		std::string selectionOptionMenu(sf::String selection);
 		bool treatEvents();

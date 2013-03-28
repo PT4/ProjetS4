@@ -135,7 +135,7 @@ int Joueur::getQuantiteMiel() const {
 }
 
 void Joueur::setQuantiteMiel(int miel) {
-	m_quantiteMiel = miel;
+	m_quantiteMiel -= miel;
 }
 
 int Joueur::getQuantiteBois() const {
@@ -143,6 +143,6 @@ int Joueur::getQuantiteBois() const {
 }
 
 void Joueur::setQuantiteBois(int bois) {
-	m_quantiteBois = bois;
+	m_quantiteBois -= bois;
 }
 
