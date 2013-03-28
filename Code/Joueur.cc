@@ -70,7 +70,7 @@ void Joueur::ajouterBatiment(int type, int i, int j,Carte* carte)
 	}
 }
 
-void Joueur::ajouterUnite(int type, int i, int j,Carte* carte)
+void Joueur::ajouterUnite(int type, int i, int j, Carte* carte)
 {
 	switch(type)
 	{

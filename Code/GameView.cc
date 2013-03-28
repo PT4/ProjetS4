@@ -429,30 +429,62 @@ void GameView::affichageBaseJoueur(int i, int j)
 void GameView::affichageUnitesJoueur()
 {
 	for (int k=0; k<m_model->getPartie()->getListeJoueurs().size(); k++)
-		for (int l=0; l<m_model->getPartie()->getListeJoueurs()[k]->getListeUnites().size(); l++)
+		for (int l=0; l<m_model->getPartie()->getListeJoueurs()[k]->getListeUnites().size(); l++) {
+			Recolteur* recolteur = dynamic_cast<Recolteur*> (m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]);
+            Soldat* soldat = dynamic_cast<Soldat*> (m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]);
+			
 			switch(k)
 			{
 				case 0:
-					m_sprite_recolteur_joueur1.Resize(TAILLE_CASE,TAILLE_CASE);
-					m_sprite_recolteur_joueur1.SetPosition(m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getJ()*TAILLE_CASE,m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getI()*TAILLE_CASE);
-					m_window->Draw(m_sprite_recolteur_joueur1);
+					if (recolteur != NULL) {
+						m_sprite_recolteur_joueur1.Resize(TAILLE_CASE,TAILLE_CASE);
+						m_sprite_recolteur_joueur1.SetPosition(m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getJ()*TAILLE_CASE,m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getI()*TAILLE_CASE);
+						m_window->Draw(m_sprite_recolteur_joueur1);
+					}
+					else if (soldat != NULL) {
+						m_sprite_soldat_joueur1.Resize(TAILLE_CASE,TAILLE_CASE);
+						m_sprite_soldat_joueur1.SetPosition(m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getJ()*TAILLE_CASE,m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getI()*TAILLE_CASE);
+						m_window->Draw(m_sprite_soldat_joueur1);
+					}
 					break;
 				case 1:
-					m_sprite_recolteur_joueur2.Resize(TAILLE_CASE,TAILLE_CASE);
-					m_sprite_recolteur_joueur2.SetPosition(m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getJ()*TAILLE_CASE,m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getI()*TAILLE_CASE);
-					m_window->Draw(m_sprite_recolteur_joueur2);
+					if (recolteur != NULL) {
+						m_sprite_recolteur_joueur2.Resize(TAILLE_CASE,TAILLE_CASE);
+						m_sprite_recolteur_joueur2.SetPosition(m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getJ()*TAILLE_CASE,m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getI()*TAILLE_CASE);
+						m_window->Draw(m_sprite_recolteur_joueur2);
+					}
+					else if (soldat != NULL) {
+						m_sprite_soldat_joueur2.Resize(TAILLE_CASE,TAILLE_CASE);
+						m_sprite_soldat_joueur2.SetPosition(m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getJ()*TAILLE_CASE,m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getI()*TAILLE_CASE);
+						m_window->Draw(m_sprite_soldat_joueur2);
+					}
 					break;
 				case 2:
-					m_sprite_recolteur_joueur3.Resize(TAILLE_CASE,TAILLE_CASE);
-					m_sprite_recolteur_joueur3.SetPosition(m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getJ()*TAILLE_CASE,m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getI()*TAILLE_CASE);
-					m_window->Draw(m_sprite_recolteur_joueur3);
+					if (recolteur != NULL) {
+						m_sprite_recolteur_joueur3.Resize(TAILLE_CASE,TAILLE_CASE);
+						m_sprite_recolteur_joueur3.SetPosition(m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getJ()*TAILLE_CASE,m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getI()*TAILLE_CASE);
+						m_window->Draw(m_sprite_recolteur_joueur3);
+					}
+					else if (soldat != NULL) {
+						m_sprite_soldat_joueur3.Resize(TAILLE_CASE,TAILLE_CASE);
+						m_sprite_soldat_joueur3.SetPosition(m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getJ()*TAILLE_CASE,m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getI()*TAILLE_CASE);
+						m_window->Draw(m_sprite_soldat_joueur3);
+					}
 					break;
 				case 3:
-					m_sprite_recolteur_joueur4.Resize(TAILLE_CASE,TAILLE_CASE);
-					m_sprite_recolteur_joueur4.SetPosition(m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getJ()*TAILLE_CASE,m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getI()*TAILLE_CASE);
-					m_window->Draw(m_sprite_recolteur_joueur4);
+					if (recolteur != NULL) {
+						m_sprite_recolteur_joueur4.Resize(TAILLE_CASE,TAILLE_CASE);
+						m_sprite_recolteur_joueur4.SetPosition(m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getJ()*TAILLE_CASE,m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getI()*TAILLE_CASE);
+						m_window->Draw(m_sprite_recolteur_joueur4);
+					}
+					else if (soldat != NULL) {
+						m_sprite_soldat_joueur4.Resize(TAILLE_CASE,TAILLE_CASE);
+						m_sprite_soldat_joueur4.SetPosition(m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getJ()*TAILLE_CASE,m_model->getPartie()->getListeJoueurs()[k]->getListeUnites()[l]->getI()*TAILLE_CASE);
+						m_window->Draw(m_sprite_soldat_joueur4);
+					}
 					break;
 			}
+		}
 }
 
 void GameView::affichageBatiment()
@@ -876,7 +908,7 @@ bool GameView::treatEvents()
                     }
 				}
 
-				else if (m_creationSelection != "" && LeftButtonDown && mouse_x < 760)
+				if (m_creationSelection != "" && LeftButtonDown && mouse_x < 760)
                 {
                     int iMap = clicToZoomArene(mouse_y, true)/16;
                     int jMap = clicToZoomArene(mouse_x, false)/16;
@@ -906,6 +938,22 @@ bool GameView::treatEvents()
                         m_creationSelection="";
                      }
                 }
+                
+                else if (m_creationSelection != "")
+                {
+					if (m_creationSelection == "Recolteur" && m_model -> getPartie() -> getListeJoueurs()[0] -> getQuantiteBois() >= PRIX_MIEL_RECOLTEUR)
+                           {
+                               Base* baseSelection = dynamic_cast<Base*> (m_model->getPartie()->getListeJoueurs()[0]->getSelection()[0]);
+                               baseSelection->creerRecolteur();
+                               m_creationSelection="";
+                           }
+                    else if (m_creationSelection == "Soldat" && m_model -> getPartie() -> getListeJoueurs()[0] -> getQuantiteBois() >= PRIX_MIEL_SOLDAT)
+                           {
+                               Caserne* caserneSelection = dynamic_cast<Caserne*> (m_model->getPartie()->getListeJoueurs()[0]->getSelection()[0]);
+                               caserneSelection->creerSoldat();
+                               m_creationSelection="";
+                           }
+				}
 
 				else if (m_model -> getPartie() -> getListeJoueurs()[0] -> getSelection().size() != 0 && LeftButtonDown)
 				{
@@ -923,7 +971,7 @@ bool GameView::treatEvents()
                     }
                     else if (baseSelection != NULL && mouse_x > 850 && mouse_x < 905 && mouse_y > 610 && mouse_y < 655)
                     {
-                            m_creationSelection="Boubours";
+                            m_creationSelection="Recolteur";
                     }
                     else if (caserneSelection != NULL && mouse_x > 850 && mouse_x < 905 && mouse_y > 610 && mouse_y < 655)
                     {
