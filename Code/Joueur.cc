@@ -9,7 +9,7 @@
 #include "Batiment.h"
 #include "Tache.h"
 #include "Entite.h"
-
+#include "Carte.h"
 #include <cstdlib>
 #include <sstream>
 #include <iostream>
@@ -18,10 +18,10 @@
 using namespace std;
 
 //Constructeurs
-Joueur::Joueur()
+Joueur::Joueur(Carte* carte)
 {
 	for (int i=0; i<NB_RECOLTEUR_DEPART; i++)
-		m_listeUnites.push_back(new Recolteur(this));
+		m_listeUnites.push_back(new Recolteur(this,carte));
 	m_quantiteMiel=QUANTITE_MIEL_DEPART;
 	m_quantiteBois=QUANTITE_BOIS_DEPART;
 	m_population=NB_RECOLTEUR_DEPART;
@@ -59,23 +59,23 @@ vector<Entite*> Joueur::getSelection() const
 }
 
 //Methodes
-void Joueur::ajouterBatiment(int type, int i, int j)
+void Joueur::ajouterBatiment(int type, int i, int j,Carte* carte)
 {
 	switch(type)
 	{
-		case 1: m_listeBatiments.push_back(new Base(i, j,this)); break;
-		case 2: m_listeBatiments.push_back(new Caserne(i, j,this)); break;
-		case 3: m_listeBatiments.push_back(new Entrepot(i, j,this)); break;
+		case 1: m_listeBatiments.push_back(new Base(i, j,this,carte)); break;
+		case 2: m_listeBatiments.push_back(new Caserne(i, j,this,carte)); break;
+		case 3: m_listeBatiments.push_back(new Entrepot(i, j,this,carte)); break;
 		default: break;
 	}
 }
 
-void Joueur::ajouterUnite(int type, int i, int j)
+void Joueur::ajouterUnite(int type, int i, int j,Carte* carte)
 {
 	switch(type)
 	{
-		case 1: m_listeUnites.push_back(new Recolteur(i, j,this));break;
-		case 2: m_listeUnites.push_back(new Soldat(i, j,this)); break;
+		case 1: m_listeUnites.push_back(new Recolteur(i, j,this,carte));break;
+		case 2: m_listeUnites.push_back(new Soldat(i, j,this,carte)); break;
 		default: break;
 	}
 }
@@ -96,12 +96,12 @@ void Joueur::inverseCoordonnee(double &a,double &b)
 void Joueur::remplirSelection(double clicX, double clicY, double clicTempX, double clicTempY)
 {
 	m_selection.clear();
-	
+
 	if (clicX > clicTempX)
 		inverseCoordonnee(clicX,clicTempX);
 	if (clicY > clicTempY)
 		inverseCoordonnee(clicY,clicTempY);
-		
+
 	for (int i = 0; i < m_listeUnites.size();i++)
 	{
 		if (m_listeUnites[i]->getJ() >= clicX && m_listeUnites[i]->getJ() <= clicTempX
@@ -110,7 +110,7 @@ void Joueur::remplirSelection(double clicX, double clicY, double clicTempX, doub
 				m_selection.push_back(m_listeUnites[i]);
 			}
 	}
-	
+
 	if (m_selection.size() == 0)
 		for (int j=0; j<m_listeBatiments.size() ; j++) {
 			if (m_listeBatiments[j]->getJ() >= clicX && m_listeBatiments[j]->getJ() <= clicTempX

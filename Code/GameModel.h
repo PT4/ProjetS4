@@ -26,6 +26,7 @@ class GameModel : private sf::Thread{
 		bool getThread() const;
         bool setThread ();
         void creerPartie(int nbJoueur, std::string carte);
+        void deplacementRecolte(int i, int j, int k,int i_dest, int j_dest);
 
 };
 #endif

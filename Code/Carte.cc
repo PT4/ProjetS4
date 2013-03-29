@@ -5,6 +5,7 @@
 #include "EmplacementDepart.h"
 #include "Unite.h"
 #include "Batiment.h"
+#include "CaseVide.h"
 
 #include <cstdlib>
 #include <fstream>
@@ -41,6 +42,11 @@ Carte::~Carte()
 		delete m_listeEmplacementsDeparts[i];
 		m_listeEmplacementsDeparts[i] = 0;
 	}
+	for (int i=0; i<m_listeCasesVides.size() ; i++)
+	{
+		delete m_listeCasesVides[i];
+		m_listeCasesVides[i] = 0;
+	}
 }
 
 //Accesseurs en lecture
@@ -48,6 +54,17 @@ int Carte::getCaseMatrice(int i, int j) const
 {
 	return m_matrice[i][j];
 }
+
+vector<CaseVide*> Carte::getListeCasesVides() const
+{
+	return m_listeCasesVides;
+}
+
+vector<Ressource*> Carte::getListeRessources() const
+{
+	return m_listeRessources;
+}
+
 
 //Accesseur en écriture
 void Carte::setCaseMatrice(int i, int j, int val)
@@ -82,6 +99,10 @@ void Carte::chargementFichier(string mon_fichier)
 			}
 		}
 		fichier.close();
+		for (int i=0; i<TAILLE_MAP; i++)
+			for (int j=0; j<TAILLE_MAP; j++)
+				if(m_matrice[i][j]==4)
+					m_listeCasesVides.push_back(new CaseVide(i,j));
 	}
 	else
 		cerr << "Impossible d'ouvrir la map !" << endl;
@@ -97,7 +118,7 @@ void Carte::choisirEmplacementDepartJoueur(vector<Joueur*> listeJoueurs)
 			emplacement=Randomizer::Random(1,NB_EMPLACEMENTS_DEPARTS_MAX);
 		//Création de la base et coordonnées
 		m_listeEmplacementsDeparts[emplacement-1]->setOccupation(1);
-		listeJoueurs[k]->ajouterBatiment(1, m_listeEmplacementsDeparts[emplacement-1]->getI(), m_listeEmplacementsDeparts[emplacement-1]->getJ());
+		listeJoueurs[k]->ajouterBatiment(1, m_listeEmplacementsDeparts[emplacement-1]->getI(), m_listeEmplacementsDeparts[emplacement-1]->getJ(),this);
 		//Affectation des coordonnées aux récolteurs
 		if(emplacement<=2)
 			for (int l=0; l<listeJoueurs[k]->getListeUnites().size(); l++)
@@ -117,9 +138,14 @@ void Carte::choisirEmplacementDepartJoueur(vector<Joueur*> listeJoueurs)
 			setCaseMatrice(m_listeEmplacementsDeparts[k]->getI(), m_listeEmplacementsDeparts[k]->getJ(), 4);
 }
 
-vector<Ressource*> Carte::getListeRessources() const
+
+void Carte::calculListeCasesVides()
 {
-	return m_listeRessources;
+	m_listeCasesVides.clear();
+	for (int i=0; i<TAILLE_MAP; i++)
+			for (int j=0; j<TAILLE_MAP; j++)
+				if(m_matrice[i][j]==4)
+					m_listeCasesVides.push_back(new CaseVide(i,j));
 }
 
 void Carte::supprime(int i ,int j)

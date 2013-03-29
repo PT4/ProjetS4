@@ -1,6 +1,7 @@
 #include "Recolteur.h"
 #include "Constantes.h"
 #include "Joueur.h"
+#include "Carte.h"
 #include "Tache.h"
 
 #include <cstdlib>
@@ -12,11 +13,11 @@ Recolteur::Recolteur(): Unite("Recolteur", POINTS_VIE_RECOLTEUR, PRIX_MIEL_RECOL
 									m_poids(0), m_recolte(0)
 {}
 
-Recolteur::Recolteur(Joueur* joueur): Unite("Recolteur", POINTS_VIE_RECOLTEUR, joueur, PRIX_MIEL_RECOLTEUR, VITESSE_RECOLTEUR, DEGAT_RECOLTEUR, RAYON_ATTAQUE_RECOLTEUR),
+Recolteur::Recolteur(Joueur* joueur,Carte* carte): Unite("Recolteur", POINTS_VIE_RECOLTEUR, joueur, PRIX_MIEL_RECOLTEUR, VITESSE_RECOLTEUR, DEGAT_RECOLTEUR, RAYON_ATTAQUE_RECOLTEUR,carte),
 									m_poids(0), m_recolte(0)
 {}
 
-Recolteur::Recolteur(int i, int j, Joueur* joueur): Unite(i, j,"Recolteur", POINTS_VIE_RECOLTEUR,joueur, PRIX_MIEL_RECOLTEUR, VITESSE_RECOLTEUR, DEGAT_RECOLTEUR, RAYON_ATTAQUE_RECOLTEUR),
+Recolteur::Recolteur(int i, int j, Joueur* joueur,Carte* carte): Unite(i, j,"Recolteur", POINTS_VIE_RECOLTEUR,joueur, PRIX_MIEL_RECOLTEUR, VITESSE_RECOLTEUR, DEGAT_RECOLTEUR, RAYON_ATTAQUE_RECOLTEUR,carte),
 									m_poids(0), m_recolte(0)
 {}
 

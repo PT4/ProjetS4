@@ -1,5 +1,6 @@
 #include "Unite.h"
 #include "Joueur.h"
+#include "Carte.h"
 
 #include <cstdlib>
 
@@ -13,11 +14,11 @@ Unite::Unite(string nom, int pointsVie, int prixMiel, int vitesse, int degat, in
 				m_prixMiel(prixMiel), m_vitesse(vitesse), m_degat(degat), m_rayonAttaque(rayonAttaque), m_seDeplace(0), m_attaque(0)
 {}
 
-Unite::Unite(string nom, int pointsVie, Joueur* joueur, int prixMiel, int vitesse, int degat, int rayonAttaque): Entite(nom, pointsVie, joueur),
+Unite::Unite(string nom, int pointsVie, Joueur* joueur, int prixMiel, int vitesse, int degat, int rayonAttaque,Carte* carte): Entite(nom, pointsVie, joueur,carte),
 				m_prixMiel(prixMiel), m_vitesse(vitesse), m_degat(degat), m_rayonAttaque(rayonAttaque), m_seDeplace(0), m_attaque(0)
 {}
 
-Unite::Unite(int i, int j, string nom, int pointsVie, Joueur* joueur, int prixMiel, int vitesse, int degat, int rayonAttaque): Entite(i, j, true, nom, pointsVie, joueur),
+Unite::Unite(int i, int j, string nom, int pointsVie, Joueur* joueur, int prixMiel, int vitesse, int degat, int rayonAttaque,Carte* carte): Entite(i, j, true, nom, pointsVie, joueur,carte),
 				m_prixMiel(prixMiel), m_vitesse(vitesse), m_degat(degat), m_rayonAttaque(rayonAttaque), m_seDeplace(0), m_attaque(0)
 {}
 
@@ -60,13 +61,17 @@ void Unite::attaquer(Entite& cible) {
 	cible.setPointsVie(getDegat());
 }
 
-void Unite::creerTache(string type,int i,int j,Carte* carte) {
-	m_listeTaches.push_back(new Tache(type,this,i,j,carte));
+void Unite::creerTache(string type,int i,int j) {
+	m_listeTaches.push_back(new Tache(type,this,i,j));
 }
 
 vector<Tache*> Unite::getListeTaches() const
 {
 	return m_listeTaches;
+}
+
+void Unite::supprimerTache(int indice) {
+	m_listeTaches.erase(m_listeTaches.begin()+indice);
 }
 
 void Unite::viderListeTaches()

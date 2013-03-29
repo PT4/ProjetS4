@@ -4,13 +4,14 @@
 #include "Batiment.h"
 
 class Joueur;
+class Carte;
 
 class Base: public Batiment {
-	
+
 	public:
 		Base();
-		Base(Joueur* joueur);
-		Base(int i, int j, Joueur* joueur);
+		Base(Joueur* joueur,Carte* carte);
+		Base(int i, int j, Joueur* joueur,Carte* carte);
 		~Base();
 		void creerRecolteur();
 };

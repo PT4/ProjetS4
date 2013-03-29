@@ -4,16 +4,17 @@
 #include "Unite.h"
 
 class Joueur;
+class Carte;
 
 class Soldat: public Unite {
-	
+
 	private:
 		int m_armure;
-		
+
 	public:
 		Soldat();
-		Soldat(Joueur* joueur);
-		Soldat(int i, int j, Joueur* joueur);
+		Soldat(Joueur* joueur,Carte* carte);
+		Soldat(int i, int j, Joueur* joueur,Carte* carte);
 		~Soldat();
 		int getArmure() const;
 		void setArmure(int armure);

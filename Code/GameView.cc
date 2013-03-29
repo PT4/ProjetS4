@@ -309,7 +309,7 @@ void GameView::afficheMiniMap()
 		}
 	}
 	
-	//On met dans la mattrice les unites
+	//On met dans la matrice les unites
 	for ( int i = 0; i < m_model -> getPartie() -> getListeJoueurs().size();i++)
 		for ( int j = 0; j < m_model -> getPartie () -> getListeJoueurs()[i] -> getListeUnites().size();j++)
 		{
@@ -326,7 +326,7 @@ void GameView::afficheMiniMap()
 	//On met dans la matrice les batiments
 	couleur = sf::Color(51,153,255);
 	for ( int i = 0; i < m_model -> getPartie() -> getListeJoueurs().size();i++)
-		for ( int j = 0; j < m_model -> getPartie () -> getListeJoueurs()[i] -> getListeUnites().size();j++)
+		for ( int j = 0; j < m_model -> getPartie () -> getListeJoueurs()[i] -> getListeBatiments().size();j++)
 		{
 			int posIUnite = m_model -> getPartie () -> getListeJoueurs()[i] -> getListeBatiments()[j]->getJ();
 			int posJUnite = m_model -> getPartie () -> getListeJoueurs()[i] -> getListeBatiments()[j]-> getI();

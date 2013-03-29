@@ -24,8 +24,8 @@ class Unite: public Entite {
 	public:
 		Unite();
 		Unite(std::string nom, int pointsVie, int prixMiel, int vitesse, int degat, int rayonAttaque);
-		Unite(std::string nom, int pointsVie, Joueur* joueur, int prixMiel, int vitesse, int degat, int rayonAttaque);
-		Unite(int i, int j, std::string nom, int pointsVie, Joueur* joueur, int prixMiel, int vitesse, int degat, int rayonAttaque);
+		Unite(std::string nom, int pointsVie, Joueur* joueur, int prixMiel, int vitesse, int degat, int rayonAttaque,Carte* carte);
+		Unite(int i, int j, std::string nom, int pointsVie, Joueur* joueur, int prixMiel, int vitesse, int degat, int rayonAttaque,Carte* carte);
 		virtual ~Unite();
 		bool getDeplacement() const;
 		bool getAttaque() const;
@@ -34,8 +34,9 @@ class Unite: public Entite {
 		void setAttaque(bool attaque);
 		void seDeplacer();
 		void attaquer(Entite& cible);
-        void creerTache(std::string type,int i ,int j,Carte* carte);
+        void creerTache(std::string type,int i ,int j);
 		std::vector<Tache*> getListeTaches() const;
+		void supprimerTache(int indice);
 		void viderListeTaches();
 };
 
