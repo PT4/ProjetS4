@@ -54,19 +54,19 @@ void GameModel::nextStep()
 						}
 						
 					}
+					
 					if(ok)
 					{
-						deplacementRecolte(0,0,0,14,8);
+						//deplacementRecolte(0,0,0,14,8);
 						//deplacementRecolte(0,1,0,22,22);
 						
-						/*m_partie->getCarte()->calculListeCasesVides();
-						m_partie -> getListeJoueurs()[0]->getListeUnites()[1] -> viderListeTaches();	
-						m_partie -> getListeJoueurs()[0]->getListeUnites()[1]->creerTache("DeplacementSimple",40,40);
-						m_partie -> getListeJoueurs()[0]->getListeUnites()[1] -> getListeTaches()[0]->deplacementSimple(m_partie->getCarte()->getListeCasesVides(),40,40);
-						m_partie->getCarte()->calculListeCasesVides();
-						m_partie -> getListeJoueurs()[0]->getListeUnites()[2] -> viderListeTaches();	
-						m_partie -> getListeJoueurs()[0]->getListeUnites()[2]->creerTache("DeplacementSimple",10,40);
-						m_partie -> getListeJoueurs()[0]->getListeUnites()[2] -> getListeTaches()[0]->deplacementSimple(m_partie->getCarte()->getListeCasesVides(),10,40);*/
+						m_partie -> getListeJoueurs()[0]->getListeUnites()[0] -> viderListeTaches();	
+						m_partie -> getListeJoueurs()[0]->getListeUnites()[0]->creerTache("DeplacementSimple",40,40);
+						m_partie -> getListeJoueurs()[0]->getListeUnites()[0] -> getListeTaches()[0]->deplacementSimple(m_partie->getCarte()->getListeCasesVides(),40,40);
+						//~ m_partie->getCarte()->calculListeCasesVides();
+						//~ m_partie -> getListeJoueurs()[0]->getListeUnites()[2] -> viderListeTaches();	
+						//~ m_partie -> getListeJoueurs()[0]->getListeUnites()[2]->creerTache("DeplacementSimple",10,40);
+						//~ m_partie -> getListeJoueurs()[0]->getListeUnites()[2] -> getListeTaches()[0]->deplacementSimple(m_partie->getCarte()->getListeCasesVides(),10,40);
 						ok=false;
 					}
 					

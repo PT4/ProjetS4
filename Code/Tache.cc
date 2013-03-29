@@ -304,6 +304,8 @@ void Tache::deplacementSimple(vector<CaseVide*> v, int i_dest, int j_dest)
 
 void Tache::deplacementSpe(vector<CaseVide*> v, int i_dest, int j_dest)
 {
+	m_unite -> getCarte()->calculListeCasesVides();
+	
 	int f=reccupererIDcaseCoord(v,m_dest->getI(),m_dest->getJ()),id=f, taille=v.size(),d=reccupererIDcaseCoord(v,m_unite->getI(),m_unite->getJ());
 	bool trouver1=false, trouver2=false;
 	vector<CaseVide*> voisins;
@@ -357,8 +359,10 @@ void Tache::deplacementSpe(vector<CaseVide*> v, int i_dest, int j_dest)
 	{
 		while(v[id]->getParent()!=f)
 		{
+			m_unite -> getCarte() -> setCaseMatrice(m_unite->getI(),m_unite->getJ(),4);
 			m_unite->setI(v[v[id]->getParent()]->getI());
 			m_unite->setJ(v[v[id]->getParent()]->getJ());
+			m_unite -> getCarte() -> setCaseMatrice(m_unite->getI(),m_unite->getJ(),5);
 			sleep(1);
 			id=v[id]->getParent();
 		}

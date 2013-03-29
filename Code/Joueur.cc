@@ -70,7 +70,8 @@ void Joueur::ajouterBatiment(int type, int i, int j,Carte* carte)
 	}
 }
 
-void Joueur::ajouterUnite(int type, int i, int j,Carte* carte)
+
+void Joueur::ajouterUnite(int type, int i, int j, Carte* carte)
 {
 	switch(type)
 	{
@@ -135,7 +136,7 @@ int Joueur::getQuantiteMiel() const {
 }
 
 void Joueur::setQuantiteMiel(int miel) {
-	m_quantiteMiel = miel;
+	m_quantiteMiel -= miel;
 }
 
 int Joueur::getQuantiteBois() const {
@@ -143,6 +144,6 @@ int Joueur::getQuantiteBois() const {
 }
 
 void Joueur::setQuantiteBois(int bois) {
-	m_quantiteBois = bois;
+	m_quantiteBois -= bois;
 }
 

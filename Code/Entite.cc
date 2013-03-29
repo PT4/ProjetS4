@@ -17,7 +17,8 @@ Entite::Entite(string nom, int pointsVie): Objet(), m_nom(nom), m_pointsVie(poin
 Entite::Entite(string nom, int pointsVie, Joueur* joueur,Carte* carte): Objet(), m_nom(nom), m_pointsVie(pointsVie), m_joueur(joueur), m_carte(carte)
 {}
 
-Entite::Entite(int i, int j, bool estFranchissable, string nom, int pointsVie, Joueur* joueur,Carte* carte):Objet(i, j, estFranchissable), m_nom(nom), m_pointsVie(pointsVie), m_carte(carte)
+
+Entite::Entite(int i, int j, bool estFranchissable, string nom, int pointsVie, Joueur* joueur,Carte* carte):Objet(i, j, estFranchissable), m_nom(nom), m_pointsVie(pointsVie), m_joueur(joueur), m_carte(carte)
 {}
 
 //Destructeur
