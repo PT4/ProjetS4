@@ -78,3 +78,16 @@ void Unite::viderListeTaches()
 {
 	m_listeTaches.clear();
 }
+
+void Unite::supprimerDeplacementActuel()
+{
+	for (int i = 0; i < m_listeTaches.size(); i++)
+	{
+		if (m_listeTaches[i]->getType() == "DeplacementSimple")
+		{
+			m_listeTaches[i] -> suppressionTache();
+		}
+		
+	}
+	
+}

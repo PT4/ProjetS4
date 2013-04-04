@@ -38,6 +38,7 @@ class Unite: public Entite {
 		std::vector<Tache*> getListeTaches() const;
 		void supprimerTache(int indice);
 		void viderListeTaches();
+		void supprimerDeplacementActuel();
 };
 
 #endif

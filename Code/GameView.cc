@@ -886,6 +886,25 @@ bool GameView::treatEvents()
 
                 else if (mouse_x < 760 && m_creationSelection == "")
 				{
+					if(m_model->getPartie()->getListeJoueurs()[0]->getSelection().size()>0)
+					{
+						Unite* uniteSelection = dynamic_cast<Unite*> (m_model->getPartie()->getListeJoueurs()[0]->getSelection()[0]);
+						if(RightButtonDown && uniteSelection!=NULL)
+						{
+							int iMap = clicToZoomArene(mouse_y, true)/16;
+							int jMap = clicToZoomArene(mouse_x, false)/16;
+							if (m_model -> getPartie() -> getCarte() -> getCaseMatrice (iMap,jMap) == 4)
+							{
+								uniteSelection->supprimerDeplacementActuel();
+								uniteSelection->creerTache("DeplacementSimple",iMap,jMap);
+								uniteSelection->getListeTaches()[0]->Launch();
+							}
+							/*else if (m_model -> getPartie() -> getCarte() -> getCaseMatrice (iMap,jMap) == 1 || m_model -> getPartie() -> getCarte() -> getCaseMatrice (iMap,jMap) == 2 )
+							{
+								uniteSelection -> creerTache("Recolter",iMap,jMap);
+							}*/
+						}
+					}
                     if (LeftButtonDown)
                     {
                         m_clic = true;
@@ -898,7 +917,7 @@ bool GameView::treatEvents()
                         m_clicTempX = clicToZoomArene(mouse_x, false);
                         m_clicTempY = clicToZoomArene(mouse_y, true);
                     }
-
+		
                     else if (!LeftButtonDown && m_clic == true)
                     {
                         m_model -> getPartie() -> getListeJoueurs()[0] -> remplirSelection(m_clicX/TAILLE_CASE,m_clicY/TAILLE_CASE,m_clicTempX/TAILLE_CASE,m_clicTempY/TAILLE_CASE);
@@ -914,8 +933,12 @@ bool GameView::treatEvents()
                 {
                     int iMap = clicToZoomArene(mouse_y, true)/16;
                     int jMap = clicToZoomArene(mouse_x, false)/16;
-
-                     if (m_model -> getPartie() -> getCarte()-> getCaseMatrice (iMap,jMap) == 4)
+					Recolteur* recolteurSelection = dynamic_cast<Recolteur*> (m_model->getPartie()->getListeJoueurs()[0]->getSelection()[0]);
+                     if (m_model -> getPartie() -> getCarte()-> getCaseMatrice (iMap,jMap) == 4 && 
+						(recolteurSelection->getI()-1==iMap && recolteurSelection->getJ()==jMap) ||
+						(recolteurSelection->getI()==iMap && recolteurSelection->getJ()-1==jMap) ||
+						(recolteurSelection->getI()+1==iMap && recolteurSelection->getJ()==jMap) ||
+						(recolteurSelection->getI()==iMap && recolteurSelection->getJ()+1==jMap))
                      {
                            if (m_creationSelection == "Base" && m_model -> getPartie() -> getListeJoueurs()[0] -> getQuantiteBois() >= PRIX_BOIS_BASE)
                            {

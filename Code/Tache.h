@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <SFML/System.hpp>
 
 class Unite;
 class Carte;
@@ -12,7 +13,7 @@ class Recolteur;
 class Soldat;
 class CaseVide;
 
-class Tache {
+class Tache : public sf::Thread{
 	private:
 		std::string m_type;
 		Ressource* m_ressource;
@@ -23,7 +24,9 @@ class Tache {
 		Unite* m_unite;
 		CaseVide* m_dest;
 		bool estActive;
+		bool m_thread;
 
+		 virtual void Run();
 	public:
 		Tache();
 		Tache(std::string type,Unite* me,int cibleI,int cibleJ);
@@ -31,8 +34,7 @@ class Tache {
 		~Tache();
 		void attaquer(Entite *entite);
 		bool recolter();
-		void deplacementSimple(std::vector<CaseVide*> listeCasesVides, int i_dest, int j_dest);
-		void deplacementSpe(std::vector<CaseVide*> v, int i_dest, int j_dest);
+		void deplacementSimple();
 		int reccupererIDcaseCoord(std::vector<CaseVide*> &v,int x, int y);
 		int reccupererIDcase(std::vector<CaseVide*> &v, CaseVide* c);
 		void initialisation(std::vector<CaseVide*> &v);
@@ -43,6 +45,10 @@ class Tache {
 		void setCarte(Carte *carte);
 		std::string getType() const;
 		Carte* getCarte () const;
+		void DoSomething();
+		bool getThread() const;
+        bool setThread ();
+        void suppressionTache();
 };
 
 #endif

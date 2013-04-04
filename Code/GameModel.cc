@@ -38,7 +38,7 @@ void GameModel::nextStep()
 {
 	setThread();
 		if (m_partie != NULL)
-				for (int i = 0; i < m_partie -> getListeJoueurs().size() ; i++)
+				/*for (int i = 0; i < m_partie -> getListeJoueurs().size() ; i++)
 				{
 					for (int j = 0; j < m_partie -> getListeJoueurs()[i]->getListeUnites().size(); j++)
 					{
@@ -60,9 +60,9 @@ void GameModel::nextStep()
 						//deplacementRecolte(0,0,0,14,8);
 						//deplacementRecolte(0,1,0,22,22);
 						
-						m_partie -> getListeJoueurs()[0]->getListeUnites()[0] -> viderListeTaches();	
-						m_partie -> getListeJoueurs()[0]->getListeUnites()[0]->creerTache("DeplacementSimple",40,40);
-						m_partie -> getListeJoueurs()[0]->getListeUnites()[0] -> getListeTaches()[0]->deplacementSimple(m_partie->getCarte()->getListeCasesVides(),40,40);
+						//~ m_partie -> getListeJoueurs()[0]->getListeUnites()[0] -> viderListeTaches();	
+						//~ m_partie -> getListeJoueurs()[0]->getListeUnites()[0]->creerTache("DeplacementSimple",40,40);
+						//~ m_partie -> getListeJoueurs()[0]->getListeUnites()[0] -> getListeTaches()[0]->deplacementSimple(m_partie->getCarte()->getListeCasesVides(),40,40);
 						//~ m_partie->getCarte()->calculListeCasesVides();
 						//~ m_partie -> getListeJoueurs()[0]->getListeUnites()[2] -> viderListeTaches();	
 						//~ m_partie -> getListeJoueurs()[0]->getListeUnites()[2]->creerTache("DeplacementSimple",10,40);
@@ -70,7 +70,7 @@ void GameModel::nextStep()
 						ok=false;
 					}
 					
-				}
+				}*/
 		
     setThread();
 }
@@ -117,21 +117,21 @@ void GameModel::creerPartie(int nbJoueur, string carte)
 
 void GameModel::deplacementRecolte(int i, int j, int k,int i_dest, int j_dest)
 {
-	int i_dest2=m_partie -> getListeJoueurs()[0]->getListeUnites()[0]->getI();
-	int j_dest2=m_partie -> getListeJoueurs()[0]->getListeUnites()[0]->getJ();
-	
-	m_partie->getCarte()->calculListeCasesVides();
-	m_partie -> getListeJoueurs()[i]->getListeUnites()[j] -> viderListeTaches();	
-	m_partie -> getListeJoueurs()[i]->getListeUnites()[j]->creerTache("DeplacementSpe",i_dest, j_dest);
-	m_partie -> getListeJoueurs()[i]->getListeUnites()[j] -> getListeTaches()[k]->deplacementSimple(m_partie->getCarte()->getListeCasesVides(),i_dest, j_dest);
-	m_partie -> getListeJoueurs()[i]->getListeUnites()[j] -> viderListeTaches();
+	//~ int i_dest2=m_partie -> getListeJoueurs()[0]->getListeUnites()[0]->getI();
+	//~ int j_dest2=m_partie -> getListeJoueurs()[0]->getListeUnites()[0]->getJ();
+	//~ 
+	//~ m_partie->getCarte()->calculListeCasesVides();
+	//~ m_partie -> getListeJoueurs()[i]->getListeUnites()[j] -> viderListeTaches();	
+	//~ m_partie -> getListeJoueurs()[i]->getListeUnites()[j]->creerTache("DeplacementSpe",i_dest, j_dest);
+	//~ m_partie -> getListeJoueurs()[i]->getListeUnites()[j] -> getListeTaches()[k]->deplacementSimple(m_partie->getCarte()->getListeCasesVides(),i_dest, j_dest);
+	//~ m_partie -> getListeJoueurs()[i]->getListeUnites()[j] -> viderListeTaches();
 	//~ m_partie -> getListeJoueurs()[i]->getListeUnites()[j]->creerTache("Recolter",i_dest, j_dest);
 	//~ m_partie -> getListeJoueurs()[i]->getListeUnites()[j] -> getListeTaches()[k]->recolter();
-	m_partie -> getListeJoueurs()[i]->getListeUnites()[j] -> viderListeTaches();
-	m_partie->getCarte()->calculListeCasesVides();
-	m_partie -> getListeJoueurs()[i]->getListeUnites()[j]->creerTache("DeplacementSpe",i_dest2, j_dest2);
-	m_partie -> getListeJoueurs()[i]->getListeUnites()[j] -> getListeTaches()[k]->deplacementSimple(m_partie->getCarte()->getListeCasesVides(),i_dest2, j_dest2);
-	m_partie -> getListeJoueurs()[i]->getListeUnites()[j] -> viderListeTaches();
+	//~ m_partie -> getListeJoueurs()[i]->getListeUnites()[j] -> viderListeTaches();
+	//~ m_partie->getCarte()->calculListeCasesVides();
+	//~ m_partie -> getListeJoueurs()[i]->getListeUnites()[j]->creerTache("DeplacementSpe",i_dest2, j_dest2);
+	//~ m_partie -> getListeJoueurs()[i]->getListeUnites()[j] -> getListeTaches()[k]->deplacementSimple(m_partie->getCarte()->getListeCasesVides(),i_dest2, j_dest2);
+	//~ m_partie -> getListeJoueurs()[i]->getListeUnites()[j] -> viderListeTaches();
 	
 	
 }
